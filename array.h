@@ -9,9 +9,8 @@
 
 #include <cassert>
 #include <climits>
-#include <stdexcept>
 
-namespace mw {
+namespace ustd {
 
 #define ARRAY_INC_SIZE 16
 #define ARRAY_MAX_SIZE UINT_MAX  // 65535 or 4294967295 (mostly)

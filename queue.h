@@ -1,31 +1,24 @@
-// queue.h - The internal queue class
-//
-// This is the declaration of the internal queue
-// class that is part of the implementation of the
-// application method for non blocking communication
-// between the components and scheduling
+// queue.h - ustd queue class
 
 #pragma once
 
-namespace meisterwerk {
-namespace core {
+namespace ustd {
 
 template <class T> class queue {
   private:
     T **que;
-    DBG_ONLY(unsigned int peakSize);
+    unsigned int peakSize;
     unsigned int maxSize;
     unsigned int size;
     unsigned int quePtr0;
     unsigned int quePtr1;
 
   public:
-    queue(unsigned int maxQueueSize) {
+    queue(unsigned int maxQueueSize) : maxSize(maxQueueSize) {
         DBG_ONLY(peakSize = 0);
         quePtr0 = 0;
         quePtr1 = 0;
         size = 0;
-        maxSize = maxQueueSize;
         que = (T **)malloc(sizeof(T *) * maxSize);
         if (que == nullptr)
             maxSize = 0;
@@ -48,7 +41,9 @@ template <class T> class queue {
             quePtr1 = (quePtr1 + 1) % maxSize;
             ++size;
         }
-        DBG_ONLY(if (size > peakSize) { peakSize = size; })
+        if (size > peakSize) {
+            peakSize = size;
+        }
         return true;
     }
 
@@ -68,9 +63,12 @@ template <class T> class queue {
             return false;
     }
 
-    unsigned int length() { return (size); }
+    unsigned int length() {
+        return (size);
+    }
 
-    DBG_ONLY(unsigned int peak() { return (peakSize); })
+    unsigned int peak() {
+        return (peakSize);
+    }
 };
-} // namespace core
-} // namespace meisterwerk
+}
