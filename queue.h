@@ -15,7 +15,6 @@ template <class T> class queue {
 
   public:
     queue(unsigned int maxQueueSize) : maxSize(maxQueueSize) {
-        DBG_ONLY(peakSize = 0);
         quePtr0 = 0;
         quePtr1 = 0;
         size = 0;
@@ -71,4 +70,4 @@ template <class T> class queue {
         return (peakSize);
     }
 };
-}
+}  // namespace ustd

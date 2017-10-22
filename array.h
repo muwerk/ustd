@@ -2,8 +2,7 @@
 
 #pragma once
 
-#include <cassert>
-#include <climits>
+#include "platform.h"
 
 namespace ustd {
 
@@ -96,10 +95,14 @@ template <typename T> class array {
     T operator[](unsigned int i) const {
         if (i >= allocSize) {
             if (incSize == 0) {
+#ifdef USTD_ASSERT
                 assert(i < allocSize);
+#endif
             }
             if (!resize(allocSize + incSize)) {
+#ifdef USTD_ASSERT
                 assert(i < allocSize);
+#endif
             }
         }
         if (i >= size && i <= allocSize)
@@ -114,10 +117,14 @@ template <typename T> class array {
     T &operator[](unsigned int i) {
         if (i >= allocSize) {
             if (incSize == 0) {
+#ifdef USTD_ASSERT
                 assert(i < allocSize);
+#endif
             }
             if (!resize(allocSize + incSize)) {
+#ifdef USTD_ASSERT
                 assert(i < allocSize);
+#endif
             }
         }
         if (i >= size && i <= allocSize)

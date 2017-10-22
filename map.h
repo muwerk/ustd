@@ -44,7 +44,10 @@ template <class K, class V> class map {
             if (keys[i] == key)
                 return values[i];
         }
+#ifdef USTD_ASSERT
+
         assert(false);  // key not found
+#endif
         memset(&bad, 0, sizeof(bad));
         return bad;
     }
@@ -57,14 +60,18 @@ template <class K, class V> class map {
         }
         int i = keys.add(key);
         if (i == -1) {
+#ifdef USTD_ASSERT
             assert(false);  // key not found
+#endif
             memset(&bad, 0, sizeof(bad));
             return bad;
         }
         if (i >= 0) {
             return values[i];
         }
+#ifdef USTD_ASSERT
         assert(false);  // key not found
+#endif
         memset(&bad, 0, sizeof(bad));
         return bad;
     }
