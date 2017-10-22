@@ -85,7 +85,6 @@ template <typename T> class array {
         --size;
         if (shrink) {
             if ((size < allocSize - incSize) && (allocSize > incSize)) {
-                printf("Shink to %d\n", allocSize - incSize);
                 resize(allocSize - incSize);
             }
         }

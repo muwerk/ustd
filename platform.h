@@ -2,6 +2,7 @@
 #pragma once
 
 #ifdef __linux__
+#include <stdlib.h>
 #include <cassert>
 #include <climits>
 #include <sys/time.h>
