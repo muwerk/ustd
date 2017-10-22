@@ -45,7 +45,6 @@ template <class K, class V> class map {
                 return values[i];
         }
 #ifdef USTD_ASSERT
-
         assert(false);  // key not found
 #endif
         memset(&bad, 0, sizeof(bad));
@@ -67,6 +66,7 @@ template <class K, class V> class map {
             return bad;
         }
         if (i >= 0) {
+            size++;
             return values[i];
         }
 #ifdef USTD_ASSERT

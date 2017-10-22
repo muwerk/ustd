@@ -2,10 +2,12 @@
 #pragma once
 
 #ifdef __linux__
+#include <stdio.h>
 #include <stdlib.h>
 #include <cassert>
 #include <climits>
 #include <string>
+#include <cstring>
 #include <sys/time.h>
 #define USTD_ASSERTS 1
 typedef std::string String;
