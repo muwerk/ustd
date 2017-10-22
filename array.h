@@ -1,9 +1,4 @@
-// array.h - The internal array class
-//
-// This is the declaration of the internal array
-// class used for resource-management
-// supports []-indexing, adding elements at the end and
-// erasing an elements by index.
+// array.h - array class
 
 #pragma once
 
@@ -24,6 +19,7 @@ template <typename T> class array {
     unsigned int allocSize;
     unsigned int size;
     unsigned int incSize = ARRAY_INC_SIZE;
+    T bad;
     bool shrink = true;
 
   public:
@@ -68,16 +64,16 @@ template <typename T> class array {
         return true;
     }
 
-    bool add(T &ent) {
+    int add(T &ent) {
         if (size >= allocSize) {
             if (incSize == 0)
-                return false;
+                return -1;
             if (!resize(allocSize + incSize))
-                return false;
+                return -1;
         }
         arr[size] = ent;
         ++size;
-        return true;
+        return size - 1;
     }
 
     bool erase(unsigned int index) {
@@ -108,8 +104,10 @@ template <typename T> class array {
         }
         if (i >= size && i <= allocSize)
             size = i + 1;
-        if (i >= allocSize)
-            i = allocSize - 1;
+        if (i >= allocSize) {
+            memset(&bad, 0, sizeof(bad));
+            return bad;
+        }
         return arr[i];
     }
 
@@ -124,8 +122,10 @@ template <typename T> class array {
         }
         if (i >= size && i <= allocSize)
             size = i + 1;
-        if (i >= allocSize)
-            i = allocSize - 1;
+        if (i >= allocSize) {
+            memset(&bad, 0, sizeof(bad));
+            return bad;
+        }
         return arr[i];
     }
 
