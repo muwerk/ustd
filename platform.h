@@ -5,8 +5,10 @@
 #include <stdlib.h>
 #include <cassert>
 #include <climits>
+#include <string>
 #include <sys/time.h>
 #define USTD_ASSERTS 1
+typedef std::string String;
 #endif
 
 #ifndef UINT_MAX
