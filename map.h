@@ -57,7 +57,10 @@ template <class K, class V> class map {
                 return values[i];
             }
         }
+        printf("add: %s (prev-key-len/alc: %d,%d)", key.c_str(), keys.length(),
+               keys.alloclen());
         int i = keys.add(key);
+        printf(" pos: %d, klen: %d", i, keys.length());
         if (i == -1) {
 #ifdef USTD_ASSERT
             assert(false);  // key not found
@@ -67,14 +70,7 @@ template <class K, class V> class map {
         }
         if (i >= 0) {
             size++;
-            memset(&bad, 0, sizeof(bad));
-            int j = values.add(bad);
-            if (j != i) {
-                printf("bad add index!");
-            } else {
-                printf("added %d, len=%d, alloclen=%d\n", j, values.length(),
-                       values.alloclen());
-            }
+            printf(" size: %d", size);
             return values[i];
         }
 #ifdef USTD_ASSERT

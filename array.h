@@ -42,8 +42,12 @@ template <typename T> class array {
 
     bool resize(unsigned int newSize) {
         unsigned int mv = newSize;
-        if (newSize > maxSize)
-            return false;
+        if (newSize > maxSize) {
+            if (maxSize == allocSize)
+                return false;
+            else
+                newSize = maxSize;
+        }
         if (!shrink) {
             if (newSize <= allocSize)
                 return true;
