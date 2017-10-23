@@ -18,6 +18,7 @@ template <class T> class queue {
         quePtr0 = 0;
         quePtr1 = 0;
         size = 0;
+        peakSize = 0;
         que = (T **)malloc(sizeof(T *) * maxSize);
         if (que == nullptr)
             maxSize = 0;
