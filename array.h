@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "platform.h"
+#include "./platform.h"
 
 namespace ustd {
 
@@ -21,6 +21,21 @@ template <typename T> class array {
     T bad;
     bool shrink = true;
 
+    T *ualloc(unsigned int n) {
+#ifdef __ATTINY__
+        return (T *)malloc(n * sizeof(T));
+#else
+        return new T[n];
+#endif
+    }
+    void ufree(T *p) {
+#ifdef __ATTINY__
+        free(p);
+#else
+        delete[] p;
+#endif
+    }
+
   public:
     array(unsigned int startSize = ARRAY_INIT_SIZE,
           unsigned int maxSize = ARRAY_MAX_SIZE,
@@ -31,12 +46,12 @@ template <typename T> class array {
         if (maxSize < startSize)
             maxSize = startSize;
         allocSize = startSize;
-        arr = new T[allocSize];
+        arr = ualloc(allocSize);  // new T[allocSize];
     }
 
     ~array() {
         if (arr != nullptr) {
-            delete[] arr;
+            ufree(arr);
             arr = nullptr;
         }
     }
@@ -58,13 +73,13 @@ template <typename T> class array {
             else
                 mv = allocSize;
         }
-        T *arrn = new T[newSize];
+        T *arrn = ualloc(newSize);  // new T[newSize];
         if (arrn == nullptr)
             return false;
         for (unsigned int i = 0; i < mv; i++) {
             arrn[i] = arr[i];
         }
-        delete[] arr;
+        ufree(arr);
         arr = arrn;
         allocSize = newSize;
         return true;
@@ -86,7 +101,7 @@ template <typename T> class array {
         if (index >= size) {
             return false;
         }
-        for (int i = index; i < size - 1; i++) {
+        for (unsigned int i = index; i < size - 1; i++) {
             arr[i] = arr[i + 1];
         }
         --size;

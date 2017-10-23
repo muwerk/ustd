@@ -2,9 +2,6 @@
 
 #pragma once
 #include "./array.h"
-#include <iostream>
-using std::cout;
-using std::endl;
 
 namespace ustd {
 
@@ -57,10 +54,7 @@ template <class K, class V> class map {
                 return values[i];
             }
         }
-        printf("add: %s (prev-key-len/alc: %d,%d)", key.c_str(), keys.length(),
-               keys.alloclen());
         int i = keys.add(key);
-        printf(" pos: %d, klen: %d", i, keys.length());
         if (i == -1) {
 #ifdef USTD_ASSERT
             assert(false);  // key not found
@@ -70,7 +64,6 @@ template <class K, class V> class map {
         }
         if (i >= 0) {
             size++;
-            printf(" size: %d", size);
             return values[i];
         }
 #ifdef USTD_ASSERT
