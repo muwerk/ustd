@@ -50,6 +50,8 @@ template <typename T> class array {
         } else {
             if (newSize < allocSize)
                 mv = newSize;
+            else
+                mv = allocSize;
         }
         T *arrn = new T[newSize];
         if (arrn == nullptr)
@@ -57,7 +59,7 @@ template <typename T> class array {
         for (unsigned int i = 0; i < mv; i++) {
             arrn[i] = arr[i];
         }
-        delete (arr);
+        delete[] arr;
         arr = arrn;
         allocSize = newSize;
         return true;
@@ -119,23 +121,16 @@ template <typename T> class array {
 #ifdef USTD_ASSERT
                 assert(i < allocSize);
 #endif
-                printf("bad limit here. 0\n");
             }
             if (!resize(allocSize + incSize)) {
 #ifdef USTD_ASSERT
                 assert(i < allocSize);
 #endif
-                printf("bad limit here. 1\n");
-            } else {
-                printf("Rs!\n");
             }
-        } else {
-            printf("no res\n");
         }
         if (i >= size && i <= allocSize)
             size = i + 1;
         if (i >= allocSize) {
-            printf("bad limit here.\n");
             memset(&bad, 0, sizeof(bad));
             return bad;
         }
