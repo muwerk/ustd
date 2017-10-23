@@ -36,7 +36,10 @@ template <typename T> class array {
 
     ~array() {
         if (arr != nullptr) {
+            printf("Freeing arr\n");
             delete[] arr;
+            arr = nullptr;
+            printf("Freed\n");
         }
     }
 
