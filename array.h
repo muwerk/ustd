@@ -119,16 +119,23 @@ template <typename T> class array {
 #ifdef USTD_ASSERT
                 assert(i < allocSize);
 #endif
+                printf("bad limit here. 0\n");
             }
             if (!resize(allocSize + incSize)) {
 #ifdef USTD_ASSERT
                 assert(i < allocSize);
 #endif
+                printf("bad limit here. 1\n");
+            } else {
+                printf("Rs!\n");
             }
+        } else {
+            printf("no res\n");
         }
         if (i >= size && i <= allocSize)
             size = i + 1;
         if (i >= allocSize) {
+            printf("bad limit here.\n");
             memset(&bad, 0, sizeof(bad));
             return bad;
         }

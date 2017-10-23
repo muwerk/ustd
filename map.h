@@ -1,7 +1,7 @@
 // map.h - ustd queue class
 
 #pragma once
-#include "array.h"
+#include "./array.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -22,8 +22,8 @@ template <class K, class V> class map {
     V bad;
 
   public:
-    array<K> keys;
-    array<V> values;
+    ustd::array<K> keys;
+    ustd::array<V> values;
 
   public:
     map(unsigned int startSize = ARRAY_INIT_SIZE,
@@ -67,6 +67,14 @@ template <class K, class V> class map {
         }
         if (i >= 0) {
             size++;
+            memset(&bad, 0, sizeof(bad));
+            int j = values.add(bad);
+            if (j != i) {
+                printf("bad add index!");
+            } else {
+                printf("added %d, len=%d, alloclen=%d\n", j, values.length(),
+                       values.alloclen());
+            }
             return values[i];
         }
 #ifdef USTD_ASSERT
