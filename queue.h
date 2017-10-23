@@ -28,10 +28,8 @@ template <class T> class queue {
         if (que != nullptr) {
             // If size > 0 then there's a potential memory leak.
             // This must be taken care of by the queue owner.
-            printf("Freeing queue\n");
             free(que);
             que = nullptr;
-            printf("Freed\n");
         }
     }
 
