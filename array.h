@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "./platform.h"
+#include "platform.h"
 
 namespace ustd {
 
