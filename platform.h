@@ -9,13 +9,24 @@
 #include <stdlib.h>
 #include <string>
 #include <sys/time.h>
+
 #define USTD_ASSERTS 1
 typedef std::string String;
+//#define String std::string
 #pragma message("Unixoid")
+
+unsigned long micros() {
+    struct timeval tv;
+    gettimeofday(&tv, 0);
+    return tv.tv_usec;
+}
+
+#else
+#define __ARDUINO__ 1
 #endif
 
 #ifndef UINT_MAX
-#define UINT_MAX (65535) // or 4294967295 (mostly)
+#define UINT_MAX (65535)  // or 4294967295 (mostly)
 #endif
 
 namespace ustd {
@@ -25,12 +36,4 @@ unsigned long timeDiffMicros(unsigned long first, unsigned long second) {
     return (unsigned long)-1 - first + second + 1;
 }
 
-#if defined(__linux__) || defined(__APPLE__)
-unsigned long micros() {
-    struct timeval tv;
-    gettimeofday(&tv, 0);
-    return tv.tv_usec;
-}
-#endif
-
-} // namespace ustd
+}  // namespace ustd
