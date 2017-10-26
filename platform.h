@@ -21,13 +21,18 @@ unsigned long micros() {
     gettimeofday(&tv, 0);
     return tv.tv_usec;
 }
+unsigned long millis() {
+    struct timeval tv;
+    gettimeofday(&tv, 0);
+    return tv.tv_usec / 1000L;
+}
 
 #else
 #define __ARDUINO__ 1
 #endif
 
 #ifndef UINT_MAX
-#define UINT_MAX (65535)  // or 4294967295 (mostly)
+#define UINT_MAX (65535) // or 4294967295 (mostly)
 #endif
 
 namespace ustd {
@@ -109,4 +114,4 @@ class sensorprocessor {
     }
 };
 
-}  // namespace ustd
+} // namespace ustd
