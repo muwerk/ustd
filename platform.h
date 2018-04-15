@@ -32,7 +32,7 @@ unsigned long millis() {
 #endif
 
 #ifndef UINT_MAX
-#define UINT_MAX (65535) // or 4294967295 (mostly)
+#define UINT_MAX (65535)  // or 4294967295 (mostly)
 #endif
 
 namespace ustd {
@@ -114,4 +114,4 @@ class sensorprocessor {
     }
 };
 
-} // namespace ustd
+}  // namespace ustd
