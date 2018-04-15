@@ -1,0 +1,13 @@
+{
+    "name": "ustd",
+    "keywords": "std, queue, map, array",
+    "description": "Small library for queues, maps and arrays",
+    "authors": [{
+        "name": "Dominik Schlösser",
+        "email": "dsc@dosc.net",
+        "maintainer": true
+    }],
+    "version": "0.1.0",
+    "frameworks": "arduino",
+    "platforms": "*"
+}
