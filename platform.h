@@ -1,6 +1,26 @@
 // platform.h - adapt platform specific stuff
 #pragma once
 
+#ifdef __ATTINY__
+#include <Arduino.h>
+#include <SoftwareSerial.h>
+#define USE_SERIAL (1)
+//#include <TinyWireM.h>
+#elif defined(__ATMEGA__)
+#include <Arduino.h>
+#elif defined(__ESP__)
+#include <FS.h>
+#define USE_SERIAL (1)
+#if defined(__ESP32__) || defined(__ESP32DEV__)
+#include <SPIFFS.h>
+#include <WiFi.h>
+#else
+#include <ESP8266WiFi.h>
+#endif
+#else
+#pragma message("Unknown platform")
+#endif
+
 #if defined(__linux__) || defined(__APPLE__)
 #define __UNIXOID__ 1
 #include <cassert>
