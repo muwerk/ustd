@@ -9,6 +9,7 @@
 #elif defined(__ATMEGA__)
 #include <Arduino.h>
 #elif defined(__ESP__)
+#define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
 #include <FS.h>
 #define HAS_SERIAL (1)
 #if defined(__ESP32__) || defined(__ESP32DEV__)
@@ -33,8 +34,6 @@
 
 #define USTD_ASSERTS 1
 typedef std::string String;
-//#define String std::string
-#pragma message("Unixoid")
 
 unsigned long micros() {
     struct timeval tv;
