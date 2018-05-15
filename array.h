@@ -13,13 +13,13 @@ namespace ustd {
 template <typename T> class array {
   private:
     T *arr;
-    unsigned int maxSize;
     unsigned int startSize;
+    unsigned int maxSize;
+    unsigned int incSize = ARRAY_INC_SIZE;
+    bool shrink = true;
     unsigned int allocSize;
     unsigned int size;
-    unsigned int incSize = ARRAY_INC_SIZE;
     T bad;
-    bool shrink = true;
 
     T *ualloc(unsigned int n) {
 #ifdef __ATTINY__
@@ -171,4 +171,4 @@ template <typename T> class array {
         return (allocSize);
     }
 };
-}
+}  // namespace ustd

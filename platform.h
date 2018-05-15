@@ -4,13 +4,13 @@
 #ifdef __ATTINY__
 #include <Arduino.h>
 #include <SoftwareSerial.h>
-#define USE_SERIAL (1)
+//#define HAS_SERIAL (1)
 //#include <TinyWireM.h>
 #elif defined(__ATMEGA__)
 #include <Arduino.h>
 #elif defined(__ESP__)
 #include <FS.h>
-#define USE_SERIAL (1)
+#define HAS_SERIAL (1)
 #if defined(__ESP32__) || defined(__ESP32DEV__)
 #include <SPIFFS.h>
 #include <WiFi.h>
