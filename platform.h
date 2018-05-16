@@ -18,8 +18,6 @@
 #else
 #include <ESP8266WiFi.h>
 #endif
-#else
-#pragma message("Unknown platform")
 #endif
 
 #if defined(__linux__) || defined(__APPLE__)
