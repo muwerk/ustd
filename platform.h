@@ -15,10 +15,16 @@
 #if defined(__ESP32__) || defined(__ESP32DEV__)
 #include <SPIFFS.h>
 #include <WiFi.h>
-#else
+#include <time.h>      // time() ctime()
+#include <sys/time.h>  // struct timeval
+#else                  // ESP8266
+#include <SD.h>        //otherwise bear.ssl doesn't compile...
 #include <ESP8266WiFi.h>
-#endif
-#endif
+#include <time.h>       // time() ctime()
+#include <sys/time.h>   // struct timeval
+#include <coredecls.h>  // settimeofday_cb()
+#endif                  // ESP8266
+#endif                  // ESP
 
 #if defined(__linux__) || defined(__APPLE__)
 #define __UNIXOID__ 1
@@ -44,9 +50,9 @@ unsigned long millis() {
     return tv.tv_usec / 1000L;
 }
 
-#else
+#else  // end linux, apple
 #define __ARDUINO__ 1
-#endif
+#endif  // arduino
 
 #ifndef UINT_MAX
 #define UINT_MAX (65535)  // or 4294967295 (mostly)
