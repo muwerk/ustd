@@ -43,12 +43,16 @@ typedef std::string String;
 unsigned long micros() {
     struct timeval tv;
     gettimeofday(&tv, nullptr);
-    return tv.tv_usec;
+    unsigned long tu;
+    tu = (tv.tv_sec % 1000L) * 1000000L + tv.tv_usec;
+    return tu;
 }
 unsigned long millis() {
     struct timeval tv;
     gettimeofday(&tv, nullptr);
-    return tv.tv_usec / 1000L;
+    unsigned long tm;
+    tm = (tv.tv_sec % 1000000L) * 1000L + tv.tv_usec / 1000L;
+    return tm;
 }
 
 class SerialSim {
