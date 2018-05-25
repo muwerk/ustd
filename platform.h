@@ -33,6 +33,7 @@
 #include <cstring>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #include <string>
 #include <sys/time.h>
 
@@ -41,14 +42,65 @@ typedef std::string String;
 
 unsigned long micros() {
     struct timeval tv;
-    gettimeofday(&tv, 0);
+    gettimeofday(&tv, nullptr);
     return tv.tv_usec;
 }
 unsigned long millis() {
     struct timeval tv;
-    gettimeofday(&tv, 0);
+    gettimeofday(&tv, nullptr);
     return tv.tv_usec / 1000L;
 }
+
+class SerialSim {
+  public:
+    void Serial() {
+    }
+    void begin(unsigned long baud) {
+    }
+    void println() {
+        std::cout << std::endl;
+    }
+
+    void println(String s) {
+        std::cout << s << std::endl;
+    }
+    void println(const char *sz) {
+        std::cout << sz << std::endl;
+    }
+    void println(uint8_t b) {
+        std::cout << b << std::endl;
+    }
+    void println(int l) {
+        std::cout << l << std::endl;
+    }
+    void println(unsigned long l) {
+        std::cout << l << std::endl;
+    }
+    void println(double d) {
+        std::cout << d << std::endl;
+    }
+
+    void print(String s) {
+        std::cout << s;
+    }
+    void print(const char *sz) {
+        std::cout << sz;
+    }
+    void print(uint8_t b) {
+        std::cout << b;
+    }
+    void print(int l) {
+        std::cout << l;
+    }
+    void print(unsigned long l) {
+        std::cout << l;
+    }
+    void print(double d) {
+        std::cout << d;
+    }
+};
+
+SerialSim Serial;
 
 #else  // end linux, apple
 #define __ARDUINO__ 1
