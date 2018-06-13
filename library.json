@@ -6,6 +6,10 @@
         "name": "Dominik Schlösser",
         "email": "dsc@dosc.net",
         "maintainer": true
+    }, {
+        "name": "Leo Moll",
+        "email": "leo@yeasoft.com",
+        "maintainer": true
     }],
     "version": "0.1.0",
     "frameworks": "arduino",
