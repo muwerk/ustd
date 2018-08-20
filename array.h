@@ -30,11 +30,11 @@ The library header-only.
 
 ustd::array<int> intArray;
 
-intArray[0]=13; // Memory for array[0] is allocated
+intArray[0] = 13; // Memory for array[0] is allocated
 intArray.add(3);  // the array is extended, if necessary
-int p=intArray[0];
+int p = intArray[0];
 
-printf("[0]:%d [1]:%d length=%d\n",intArray[0],intArray[1].intArray.length())
+printf("[0]:%d [1]:%d length=%d\n", intArray[0], intArray[1], intArray.length())
 ~~~
 
 ## An example for static mode
@@ -42,9 +42,8 @@ printf("[0]:%d [1]:%d length=%d\n",intArray[0],intArray[1].intArray.length())
 ~~~{.cpp}
 #include <array.h>
 
-ustd::array<int> intArray=ustd::array<int>(5,5,0,false);  // array length is
-fixed 5
-
+// array length is fixed 5 (startSize==maxSize), no dynamic extensions:
+ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);
 ~~~
  */
 template <typename T> class array {
@@ -138,6 +137,14 @@ template <typename T> class array {
         arr = arrn;
         allocSize = newSize;
         return true;
+    }
+
+    void setInvalidValue(T &ent) {
+        /*! Set the value for <T>entry that's given back, if read of an invalid
+        index is requested. By default, an entry all memset to zero is given
+        back. Using this function, the value of an invalid read can be
+        configured.*/
+        bad = ent;
     }
 
     int add(T &ent) {
