@@ -17,8 +17,8 @@ that runs well on architectures with very limited resources.
 
 The array class either:
 
-** allocates memory dynamically on array-writes or array-reads, or
-** work in fully static mode without any dynamic allocation once the array
+* * allocates memory dynamically on array-writes or array-reads, or
+* * work in fully static mode without any dynamic allocation once the array
 object has been created.
 
 The library header-only.
