@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['ustd',['ustd',['../md_README.html',1,'']]],
-  ['uint_5fmax',['UINT_MAX',['../platform_8h.html#ac998ea02fbd821fc123d60445ce76f38',1,'platform.h']]],
-  ['ustd',['ustd',['../namespaceustd.html',1,'']]]
+  ['setinvalidvalue',['setInvalidValue',['../classustd_1_1array.html#aeafb2c60658fa100a892883d6f06f612',1,'ustd::array']]]
 ];

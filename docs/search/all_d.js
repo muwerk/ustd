@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['values',['values',['../classustd_1_1map.html#a46505c8be3fba265e1133eac02eca10d',1,'ustd::map']]]
+  ['ustd',['ustd',['../md_README.html',1,'']]],
+  ['uint_5fmax',['UINT_MAX',['../platform_8h.html#ac998ea02fbd821fc123d60445ce76f38',1,'platform.h']]],
+  ['ustd',['ustd',['../namespaceustd.html',1,'']]]
 ];
