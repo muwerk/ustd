@@ -10,7 +10,7 @@ namespace ustd {
 #define ARRAY_MAX_SIZE UINT_MAX  // 65535 or 4294967295 (mostly)
 #define ARRAY_INIT_SIZE 16
 
-/*! \brief Lightweight c++ array implementation.
+/*! \brief Lightweight c++11 array implementation.
 
 array.h is a minimal, yet highly portable array data type implementation
 that runs well on architectures with very limited resources.
