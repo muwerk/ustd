@@ -1,7 +1,11 @@
 {
     "name": "ustd",
     "keywords": "std, queue, map, array",
-    "description": "Small library for queues, maps and arrays",
+    "description": "Small, highly portable library for queues, maps and arrays",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/muwerk/ustd.git"
+    },
     "authors": [{
         "name": "Dominik Schlösser",
         "email": "dsc@dosc.net",
@@ -12,6 +16,6 @@
         "maintainer": true
     }],
     "version": "0.1.0",
-    "frameworks": "arduino",
+    "frameworks": "*",
     "platforms": "*"
 }
