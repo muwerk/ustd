@@ -20,8 +20,11 @@ using ustd::array;
 using ustd::map;
 using ustd::queue;
 
+// TODO: retest with valgrind, once
+// https://bugzilla.redhat.com/show_bug.cgi?id=1608824 is fixed.
 int main() {
     cout << "Testing ustd..." << endl;
+
     array<int> ar = array<int>(1, 100, 1);
     queue<int> qu = queue<int>(128);
     map<String, int> mp = map<String, int>(7, 100, 1);
@@ -67,6 +70,7 @@ int main() {
         exit(-1);
     } else
         printf("Array selftest ok over %d!\n", ar.length());
+
     cout << "Done ustd." << endl;
 
     return 0;
