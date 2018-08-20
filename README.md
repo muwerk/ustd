@@ -1,4 +1,7 @@
+[![Build Status](https://travis-ci.org/muwerk/ustd.svg?branch=master)](https://travis-ci.org/muwerk/ustd)
+
 # ustd
+
 ustd provides minimal and highly protable implementations for
 
 * [array](https://muwerk.github.io/ustd/docs/classustd_1_1array.html)
