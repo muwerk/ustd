@@ -81,8 +81,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a034521812b6a4fc17f2a7dbb729a5616"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a034521812b6a4fc17f2a7dbb729a5616">array</a> (unsigned int startSize=<a class="el" href="array_8h.html#a2fae6acc19343c19a8726c812b79cdd6">ARRAY_INIT_SIZE</a>, unsigned int maxSize=<a class="el" href="array_8h.html#a91a638831651449bbf69068088e0f3b9">ARRAY_MAX_SIZE</a>, unsigned int incSize=<a class="el" href="array_8h.html#a3c9c4834e9e3532329946b3aa1818d68">ARRAY_INC_SIZE</a>, bool shrink=true))</td></tr>
-<tr class="separator:a034521812b6a4fc17f2a7dbb729a5616"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c2b783f194317522106e1ead813b52"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a73c2b783f194317522106e1ead813b52">array</a> (unsigned int startSize=<a class="el" href="array_8h.html#a2fae6acc19343c19a8726c812b79cdd6">ARRAY_INIT_SIZE</a>, unsigned int maxSize=<a class="el" href="array_8h.html#a91a638831651449bbf69068088e0f3b9">ARRAY_MAX_SIZE</a>, unsigned int incSize=<a class="el" href="array_8h.html#a3c9c4834e9e3532329946b3aa1818d68">ARRAY_INC_SIZE</a>, bool shrink=true)</td></tr>
+<tr class="separator:a73c2b783f194317522106e1ead813b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcab8dfd53e397edac42f05974d0a2ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#abcab8dfd53e397edac42f05974d0a2ba">~array</a> ()</td></tr>
 <tr class="separator:abcab8dfd53e397edac42f05974d0a2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1086ea57bc2f8af77e44d2a1a3b86738"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738">resize</a> (unsigned int newSize)</td></tr>
@@ -108,11 +108,12 @@ class ustd::array&lt; T &gt;</h3>
 
 <p>Lightweight c++ array implementation. </p>
 <p><a class="el" href="array_8h.html">array.h</a> is a minimal, yet highly portable array data type implementation that runs well on architectures with very limited resources.</p>
-<p>The array class allocates memory dynamically on array-writes.</p>
+<p>The array class either allocates memory dynamically on array-writes or array-reads, or work in fully static mode without any dynamic allocation once the array object has been created.</p>
 <p>The library header-only.</p>
-<p>A quick example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="array_8h.html">array.h</a>&gt;</span></div><div class="line"></div><div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray;</div><div class="line"></div><div class="line">intArray[0]=13;</div><div class="line">intArray.<a class="code" href="classustd_1_1array.html#afc3ff042affbb40184f8a0526b9e04f7">add</a>(3);</div><div class="line"><span class="keywordtype">int</span> p=intArray[0];</div><div class="line"></div><div class="line">printf(<span class="stringliteral">&quot;[0]:%d [1]:%d length=%d\n&quot;</span>,intArray[0],intArray[1].intArray.<a class="code" href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">length</a>())</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a034521812b6a4fc17f2a7dbb729a5616"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a034521812b6a4fc17f2a7dbb729a5616">&#9670;&nbsp;</a></span>array()</h2>
+<p>## A quick example for dynamic mode: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="array_8h.html">array.h</a>&gt;</span></div><div class="line"></div><div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray;</div><div class="line"></div><div class="line">intArray[0]=13; <span class="comment">// Memory for array[0] is allocated</span></div><div class="line">intArray.<a class="code" href="classustd_1_1array.html#afc3ff042affbb40184f8a0526b9e04f7">add</a>(3);  <span class="comment">// the array is extended, if necessary</span></div><div class="line"><span class="keywordtype">int</span> p=intArray[0];</div><div class="line"></div><div class="line">printf(<span class="stringliteral">&quot;[0]:%d [1]:%d length=%d\n&quot;</span>,intArray[0],intArray[1].intArray.<a class="code" href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">length</a>())</div></div><!-- fragment --><h2>An example for static mode</h2>
+<div class="fragment"><div class="line">{(.cpp)}</div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="array_8h.html">array.h</a>&gt;</span></div><div class="line"></div><div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray=<a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a>(5,5,0,<span class="keyword">false</span>);  <span class="comment">// array length is</span></div><div class="line">fixed 5</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a73c2b783f194317522106e1ead813b52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c2b783f194317522106e1ead813b52">&#9670;&nbsp;</a></span>array()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -158,13 +159,13 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs an array object. All allocation-hints are optional, the array class will allocate memory as needed during writes.</p>
+<p>Constructs an array object. All allocation-hints are optional, the array class will allocate memory as needed during writes, if startSize!=maxSize.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">startSize</td><td>Initial allocation-size for the array </td></tr>
     <tr><td class="paramname">maxSize</td><td>Maximum allowed size for the array </td></tr>
     <tr><td class="paramname">incSize</td><td>Step-size for allocation-increments </td></tr>
-    <tr><td class="paramname">shrink</td><td>allow arrays to shrink (deallocate unneeded entries </td></tr>
+    <tr><td class="paramname">shrink</td><td>allow arrays to shrink (deallocate unneeded entries) </td></tr>
   </table>
   </dd>
 </dl>
