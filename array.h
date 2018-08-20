@@ -10,7 +10,30 @@ namespace ustd {
 #define ARRAY_MAX_SIZE UINT_MAX  // 65535 or 4294967295 (mostly)
 #define ARRAY_INIT_SIZE 16
 
+/*! \brief Lightweight c++ array implementation.
+ *
+ * array.h is a minimal, yet highly portable array data type implementation
+ * that runs well on architectures with very limited resources.
+ *
+ * The array class allocates memory dynamically on array-writes.
+ *
+ * The library header-only.
+ *
+ * A quick example:
+~~~{.cpp}
+#include <array.h>
+
+ustd::array<int> intArray;
+
+intArray[0]=13;
+intArray.add(3);
+int p=intArray[0];
+
+printf("[0]:%d [1]:%d length=%d\n",intArray[0],intArray[1].intArray.length())
+~~~
+ */
 template <typename T> class array {
+
   private:
     T *arr;
     unsigned int startSize;
@@ -37,11 +60,17 @@ template <typename T> class array {
     }
 
   public:
-    array(unsigned int startSize = ARRAY_INIT_SIZE,
-          unsigned int maxSize = ARRAY_MAX_SIZE,
-          unsigned int incSize = ARRAY_INC_SIZE, bool shrink = true)
+    array(unsigned int startSize =
+              ARRAY_INIT_SIZE, /*!< Initial allocation-size for the array */
+          unsigned int maxSize = ARRAY_MAX_SIZE, /*!< Maximum allowed size for the array */
+          unsigned int incSize = ARRAY_INC_SIZE, /*!< Step-size for allocation-increments */
+          bool shrink = true /*!< allow arrays to shrink (deallocate unneeded entries */))
         : startSize(startSize), maxSize(maxSize), incSize(incSize),
           shrink(shrink) {
+        /*!
+         * Constructs an array object. All allocation-hints are optional, the
+         * array class will allocate memory as needed during writes.
+         */
         size = 0;
         if (maxSize < startSize)
             maxSize = startSize;
@@ -50,6 +79,7 @@ template <typename T> class array {
     }
 
     ~array() {
+        /*! Free resources */
         if (arr != nullptr) {
             ufree(arr);
             arr = nullptr;
@@ -57,6 +87,12 @@ template <typename T> class array {
     }
 
     bool resize(unsigned int newSize) {
+        /*! Change the array allocation size.
+         *
+         * Note: Usage of this function is optional for optimization. By
+         * default, all necessary allocations (and deallocations, if shrink=true
+         * during construction was set) are handled automatically.
+         */
         unsigned int mv = newSize;
         if (newSize > maxSize) {
             if (maxSize == allocSize)
@@ -86,6 +122,7 @@ template <typename T> class array {
     }
 
     int add(T &ent) {
+        /*! Append an array element after the current end of the array */
         if (size >= allocSize) {
             if (incSize == 0)
                 return -1;
@@ -98,6 +135,7 @@ template <typename T> class array {
     }
 
     bool erase(unsigned int index) {
+        /*! Delete array element at given index */
         if (index >= size) {
             return false;
         }
@@ -114,6 +152,7 @@ template <typename T> class array {
     }
 
     T operator[](unsigned int i) const {
+        /*! Read content of array element at i, a=myArray[3] */
         if (i >= allocSize) {
             if (incSize == 0) {
 #ifdef USTD_ASSERT
@@ -136,6 +175,7 @@ template <typename T> class array {
     }
 
     T &operator[](unsigned int i) {
+        /*! Assign content of array element at i, e.g. myArray[3]=3 */
         if (i >= allocSize) {
             if (incSize == 0) {
 #ifdef USTD_ASSERT
@@ -158,6 +198,7 @@ template <typename T> class array {
     }
 
     bool isEmpty() const {
+        /*! Return true, if array is empty. */
         if (size == 0)
             return true;
         else
@@ -165,9 +206,12 @@ template <typename T> class array {
     }
 
     unsigned int length() const {
+        /*! returns the number of array-members */
         return (size);
     }
     unsigned int alloclen() const {
+        /*! Return the number of allocated array-entries, which can be larger
+         * than the length of the array. */
         return (allocSize);
     }
 };
