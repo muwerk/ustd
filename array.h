@@ -16,13 +16,15 @@ array.h is a minimal, yet highly portable array data type implementation
 that runs well on architectures with very limited resources.
 
 The array class either:
-* allocates memory dynamically on array-writes or array-reads, or
-* work in fully static mode without any dynamic allocation once the array
+
+** allocates memory dynamically on array-writes or array-reads, or
+** work in fully static mode without any dynamic allocation once the array
 object has been created.
 
 The library header-only.
 
 ## An example for dynamic mode:
+
 ~~~{.cpp}
 #include <array.h>
 
@@ -36,6 +38,7 @@ printf("[0]:%d [1]:%d length=%d\n",intArray[0],intArray[1].intArray.length())
 ~~~
 
 ## An example for static mode
+
 ~~~(.cpp)
 #include <array.h>
 
