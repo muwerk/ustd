@@ -11,18 +11,18 @@ namespace ustd {
 #define ARRAY_INIT_SIZE 16
 
 /*! \brief Lightweight c++ array implementation.
- *
- * array.h is a minimal, yet highly portable array data type implementation
- * that runs well on architectures with very limited resources.
- *
- The array class either
- * allocates memory dynamically on array-writes or array-reads, or
- * work in fully static mode without any dynamic allocation once the array
+
+array.h is a minimal, yet highly portable array data type implementation
+that runs well on architectures with very limited resources.
+
+The array class either:
+* allocates memory dynamically on array-writes or array-reads, or
+* work in fully static mode without any dynamic allocation once the array
 object has been created.
 
- The library header-only.
+The library header-only.
 
- ## A quick example for dynamic mode:
+## An example for dynamic mode:
 ~~~{.cpp}
 #include <array.h>
 
