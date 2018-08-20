@@ -15,21 +15,33 @@ namespace ustd {
  * array.h is a minimal, yet highly portable array data type implementation
  * that runs well on architectures with very limited resources.
  *
- * The array class allocates memory dynamically on array-writes.
- *
- * The library header-only.
- *
- * A quick example:
+ The array class either
+ * allocates memory dynamically on array-writes or array-reads, or
+ * work in fully static mode without any dynamic allocation once the array
+object has been created.
+
+ The library header-only.
+
+ ## A quick example for dynamic mode:
 ~~~{.cpp}
 #include <array.h>
 
 ustd::array<int> intArray;
 
-intArray[0]=13;
-intArray.add(3);
+intArray[0]=13; // Memory for array[0] is allocated
+intArray.add(3);  // the array is extended, if necessary
 int p=intArray[0];
 
 printf("[0]:%d [1]:%d length=%d\n",intArray[0],intArray[1].intArray.length())
+~~~
+
+## An example for static mode
+~~~(.cpp)
+#include <array.h>
+
+ustd::array<int> intArray=ustd::array<int>(5,5,0,false);  // array length is
+fixed 5
+
 ~~~
  */
 template <typename T> class array {
@@ -62,14 +74,18 @@ template <typename T> class array {
   public:
     array(unsigned int startSize =
               ARRAY_INIT_SIZE, /*!< Initial allocation-size for the array */
-          unsigned int maxSize = ARRAY_MAX_SIZE, /*!< Maximum allowed size for the array */
-          unsigned int incSize = ARRAY_INC_SIZE, /*!< Step-size for allocation-increments */
-          bool shrink = true /*!< allow arrays to shrink (deallocate unneeded entries */))
+          unsigned int maxSize =
+              ARRAY_MAX_SIZE, /*!< Maximum allowed size for the array */
+          unsigned int incSize =
+              ARRAY_INC_SIZE, /*!< Step-size for allocation-increments */
+          bool shrink =
+              true /*!< allow arrays to shrink (deallocate unneeded entries) */)
         : startSize(startSize), maxSize(maxSize), incSize(incSize),
           shrink(shrink) {
         /*!
          * Constructs an array object. All allocation-hints are optional, the
-         * array class will allocate memory as needed during writes.
+         * array class will allocate memory as needed during writes, if
+         * startSize!=maxSize.
          */
         size = 0;
         if (maxSize < startSize)
