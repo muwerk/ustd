@@ -1,0 +1,11 @@
+# Enable C++ support
+language: cpp
+compiler: gcc
+dist: trusty
+
+# Build steps
+script:
+  - cd Examples/mac-linux
+  - mkdir build
+  - cd build
+  - cmake .. && make
