@@ -39,7 +39,7 @@ printf("[0]:%d [1]:%d length=%d\n",intArray[0],intArray[1].intArray.length())
 
 ## An example for static mode
 
-~~~(.cpp)
+~~~{.cpp}
 #include <array.h>
 
 ustd::array<int> intArray=ustd::array<int>(5,5,0,false);  // array length is
