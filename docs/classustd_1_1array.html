@@ -87,10 +87,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abcab8dfd53e397edac42f05974d0a2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1086ea57bc2f8af77e44d2a1a3b86738"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738">resize</a> (unsigned int newSize)</td></tr>
 <tr class="separator:a1086ea57bc2f8af77e44d2a1a3b86738"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeafb2c60658fa100a892883d6f06f612"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#aeafb2c60658fa100a892883d6f06f612">setInvalidValue</a> (T &amp;ent)</td></tr>
-<tr class="separator:aeafb2c60658fa100a892883d6f06f612"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc3ff042affbb40184f8a0526b9e04f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#afc3ff042affbb40184f8a0526b9e04f7">add</a> (T &amp;ent)</td></tr>
-<tr class="separator:afc3ff042affbb40184f8a0526b9e04f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf8494e6f5dfd3c226da3d064847c24a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#aaf8494e6f5dfd3c226da3d064847c24a">setInvalidValue</a> (T &amp;entryInvalidValue)</td></tr>
+<tr class="separator:aaf8494e6f5dfd3c226da3d064847c24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8ffaa95ed88955e91df6e80ef4274b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">add</a> (T &amp;entry)</td></tr>
+<tr class="separator:ad8ffaa95ed88955e91df6e80ef4274b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a890402e4852e5fa34c6867896b5dfffd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a890402e4852e5fa34c6867896b5dfffd">erase</a> (unsigned int index)</td></tr>
 <tr class="separator:a890402e4852e5fa34c6867896b5dfffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38a056f7735395b40fffd180e911f31e"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a38a056f7735395b40fffd180e911f31e">operator[]</a> (unsigned int i) const</td></tr>
@@ -117,7 +117,7 @@ class ustd::array&lt; T &gt;</h3>
 </ul>
 <p>The library header-only.</p>
 <h2>An example for dynamic mode:</h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="array_8h.html">array.h</a>&gt;</span></div><div class="line"></div><div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray;</div><div class="line"></div><div class="line">intArray[0] = 13; <span class="comment">// Memory for array[0] is allocated</span></div><div class="line">intArray.<a class="code" href="classustd_1_1array.html#afc3ff042affbb40184f8a0526b9e04f7">add</a>(3);  <span class="comment">// the array is extended, if necessary</span></div><div class="line"><span class="keywordtype">int</span> p = intArray[0];</div><div class="line"></div><div class="line">printf(<span class="stringliteral">&quot;[0]:%d [1]:%d length=%d\n&quot;</span>, intArray[0], intArray[1], intArray.<a class="code" href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">length</a>())</div></div><!-- fragment --><h2>An example for static mode</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="array_8h.html">array.h</a>&gt;</span></div><div class="line"></div><div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray;</div><div class="line"></div><div class="line">intArray[0] = 13; <span class="comment">// Memory for array[0] is allocated</span></div><div class="line">intArray.<a class="code" href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">add</a>(3);  <span class="comment">// the array is extended, if necessary</span></div><div class="line"><span class="keywordtype">int</span> p = intArray[0];</div><div class="line"></div><div class="line">printf(<span class="stringliteral">&quot;[0]:%d [1]:%d length=%d\n&quot;</span>, intArray[0], intArray[1], intArray.<a class="code" href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">length</a>())</div></div><!-- fragment --><h2>An example for static mode</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="array_8h.html">array.h</a>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// array length is fixed 5 (startSize==maxSize), no dynamic extensions:</span></div><div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray = <a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a>(5, 5, 0, <span class="keyword">false</span>);</div></div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a73c2b783f194317522106e1ead813b52"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a73c2b783f194317522106e1ead813b52">&#9670;&nbsp;</a></span>array()</h2>
@@ -171,16 +171,7 @@ template&lt;typename T&gt; </div>
     <tr><td class="paramname">startSize</td><td>The number of array entries that are allocated during object creation </td></tr>
     <tr><td class="paramname">maxSize</td><td>The maximal limit of records that will be allocated. If startSize &lt; maxSize, the array size will grow automatically as needed. </td></tr>
     <tr><td class="paramname">incSize</td><td>The number of array entries that are allocated as a chunk if the array needs to grow </td></tr>
-    <tr><td class="paramname">shrink</td><td>Boolean indicating, if the array should deallocate memory, if the array size shrinks (due to delete()).</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">startSize</td><td>Initial allocation-size for the array </td></tr>
-    <tr><td class="paramname">maxSize</td><td>Maximum allowed size for the array </td></tr>
-    <tr><td class="paramname">incSize</td><td>Step-size for allocation-increments </td></tr>
-    <tr><td class="paramname">shrink</td><td>allow arrays to shrink (deallocate unneeded entries) </td></tr>
+    <tr><td class="paramname">shrink</td><td>Boolean indicating, if the array should deallocate memory, if the array size shrinks (due to <a class="el" href="classustd_1_1array.html#a890402e4852e5fa34c6867896b5dfffd">erase()</a>).</td></tr>
   </table>
   </dd>
 </dl>
@@ -216,8 +207,8 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afc3ff042affbb40184f8a0526b9e04f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc3ff042affbb40184f8a0526b9e04f7">&#9670;&nbsp;</a></span>add()</h2>
+<a id="ad8ffaa95ed88955e91df6e80ef4274b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8ffaa95ed88955e91df6e80ef4274b6">&#9670;&nbsp;</a></span>add()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -231,7 +222,7 @@ template&lt;typename T&gt; </div>
           <td class="memname">int <a class="el" href="classustd_1_1array.html">ustd::array</a>&lt; T &gt;::add </td>
           <td>(</td>
           <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>ent</em></td><td>)</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -241,7 +232,12 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Append an array element after the current end of the array </p>
+<p>Append an array element after the current end of the array </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entry</td><td>array element that is appended after the last current entry. The new array size must be smaller than maxSize as defined during array creation. New array memory is automatically allocated if within maxSize boundaries. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -298,7 +294,12 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Delete array element at given index </p>
+<p>Delete array element at given index </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The array index of the element to be erased. The array size is reduced by 1, and memory might be freed, if shrink=True during array creation.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -442,12 +443,17 @@ template&lt;typename T&gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Change the array allocation size.</p>
-<p>Note: Usage of this function is optional for optimization. By default, all necessary allocations (and deallocations, if shrink=true during construction was set) are handled automatically.</p>
+<p>Note: Usage of this function is optional for optimization. By default, all necessary allocations (and deallocations, if shrink=true during construction was set) are handled automatically. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newSize</td><td>the new number of array entries, corresponding memory is allocated/freed as necessary.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="aeafb2c60658fa100a892883d6f06f612"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeafb2c60658fa100a892883d6f06f612">&#9670;&nbsp;</a></span>setInvalidValue()</h2>
+<a id="aaf8494e6f5dfd3c226da3d064847c24a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf8494e6f5dfd3c226da3d064847c24a">&#9670;&nbsp;</a></span>setInvalidValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -461,7 +467,7 @@ template&lt;typename T&gt; </div>
           <td class="memname">void <a class="el" href="classustd_1_1array.html">ustd::array</a>&lt; T &gt;::setInvalidValue </td>
           <td>(</td>
           <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>ent</em></td><td>)</td>
+          <td class="paramname"><em>entryInvalidValue</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -473,7 +479,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Set the value for &lt;T&gt;entry that's given back, if read of an invalid index is requested. By default, an entry all memset to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ent</td><td>The value that is given back in case an invalid operation (e.g. read out of bounds) is tried.</td></tr>
+    <tr><td class="paramname">entryInvalidValue</td><td>The value that is given back in case an invalid operation (e.g. read out of bounds) is tried.</td></tr>
   </table>
   </dd>
 </dl>
