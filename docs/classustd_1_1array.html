@@ -74,7 +74,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Lightweight c++ array implementation.  
+<p>Lightweight c++11 array implementation.  
  <a href="classustd_1_1array.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="array_8h_source.html">array.h</a>&gt;</code></p>
@@ -108,7 +108,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><h3>template&lt;typename T&gt;<br />
 class ustd::array&lt; T &gt;</h3>
 
-<p>Lightweight c++ array implementation. </p>
+<p>Lightweight c++11 array implementation. </p>
 <p><a class="el" href="array_8h.html">array.h</a> is a minimal, yet highly portable array data type implementation that runs well on architectures with very limited resources.</p>
 <p>The array class either:</p>
 <ul>
@@ -166,7 +166,15 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructs an array object. All allocation-hints are optional, the array class will allocate memory as needed during writes, if startSize!=maxSize.</p>
+<p>Constructs an array object. All allocation-hints are optional, the array class will allocate memory as needed during writes, if startSize!=maxSize. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startSize</td><td>The number of array entries that are allocated during object creation </td></tr>
+    <tr><td class="paramname">maxSize</td><td>The maximal limit of records that will be allocated. If startSize &lt; maxSize, the array size will grow automatically as needed. </td></tr>
+    <tr><td class="paramname">incSize</td><td>The number of array entries that are allocated as a chunk if the array needs to grow </td></tr>
+    <tr><td class="paramname">shrink</td><td>Boolean indicating, if the array should deallocate memory, if the array size shrinks (due to delete()).</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">startSize</td><td>Initial allocation-size for the array </td></tr>
@@ -463,7 +471,12 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set the value for &lt;T&gt;entry that's given back, if read of an invalid index is requested. By default, an entry all memset to zero is given back. Using this function, the value of an invalid read can be configured. </p>
+<p>Set the value for &lt;T&gt;entry that's given back, if read of an invalid index is requested. By default, an entry all memset to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ent</td><td>The value that is given back in case an invalid operation (e.g. read out of bounds) is tried.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
