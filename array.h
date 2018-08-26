@@ -74,14 +74,9 @@ template <typename T> class array {
     }
 
   public:
-    array(unsigned int startSize =
-              ARRAY_INIT_SIZE, /*!< Initial allocation-size for the array */
-          unsigned int maxSize =
-              ARRAY_MAX_SIZE, /*!< Maximum allowed size for the array */
-          unsigned int incSize =
-              ARRAY_INC_SIZE, /*!< Step-size for allocation-increments */
-          bool shrink =
-              true /*!< allow arrays to shrink (deallocate unneeded entries) */)
+    array(unsigned int startSize = ARRAY_INIT_SIZE,
+          unsigned int maxSize = ARRAY_MAX_SIZE,
+          unsigned int incSize = ARRAY_INC_SIZE, bool shrink = true)
         : startSize(startSize), maxSize(maxSize), incSize(incSize),
           shrink(shrink) {
         /*!
@@ -96,7 +91,7 @@ template <typename T> class array {
          * @param incSize The number of array entries that are allocated as a
          * chunk if the array needs to grow
          * @param shrink Boolean indicating, if the array should deallocate
-         * memory, if the array size shrinks (due to delete()).
+         * memory, if the array size shrinks (due to erase()).
          */
         size = 0;
         if (maxSize < startSize)
@@ -119,6 +114,8 @@ template <typename T> class array {
          * Note: Usage of this function is optional for optimization. By
          * default, all necessary allocations (and deallocations, if shrink=true
          * during construction was set) are handled automatically.
+         * @param newSize the new number of array entries, corresponding memory
+         * is allocated/freed as necessary.
          */
         unsigned int mv = newSize;
         if (newSize > maxSize) {
@@ -148,32 +145,40 @@ template <typename T> class array {
         return true;
     }
 
-    void setInvalidValue(T &ent) {
+    void setInvalidValue(T &entryInvalidValue) {
         /*! Set the value for <T>entry that's given back, if read of an invalid
         index is requested. By default, an entry all memset to zero is given
         back. Using this function, the value of an invalid read can be
         configured.
-        * @param ent The value that is given back in case an invalid operation
-        (e.g. read out of bounds) is tried.
+        * @param entryInvalidValue The value that is given back in case an
+        invalid operation (e.g. read out of bounds) is tried.
         */
-        bad = ent;
+        bad = entryInvalidValue;
     }
 
-    int add(T &ent) {
-        /*! Append an array element after the current end of the array */
+    int add(T &entry) {
+        /*! Append an array element after the current end of the array
+         * @param entry array element that is appended after the last current
+         * entry. The new array size must be smaller than maxSize as defined
+         * during array creation. New array memory is automatically allocated if
+         * within maxSize boundaries. */
         if (size >= allocSize) {
             if (incSize == 0)
                 return -1;
             if (!resize(allocSize + incSize))
                 return -1;
         }
-        arr[size] = ent;
+        arr[size] = entry;
         ++size;
         return size - 1;
     }
 
     bool erase(unsigned int index) {
-        /*! Delete array element at given index */
+        /*! Delete array element at given index
+         * @param index The array index of the element to be erased. The array
+         * size is reduced by 1, and memory might be freed, if shrink=True
+         * during array creation.
+         */
         if (index >= size) {
             return false;
         }
