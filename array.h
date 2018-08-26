@@ -88,6 +88,15 @@ template <typename T> class array {
          * Constructs an array object. All allocation-hints are optional, the
          * array class will allocate memory as needed during writes, if
          * startSize!=maxSize.
+         * @param startSize The number of array entries that are allocated
+         * during object creation
+         * @param maxSize The maximal limit of records that will be allocated.
+         * If startSize < maxSize, the array size will grow automatically as
+         * needed.
+         * @param incSize The number of array entries that are allocated as a
+         * chunk if the array needs to grow
+         * @param shrink Boolean indicating, if the array should deallocate
+         * memory, if the array size shrinks (due to delete()).
          */
         size = 0;
         if (maxSize < startSize)
@@ -143,7 +152,10 @@ template <typename T> class array {
         /*! Set the value for <T>entry that's given back, if read of an invalid
         index is requested. By default, an entry all memset to zero is given
         back. Using this function, the value of an invalid read can be
-        configured.*/
+        configured.
+        * @param ent The value that is given back in case an invalid operation
+        (e.g. read out of bounds) is tried.
+        */
         bad = ent;
     }
 
