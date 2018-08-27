@@ -42,6 +42,7 @@ template <class T> class queue {
         @param maxQueueSize The maximum number of <T> pointer entries, the queue
         can hold.
         */
+        memset(&bad, 0, sizeof(bad));
         quePtr0 = 0;
         quePtr1 = 0;
         size = 0;
