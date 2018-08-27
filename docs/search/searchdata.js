@@ -7,7 +7,7 @@ var indexSectionsWithContent =
   4: "aefilmopqrs~",
   5: "kv",
   6: "_amu",
-  7: "r"
+  7: "ru"
 };
 
 var indexSectionNames =
