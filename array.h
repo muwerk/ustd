@@ -13,7 +13,8 @@ namespace ustd {
 /*! \brief Lightweight c++11 array implementation.
 
 array.h is a minimal, yet highly portable array data type implementation
-that runs well on architectures with very limited resources.
+that runs well on architectures with very limited resources such as attiny 8kb
+avr.
 
 The array class either:
 
@@ -46,6 +47,7 @@ printf("[0]:%d [1]:%d length=%d\n", intArray[0], intArray[1], intArray.length())
 ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);
 ~~~
  */
+
 template <typename T> class array {
 
   private:
@@ -59,14 +61,14 @@ template <typename T> class array {
     T bad;
 
     T *ualloc(unsigned int n) {
-#ifdef __ATTINY__
+#if defined(__ATTINY__)
         return (T *)malloc(n * sizeof(T));
 #else
         return new T[n];
 #endif
     }
     void ufree(T *p) {
-#ifdef __ATTINY__
+#if defined(__ATTINY__)
         free(p);
 #else
         delete[] p;
@@ -94,6 +96,7 @@ template <typename T> class array {
          * memory, if the array size shrinks (due to erase()).
          */
         size = 0;
+        memset(&bad, 0, sizeof(bad));
         if (maxSize < startSize)
             maxSize = startSize;
         allocSize = startSize;
@@ -211,7 +214,6 @@ template <typename T> class array {
         if (i >= size && i <= allocSize)
             size = i + 1;
         if (i >= allocSize) {
-            memset(&bad, 0, sizeof(bad));
             return bad;
         }
         return arr[i];
@@ -234,14 +236,14 @@ template <typename T> class array {
         if (i >= size && i <= allocSize)
             size = i + 1;
         if (i >= allocSize) {
-            memset(&bad, 0, sizeof(bad));
             return bad;
         }
         return arr[i];
     }
 
     bool isEmpty() const {
-        /*! Return true, if array is empty. */
+        /*! Check, if array is empty.
+        @return true if array empty, false otherwise. s*/
         if (size == 0)
             return true;
         else
@@ -249,12 +251,14 @@ template <typename T> class array {
     }
 
     unsigned int length() const {
-        /*! returns the number of array-members */
+        /*! Check number of array-members.
+        @return number of array entries */
         return (size);
     }
     unsigned int alloclen() const {
-        /*! Return the number of allocated array-entries, which can be larger
-         * than the length of the array. */
+        /*! Check the number of allocated array-entries, which can be larger
+         * than the length of the array.
+         * @return number of allocated entries. */
         return (allocSize);
     }
 };

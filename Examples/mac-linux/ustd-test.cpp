@@ -20,36 +20,33 @@ using ustd::array;
 using ustd::map;
 using ustd::queue;
 
-// TODO: retest with valgrind, once
-// https://bugzilla.redhat.com/show_bug.cgi?id=1608824 is fixed.
 int main() {
     cout << "Testing ustd..." << endl;
 
     array<int> ar = array<int>(1, 100, 1);
     queue<int> qu = queue<int>(128);
-    map<String, int> mp = map<String, int>(7, 100, 1);
+    map<int, int> mp = map<int, int>(7, 100, 1);
 
     for (int i = 0; i < 100; i++) {
-        printf("%d ", i);
+        // printf("%d ", i);
         ar[i] = i;
-        printf(" - ");
-        qu.push(new int(i));
-        printf(" - ");
-        mp[std::to_string(i)] = i;
-        printf("\n");
+        // printf(" - ");
+        qu.push(i);
+        // printf(" - ");
+        mp[i] = i;
+        // printf("\n");
     }
     printf("ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
-    printf("qu len: %d, alloc=%d\n", qu.length(), ar.alloclen());
-    printf("mp len: %d, alloc=%d\n", mp.length(), ar.alloclen());
+    printf("qu len: %d\n", qu.length());
+    printf("mp len: %d\n", mp.length());
 
     for (int i = 0; i < 100; i++)
-        delete qu.pop();
+        qu.pop();
 
     bool merr = false;
     for (int i = 0; i < mp.length(); i++) {
-        if (mp.keys[i] != std::to_string(i) || i != mp.values[i]) {
-            printf("Maps err at %d: %s<->%d\n", i, mp.keys[i].c_str(),
-                   mp.values[i]);
+        if (mp.keys[i] != i || i != mp.values[i]) {
+            printf("Maps err at %d: %d<->%d\n", i, mp.keys[i], mp.values[i]);
             merr = true;
         }
     }
