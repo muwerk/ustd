@@ -5,6 +5,8 @@
 
 namespace ustd {
 
+#define MAX_MAP_SIZE UINT_MAX
+
 /*! \brief Lightweight c++11 dictionary map implementation.
 
 map.h is a minimal, yet highly portable dictionary map type implementation
@@ -39,8 +41,6 @@ double p = myMap[0];
 ustd::map<int, float> mayMap = ustd::map<int,float>(5, 5, 0, false);
 ~~~
  */
-
-#define MAX_MAP_SIZE UINT_MAX
 
 template <class K, class V> class map {
   private:
