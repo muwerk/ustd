@@ -87,6 +87,7 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a0dcaa63464405845211a092cd6d453d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a0dcaa63464405845211a092cd6d453d3">MAX_MAP_SIZE</a>&#160;&#160;&#160;<a class="el" href="platform_8h.html#ac998ea02fbd821fc123d60445ce76f38">UINT_MAX</a></td></tr>
+<tr class="memdesc:a0dcaa63464405845211a092cd6d453d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lightweight c++11 dictionary map implementation.  <a href="#a0dcaa63464405845211a092cd6d453d3">More...</a><br /></td></tr>
 <tr class="separator:a0dcaa63464405845211a092cd6d453d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -102,6 +103,17 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Lightweight c++11 dictionary map implementation. </p>
+<p><a class="el" href="map_8h.html">map.h</a> is a minimal, yet highly portable dictionary map type implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
+<p>The map class either:</p>
+<ul>
+<li>allocates memory dynamically on map defintions, or</li>
+<li>work in fully static mode without any dynamic allocation once the map object has been created.</li>
+</ul>
+<p>The library header-only.</p>
+<h2>An example for dynamic mode:</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="array_8h.html">array.h</a>&gt;</span></div><div class="line"></div><div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray;</div><div class="line"></div><div class="line">intArray[0] = 13; <span class="comment">// Memory for array[0] is allocated</span></div><div class="line">intArray.<a class="code" href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">add</a>(3);  <span class="comment">// the array is extended, if necessary</span></div><div class="line"><span class="keywordtype">int</span> p = intArray[0];</div><div class="line"></div><div class="line">printf(<span class="stringliteral">&quot;[0]:%d [1]:%d length=%d\n&quot;</span>, intArray[0], intArray[1], intArray.<a class="code" href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">length</a>())</div></div><!-- fragment --><h2>An example for static mode</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="array_8h.html">array.h</a>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">// array length is fixed 5 (startSize==maxSize), no dynamic extensions:</span></div><div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray = <a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a>(5, 5, 0, <span class="keyword">false</span>);</div></div><!-- fragment --> 
 </div>
 </div>
 </div><!-- contents -->

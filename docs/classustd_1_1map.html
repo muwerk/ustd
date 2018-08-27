@@ -91,6 +91,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a42ba179f5afb3259fdd217ff2523de6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace66c05ddac4f7721d8935e73ae61510"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1map.html#ace66c05ddac4f7721d8935e73ae61510">erase</a> (K key)</td></tr>
 <tr class="separator:ace66c05ddac4f7721d8935e73ae61510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69684371750cc3ced38e6a6a80656660"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1map.html#a69684371750cc3ced38e6a6a80656660">setInvalidValue</a> (V &amp;entryInvalidValue)</td></tr>
+<tr class="separator:a69684371750cc3ced38e6a6a80656660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee99c7732a9447c9d7d505084b52d51e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1map.html#aee99c7732a9447c9d7d505084b52d51e">isEmpty</a> ()</td></tr>
 <tr class="separator:aee99c7732a9447c9d7d505084b52d51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf0aefebc4288ec395c6195c87205e86"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1map.html#aaf0aefebc4288ec395c6195c87205e86">length</a> ()</td></tr>
@@ -374,6 +376,40 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69684371750cc3ced38e6a6a80656660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69684371750cc3ced38e6a6a80656660">&#9670;&nbsp;</a></span>setInvalidValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class K , class V &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classustd_1_1map.html">ustd::map</a>&lt; K, V &gt;::setInvalidValue </td>
+          <td>(</td>
+          <td class="paramtype">V &amp;&#160;</td>
+          <td class="paramname"><em>entryInvalidValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the value for &lt;V&gt;value that's given back, if read of an invalid key is requested. By default, an entry all memset to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entryInvalidValue</td><td>The value that is given back in case an invalid operation (e.g. read out of invalid key) is tried.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
