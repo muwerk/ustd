@@ -2,17 +2,19 @@
 
 #pragma once
 
-/*! \mainpage
+/*! \mainpage Ustd micro-standard-library for low-resource AVRs
+\section Introduction
 ustd provides minimal and highly portable implementations for:
 
-* * \ref array
-* * \ref queue
-* * \ref map
+* * \ref ustd::array<T>
+* * \ref ustd::queue<T>
+* * \ref ustd::map<K,V>
 
 classes. The libraries are header-only and should work with any c++11 compiler
 and support platforms starting with 8k attiny, avr, arduinos, up to esp8266,
 esp32 and mac and linux.
 
+\section Reference
 <a href="https://github.com/muwerk/ustd">ustd github repository</a>
 */
 
