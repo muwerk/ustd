@@ -54,12 +54,9 @@ template <class T> class queue {
 
     ~queue() {
         /*!
-        Deallocate the queue structure. This doesn't free any queue entry
-        pointers.
+        Deallocate the queue structure.
         */
         if (que != nullptr) {
-            // If size > 0 then there's a potential memory leak.
-            // This must be taken care of by the queue owner.
             free(que);
             que = nullptr;
         }

@@ -61,14 +61,14 @@ template <typename T> class array {
     T bad;
 
     T *ualloc(unsigned int n) {
-#ifdef __ATTINY__
+#if defined(__ATTINY__) || defined(OLD_COMPILER)
         return (T *)malloc(n * sizeof(T));
 #else
         return new T[n];
 #endif
     }
     void ufree(T *p) {
-#ifdef __ATTINY__
+#if defined(__ATTINY__) || defined(OLD_COMPILER)
         free(p);
 #else
         delete[] p;

@@ -20,8 +20,8 @@ using ustd::array;
 using ustd::map;
 using ustd::queue;
 
-// TODO: retest with valgrind, once
-// https://bugzilla.redhat.com/show_bug.cgi?id=1608824 is fixed.
+#define OLD_COMPILER 1  // Travis!
+
 int main() {
     cout << "Testing ustd..." << endl;
 
