@@ -12,6 +12,6 @@ script:
   - cd Examples/mac-linux
   - mkdir build
   - cd build
-  - cmake .. && make
+  - cmake -DCMAKE_BUILD_TYPE=Debug .. && make
   - ./ustd-test
   - valgrind --error-exitcode=1 --leak-check=full ./ustd-test
