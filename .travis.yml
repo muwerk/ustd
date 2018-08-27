@@ -14,6 +14,6 @@ script:
   - cd build
   - cmake .. && make
 
-after_success:
-  - ./ustd_test
-  - valgrind --error-exitcode=42 --leak-check=full ./ustd_test
+after_success
+  - ./ustd-test
+  - valgrind --error-exitcode=1 --leak-check=full ./ustd-test
