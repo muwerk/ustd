@@ -22,24 +22,21 @@ The library header-only.
 ## An example for dynamic mode:
 
 ~~~{.cpp}
-#include <array.h>
+#include <map.h>
 
-ustd::array<int> intArray;
+ustd::map<int,double> myMap;
 
-intArray[0] = 13; // Memory for array[0] is allocated
-intArray.add(3);  // the array is extended, if necessary
-int p = intArray[0];
-
-printf("[0]:%d [1]:%d length=%d\n", intArray[0], intArray[1], intArray.length())
+myMap[0] = 13.3; // Memory for map is allocated, if necessary
+double p = myMap[0];
 ~~~
 
 ## An example for static mode
 
 ~~~{.cpp}
-#include <array.h>
+#include <map.h>
 
-// array length is fixed 5 (startSize==maxSize), no dynamic extensions:
-ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);
+// map size is fixed 5 (startSize==maxSize), no dynamic extensions:
+ustd::map<int, float> mayMap = ustd::map<int,float>(5, 5, 0, false);
 ~~~
  */
 
@@ -57,8 +54,8 @@ template <class K, class V> class map {
     V bad;
 
   public:
-    ustd::array<K> keys;
-    ustd::array<V> values;
+    ustd::array<K> keys;   /*! Array of keys */
+    ustd::array<V> values; /*! Array of values */
 
   public:
     map(unsigned int startSize = ARRAY_INIT_SIZE,
@@ -67,15 +64,35 @@ template <class K, class V> class map {
         : startSize(startSize), maxSize(maxSize), incSize(incSize),
           shrink(shrink), keys(array<K>(startSize, maxSize, incSize, shrink)),
           values(array<V>(startSize, maxSize, incSize, shrink)) {
+        /*!
+         * Constructs a map object. All allocation-hints are optional, the
+         * array class used by map will allocate memory as needed during writes,
+         * if startSize!=maxSize.
+         * @param startSize The number of map entries that are allocated
+         * during object creation
+         * @param maxSize The maximal limit of records that will be allocated.
+         * If startSize < maxSize, the map size will grow automatically as
+         * needed.
+         * @param incSize The number of map entries that are allocated as a
+         * chunk if the map needs to grow
+         * @param shrink Boolean indicating, if the map should deallocate
+         * memory, if the map size shrinks (due to erase()).
+         */
+
         size = 0;
         memset(&bad, 0, sizeof(bad));
         allocSize = startSize;
     }
 
     ~map() {
+        /*! Free resources */
     }
 
     V operator[](K key) const {
+        /*! Read value of map for given key, a=myMap[3].
+        @param key map-key
+        @return Corresponding value. The value set be setInvalidValue() is given
+        back for invalid reads (or by default a value memset to zero) */
         for (unsigned int i = 0; i < keys.length(); i++) {
             if (keys[i] == key)
                 return values[i];
@@ -87,6 +104,10 @@ template <class K, class V> class map {
     }
 
     V &operator[](K key) {
+        /*! Write a map value for a given key
+        @param key map-key
+        @return value on success, or setInvalidValue() on error (e.g. map full)
+      */
         for (unsigned int i = 0; i < keys.length(); i++) {
             if (keys[i] == key) {
                 return values[i];
@@ -110,6 +131,9 @@ template <class K, class V> class map {
     }
 
     int find(K key) {
+        /*! Get the index of the key and value arrays of the map
+        @param key Map-key.
+        @return index, if found, -1 on error */
         for (unsigned int i = 0; i < keys.length(); i++) {
             if (keys[i] == key)
                 return i;
@@ -118,6 +142,10 @@ template <class K, class V> class map {
     }
 
     int erase(K key) {
+        /*! Delete the entry corresponding to map-key. This might lead to
+        memory-deallocation, if shrink=True during map creation
+        @param key Map-key of entry to be deleted
+        @return index of entry been deleted or -1 on error */
         for (unsigned int i = 0; i < keys.length(); i++) {
             if (keys[i] == key) {
                 values.erase(i);
@@ -139,6 +167,8 @@ template <class K, class V> class map {
     }
 
     bool isEmpty() {
+        /*! Check, if map is empty.
+        @return boolean true on empty map */
         if (size == 0)
             return true;
         else
@@ -146,10 +176,14 @@ template <class K, class V> class map {
     }
 
     unsigned int length() {
+        /*! Check number of map-members.
+        @return number of map entries */
         return (size);
     }
 
     unsigned int peak() {
+        /*! Check peak number of map-members.
+        @return maximum number members the map had since creation */
         return (peakSize);
     }
 };

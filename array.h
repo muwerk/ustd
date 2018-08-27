@@ -242,7 +242,8 @@ template <typename T> class array {
     }
 
     bool isEmpty() const {
-        /*! Return true, if array is empty. */
+        /*! Check, if array is empty.
+        @return true if array empty, false otherwise. s*/
         if (size == 0)
             return true;
         else
@@ -250,12 +251,14 @@ template <typename T> class array {
     }
 
     unsigned int length() const {
-        /*! returns the number of array-members */
+        /*! Check number of array-members.
+        @return number of array entries */
         return (size);
     }
     unsigned int alloclen() const {
-        /*! Return the number of allocated array-entries, which can be larger
-         * than the length of the array. */
+        /*! Check the number of allocated array-entries, which can be larger
+         * than the length of the array.
+         * @return number of allocated entries. */
         return (allocSize);
     }
 };
