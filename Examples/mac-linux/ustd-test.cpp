@@ -30,13 +30,13 @@ int main() {
     map<String, int> mp = map<String, int>(7, 100, 1);
 
     for (int i = 0; i < 100; i++) {
-        printf("%d ", i);
+        // printf("%d ", i);
         ar[i] = i;
-        printf(" - ");
+        // printf(" - ");
         qu.push(i);
-        printf(" - ");
+        // printf(" - ");
         mp[std::to_string(i)] = i;
-        printf("\n");
+        // printf("\n");
     }
     printf("ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
     printf("qu len: %d, alloc=%d\n", qu.length(), ar.alloclen());
