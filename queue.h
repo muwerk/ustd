@@ -42,6 +42,7 @@ template <class T> class queue {
         @param maxQueueSize The maximum number of <T> pointer entries, the queue
         can hold.
         */
+        memset(&bad, 0, sizeof(bad));
         quePtr0 = 0;
         quePtr1 = 0;
         size = 0;
@@ -53,12 +54,9 @@ template <class T> class queue {
 
     ~queue() {
         /*!
-        Deallocate the queue structure. This doesn't free any queue entry
-        pointers.
+        Deallocate the queue structure.
         */
         if (que != nullptr) {
-            // If size > 0 then there's a potential memory leak.
-            // This must be taken care of by the queue owner.
             free(que);
             que = nullptr;
         }
