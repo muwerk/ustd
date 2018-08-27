@@ -109,7 +109,7 @@ Public Member Functions</h2></td></tr>
 class ustd::array&lt; T &gt;</h3>
 
 <p>Lightweight c++11 array implementation. </p>
-<p><a class="el" href="array_8h.html">array.h</a> is a minimal, yet highly portable array data type implementation that runs well on architectures with very limited resources.</p>
+<p><a class="el" href="array_8h.html">array.h</a> is a minimal, yet highly portable array data type implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
 <p>The array class either:</p>
 <ul>
 <li>allocates memory dynamically on array-writes or array-reads, or</li>
@@ -265,7 +265,7 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Return the number of allocated array-entries, which can be larger than the length of the array. </p>
+<p>Check the number of allocated array-entries, which can be larger than the length of the array. </p><dl class="section return"><dt>Returns</dt><dd>number of allocated entries. </dd></dl>
 
 </div>
 </div>
@@ -327,7 +327,7 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Return true, if array is empty. </p>
+<p>Check, if array is empty. </p><dl class="section return"><dt>Returns</dt><dd>true if array empty, false otherwise. s </dd></dl>
 
 </div>
 </div>
@@ -355,7 +355,7 @@ template&lt;typename T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>returns the number of array-members </p>
+<p>Check number of array-members. </p><dl class="section return"><dt>Returns</dt><dd>number of array entries </dd></dl>
 
 </div>
 </div>

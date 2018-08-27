@@ -91,6 +91,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a42ba179f5afb3259fdd217ff2523de6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace66c05ddac4f7721d8935e73ae61510"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1map.html#ace66c05ddac4f7721d8935e73ae61510">erase</a> (K key)</td></tr>
 <tr class="separator:ace66c05ddac4f7721d8935e73ae61510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69684371750cc3ced38e6a6a80656660"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1map.html#a69684371750cc3ced38e6a6a80656660">setInvalidValue</a> (V &amp;entryInvalidValue)</td></tr>
+<tr class="separator:a69684371750cc3ced38e6a6a80656660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee99c7732a9447c9d7d505084b52d51e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1map.html#aee99c7732a9447c9d7d505084b52d51e">isEmpty</a> ()</td></tr>
 <tr class="separator:aee99c7732a9447c9d7d505084b52d51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf0aefebc4288ec395c6195c87205e86"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1map.html#aaf0aefebc4288ec395c6195c87205e86">length</a> ()</td></tr>
@@ -112,7 +114,7 @@ Public Attributes</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -153,6 +155,16 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Array of values </p>
+<p>Constructs a map object. All allocation-hints are optional, the array class used by map will allocate memory as needed during writes, if startSize!=maxSize. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">startSize</td><td>The number of map entries that are allocated during object creation </td></tr>
+    <tr><td class="paramname">maxSize</td><td>The maximal limit of records that will be allocated. If startSize &lt; maxSize, the map size will grow automatically as needed. </td></tr>
+    <tr><td class="paramname">incSize</td><td>The number of map entries that are allocated as a chunk if the map needs to grow </td></tr>
+    <tr><td class="paramname">shrink</td><td>Boolean indicating, if the map should deallocate memory, if the map size shrinks (due to <a class="el" href="classustd_1_1map.html#ace66c05ddac4f7721d8935e73ae61510">erase()</a>).</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -162,7 +174,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -180,6 +192,7 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Free resources </p>
 
 </div>
 </div>
@@ -190,7 +203,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -209,6 +222,13 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Delete the entry corresponding to map-key. This might lead to memory-deallocation, if shrink=True during map creation </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Map-key of entry to be deleted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>index of entry been deleted or -1 on error </dd></dl>
 
 </div>
 </div>
@@ -218,7 +238,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -237,6 +257,13 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Get the index of the key and value arrays of the map </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>Map-key. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>index, if found, -1 on error </dd></dl>
 
 </div>
 </div>
@@ -246,7 +273,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -264,6 +291,7 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Check, if map is empty. </p><dl class="section return"><dt>Returns</dt><dd>boolean true on empty map </dd></dl>
 
 </div>
 </div>
@@ -273,7 +301,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -291,6 +319,7 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Check number of map-members. </p><dl class="section return"><dt>Returns</dt><dd>number of map entries </dd></dl>
 
 </div>
 </div>
@@ -300,7 +329,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -319,6 +348,13 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Read value of map for given key, a=myMap[3]. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>map-key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Corresponding value. The value set be <a class="el" href="classustd_1_1map.html#a69684371750cc3ced38e6a6a80656660">setInvalidValue()</a> is given back for invalid reads (or by default a value memset to zero) </dd></dl>
 
 </div>
 </div>
@@ -328,7 +364,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -347,6 +383,13 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Write a map value for a given key </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>map-key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>value on success, or <a class="el" href="classustd_1_1map.html#a69684371750cc3ced38e6a6a80656660">setInvalidValue()</a> on error (e.g. map full)</dd></dl>
 
 </div>
 </div>
@@ -356,7 +399,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -374,6 +417,41 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Check peak number of map-members. </p><dl class="section return"><dt>Returns</dt><dd>maximum number members the map had since creation </dd></dl>
+
+</div>
+</div>
+<a id="a69684371750cc3ced38e6a6a80656660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69684371750cc3ced38e6a6a80656660">&#9670;&nbsp;</a></span>setInvalidValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class K, class V&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classustd_1_1map.html">ustd::map</a>&lt; K, V &gt;::setInvalidValue </td>
+          <td>(</td>
+          <td class="paramtype">V &amp;&#160;</td>
+          <td class="paramname"><em>entryInvalidValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Set the value for &lt;V&gt;value that's given back, if read of an invalid key is requested. By default, an entry all memset to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entryInvalidValue</td><td>The value that is given back in case an invalid operation (e.g. read out of invalid key) is tried.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -384,7 +462,7 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classustd_1_1array.html">ustd::array</a>&lt;K&gt; <a class="el" href="classustd_1_1map.html">ustd::map</a>&lt; K, V &gt;::keys</td>
@@ -400,13 +478,14 @@ template&lt;class K , class V &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class K , class V &gt; </div>
+template&lt;class K, class V&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classustd_1_1array.html">ustd::array</a>&lt;V&gt; <a class="el" href="classustd_1_1map.html">ustd::map</a>&lt; K, V &gt;::values</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Array of keys </p>
 
 </div>
 </div>
