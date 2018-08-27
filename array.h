@@ -96,6 +96,7 @@ template <typename T> class array {
          * memory, if the array size shrinks (due to erase()).
          */
         size = 0;
+        memset(&bad, 0, sizeof(bad));
         if (maxSize < startSize)
             maxSize = startSize;
         allocSize = startSize;
@@ -213,7 +214,6 @@ template <typename T> class array {
         if (i >= size && i <= allocSize)
             size = i + 1;
         if (i >= allocSize) {
-            memset(&bad, 0, sizeof(bad));
             return bad;
         }
         return arr[i];
@@ -236,7 +236,6 @@ template <typename T> class array {
         if (i >= size && i <= allocSize)
             size = i + 1;
         if (i >= allocSize) {
-            memset(&bad, 0, sizeof(bad));
             return bad;
         }
         return arr[i];

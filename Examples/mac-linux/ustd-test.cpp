@@ -33,7 +33,7 @@ int main() {
         printf("%d ", i);
         ar[i] = i;
         printf(" - ");
-        qu.push(new int(i));
+        qu.push(i);
         printf(" - ");
         mp[std::to_string(i)] = i;
         printf("\n");
@@ -43,7 +43,7 @@ int main() {
     printf("mp len: %d, alloc=%d\n", mp.length(), ar.alloclen());
 
     for (int i = 0; i < 100; i++)
-        delete qu.pop();
+        qu.pop();
 
     bool merr = false;
     for (int i = 0; i < mp.length(); i++) {

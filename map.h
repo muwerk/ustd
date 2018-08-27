@@ -68,6 +68,7 @@ template <class K, class V> class map {
           shrink(shrink), keys(array<K>(startSize, maxSize, incSize, shrink)),
           values(array<V>(startSize, maxSize, incSize, shrink)) {
         size = 0;
+        memset(&bad, 0, sizeof(bad));
         allocSize = startSize;
     }
 
@@ -82,7 +83,6 @@ template <class K, class V> class map {
 #ifdef USTD_ASSERT
         assert(false);  // key not found
 #endif
-        memset(&bad, 0, sizeof(bad));
         return bad;
     }
 
@@ -97,7 +97,6 @@ template <class K, class V> class map {
 #ifdef USTD_ASSERT
             assert(false);  // key not found
 #endif
-            memset(&bad, 0, sizeof(bad));
             return bad;
         }
         if (i >= 0) {
@@ -107,7 +106,6 @@ template <class K, class V> class map {
 #ifdef USTD_ASSERT
         assert(false);  // key not found
 #endif
-        memset(&bad, 0, sizeof(bad));
         return bad;
     }
 
@@ -128,6 +126,16 @@ template <class K, class V> class map {
             }
         }
         return -1;
+    }
+
+    void setInvalidValue(V &entryInvalidValue) {
+        /*! Set the value for <V>value that's given back, if read of an invalid
+        key is requested. By default, an entry all memset to zero is given back.
+        Using this function, the value of an invalid read can be configured.
+        * @param entryInvalidValue The value that is given back in case an
+        invalid operation (e.g. read out of invalid key) is tried.
+        */
+        bad = entryInvalidValue;
     }
 
     bool isEmpty() {

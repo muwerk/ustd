@@ -17,28 +17,24 @@ avr.
 
 queue<int> que = queue<int>(128);
 
-int *wi=new int(1);
+int wi;
+wi=1;
 que.push(wi);
-int *spi=que.pop();
-printf("%d\n",*pi);
-delete(pi);
+int wo;
+wo=que.pop();
+printf("%d\n",wo);
 ~~~
-
-Note: the queue interface is somewhat inconsistent in usage of T vs. T* and
-might be changed in the future.
 */
-
-// TODO: change interface so that <T> in class definition and <T>* in push/pop
-// are same type. (This requires test with avr compiler flavour for attiny!)
 
 template <class T> class queue {
   private:
-    T **que;
+    T *que;
     unsigned int peakSize;
     unsigned int maxSize;
     unsigned int size;
     unsigned int quePtr0;
     unsigned int quePtr1;
+    T bad;
 
   public:
     queue(unsigned int maxQueueSize) : maxSize(maxQueueSize) {
@@ -50,7 +46,7 @@ template <class T> class queue {
         quePtr1 = 0;
         size = 0;
         peakSize = 0;
-        que = (T **)malloc(sizeof(T *) * maxSize);
+        que = (T *)malloc(sizeof(T) * maxSize);
         if (que == nullptr)
             maxSize = 0;
     }
@@ -68,37 +64,44 @@ template <class T> class queue {
         }
     }
 
-    bool push(T *ent) {
+    bool push(T ent) {
         /*! Push a new entry into the queue.
-        @param ent Pointer to a T element
+        @param ent T element
         @return true on success, false if queue is full.
         */
         if (size >= maxSize) {
             return false;
         }
-        if (ent != nullptr) {
-            que[quePtr1] = ent;
-            quePtr1 = (quePtr1 + 1) % maxSize;
-            ++size;
-        }
+        que[quePtr1] = ent;
+        quePtr1 = (quePtr1 + 1) % maxSize;
+        ++size;
         if (size > peakSize) {
             peakSize = size;
         }
         return true;
     }
 
-    T *pop() {
+    T pop() {
         /*! Pop the oldest entry from the queue.
-        Freeing memory that might have been alloctated for the entry before
-        push() is up to the user.
-        @return nullptr if queue is empty, or T* otherwise.
+        @return badEntry if queue is empty, or T element otherwise.
         */
         if (size == 0)
-            return nullptr;
-        T *pEnt = que[quePtr0];
+            return bad;
+        T ent = que[quePtr0];
         quePtr0 = (quePtr0 + 1) % maxSize;
         --size;
-        return pEnt;
+        return ent;
+    }
+
+    void setInvalidValue(T &entryInvalidValue) {
+        /*! Set the value for <T>entry that's given back, if read from an empty
+        queue is requested. By default, an entry all memset to zero is given
+        back. Using this function, the value of an invalid read can be
+        configured.
+        * @param entryInvalidValue The value that is given back in case an
+        invalid operation (e.g. read out of bounds) is tried.
+        */
+        bad = entryInvalidValue;
     }
 
     bool isEmpty() {
