@@ -19,7 +19,7 @@ queue<int> que = queue<int>(128);
 
 int *wi=new int(1);
 que.push(wi);
-int *spi=que.pop();s
+int *spi=que.pop();
 printf("%d\n",*pi);
 delete(pi);
 ~~~
