@@ -74,6 +74,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Lightweight c++11 ring buffer queue implementation.  
+ <a href="classustd_1_1queue.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="queue_8h_source.html">queue.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -93,7 +96,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a184ff001f8f7c44f294b3f88147b5ad0"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1queue.html#a184ff001f8f7c44f294b3f88147b5ad0">peak</a> ()</td></tr>
 <tr class="separator:a184ff001f8f7c44f294b3f88147b5ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;class T&gt;<br />
+class ustd::queue&lt; T &gt;</h3>
+
+<p>Lightweight c++11 ring buffer queue implementation. </p>
+<p><a class="el" href="queue_8h.html">queue.h</a> is a minimal, yet highly portable ring buffer queu implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
+<h2>An example:</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="queue_8h.html">queue.h</a>&gt;</span></div><div class="line"></div><div class="line">queue&lt;int&gt; que = queue&lt;int&gt;(128);</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> *wi=<span class="keyword">new</span> int(1);</div><div class="line">que.push(wi);</div><div class="line"><span class="keywordtype">int</span> *spi=que.pop();s</div><div class="line">printf(<span class="stringliteral">&quot;%d\n&quot;</span>,*pi);</div><div class="line"><span class="keyword">delete</span>(pi);</div></div><!-- fragment --><p>Note: the queue interface is somewhat inconsistent in usage of T vs. T* and might be changed in the future. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9b2d63ca93012d28464c459b7e25d0da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9b2d63ca93012d28464c459b7e25d0da">&#9670;&nbsp;</a></span>queue()</h2>
 
@@ -119,6 +130,12 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructs a queue object </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maxQueueSize</td><td>The maximum number of &lt;T&gt; pointer entries, the queue can hold.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -146,6 +163,8 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p><br />
+Deallocate the queue structure. This doesn't free any queue entry pointers.</p>
 
 </div>
 </div>
@@ -174,6 +193,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Check, if queue is empty. </p><dl class="section return"><dt>Returns</dt><dd>true: queue empty, false: not empty.</dd></dl>
 
 </div>
 </div>
@@ -201,6 +221,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Check number of queue entries. </p><dl class="section return"><dt>Returns</dt><dd>number of entries in the queue.</dd></dl>
 
 </div>
 </div>
@@ -228,6 +249,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Check the maxiumum number of entries that have been in the queue. </p><dl class="section return"><dt>Returns</dt><dd>max number of queue entries.</dd></dl>
 
 </div>
 </div>
@@ -255,6 +277,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Pop the oldest entry from the queue. Freeing memory that might have been alloctated for the entry before <a class="el" href="classustd_1_1queue.html#abd8f59460ac0d5fc80d99e105dfa1b58">push()</a> is up to the user. </p><dl class="section return"><dt>Returns</dt><dd>nullptr if queue is empty, or T* otherwise.</dd></dl>
 
 </div>
 </div>
@@ -283,6 +306,13 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Push a new entry into the queue. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ent</td><td>Pointer to a T element </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true on success, false if queue is full.</dd></dl>
 
 </div>
 </div>
