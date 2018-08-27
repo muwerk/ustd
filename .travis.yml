@@ -3,9 +3,17 @@ language: cpp
 compiler: gcc
 dist: trusty
 
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq valgrind
+
 # Build steps
 script:
   - cd Examples/mac-linux
   - mkdir build
   - cd build
   - cmake .. && make
+
+after_success:
+  - ./ustd_test
+  - valgrind --error-exitcode=42 --leak-check=full ./ustd_test
