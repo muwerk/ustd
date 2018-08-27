@@ -13,7 +13,8 @@ namespace ustd {
 /*! \brief Lightweight c++11 array implementation.
 
 array.h is a minimal, yet highly portable array data type implementation
-that runs well on architectures with very limited resources.
+that runs well on architectures with very limited resources such as attiny 8kb
+avr.
 
 The array class either:
 
@@ -46,6 +47,7 @@ printf("[0]:%d [1]:%d length=%d\n", intArray[0], intArray[1], intArray.length())
 ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);
 ~~~
  */
+
 template <typename T> class array {
 
   private:
