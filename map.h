@@ -1,7 +1,7 @@
 // map.h - ustd queue class
 
 #pragma once
-#include "array.h"
+#include "./array.h"
 
 namespace ustd {
 

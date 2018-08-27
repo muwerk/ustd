@@ -39,8 +39,8 @@ int main() {
         // printf("\n");
     }
     printf("ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
-    printf("qu len: %d, alloc=%d\n", qu.length(), ar.alloclen());
-    printf("mp len: %d, alloc=%d\n", mp.length(), ar.alloclen());
+    printf("qu len: %d\n", qu.length());
+    printf("mp len: %d\n", mp.length());
 
     for (int i = 0; i < 100; i++)
         qu.pop();
