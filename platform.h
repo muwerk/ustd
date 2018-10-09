@@ -2,13 +2,14 @@
 #pragma once
 
 #ifdef __ATTINY__
+#define KNOWN_PLATFORM 1
 #include <Arduino.h>
 #include <SoftwareSerial.h>
-//#define HAS_SERIAL (1)
-//#include <TinyWireM.h>
 #elif defined(__ATMEGA__)
+#define KNOWN_PLATFORM 1
 #include <Arduino.h>
 #elif defined(__ESP__)
+#define KNOWN_PLATFORM 1
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
 #include <FS.h>
 #define HAS_SERIAL (1)
@@ -27,6 +28,7 @@
 #endif                  // ESP
 
 #if defined(__linux__) || defined(__APPLE__)
+#define KNOWN_PLATFORM 1
 #define __UNIXOID__ 1
 #include <cassert>
 #include <climits>
@@ -106,10 +108,12 @@ class SerialSim {
 
 SerialSim Serial;
 
-#else  // end linux, apple
-#define __ARDUINO__ 1
-#endif  // arduino
+#endif  // end linux, apple
 
 #ifndef UINT_MAX
 #define UINT_MAX (65535)  // or 4294967295 (mostly)
+#endif
+
+#ifndef KNOWN_PLATFORM
+#error Unkown platform. Please use one of the platform defines __ATTINY__, __ATMEGA__, __ESP__, __linux__, __APPLE__
 #endif
