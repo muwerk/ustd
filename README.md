@@ -11,3 +11,7 @@ ustd provides minimal and highly portable implementations for:
 classes. The libraries are header-only and should work with any c++11 compiler and support platforms starting with 8k attiny, avr, arduinos, up to esp8266, esp32 and mac and linux.
 
 Documentation: [mustd ustd:: documentation.](https://muwerk.github.io/ustd/docs/index.html)
+
+## Related projects
+
+* ustd is used by [muwerk](https://github.com/muwerk/muwerk) to implement a portable cooperative scheduler with MQTT-like communication queues.
