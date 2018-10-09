@@ -14,4 +14,4 @@ Documentation: [mustd ustd:: documentation.](https://muwerk.github.io/ustd/docs/
 
 ## Related projects
 
-* ustd is used by muwerk to implement a portable cooperative scheduler with MQTT-like communication queues.
+* ustd is used by [muwerk](https://github.com/muwerk/muwerk) to implement a portable cooperative scheduler with MQTT-like communication queues.
