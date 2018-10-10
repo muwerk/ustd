@@ -66,7 +66,7 @@ $(function() {
 <div class="title">README </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Mac Linux: <a href="https://travis-ci.org/muwerk/ustd"></a></p>
+<div class="textblock"><p><a href="https://travis-ci.org/muwerk/ustd"></a></p>
 <h1>ustd</h1>
 <p>ustd provides minimal and highly portable implementations for:</p>
 <ul>
@@ -75,7 +75,31 @@ $(function() {
 <li><a href="https://muwerk.github.io/ustd/docs/classustd_1_1map.html">map</a></li>
 </ul>
 <p>classes. The libraries are header-only and should work with any c++11 compiler and support platforms starting with 8k attiny, avr, arduinos, up to esp8266, esp32 and mac and linux.</p>
-<p>Documentation: <a href="https://muwerk.github.io/ustd/docs/index.html">mustd ustd:: documentation.</a> </p>
+<p>Documentation: <a href="https://muwerk.github.io/ustd/docs/index.html">mustd ustd:: documentation.</a></p>
+<h2>Platform defines</h2>
+<p>Make sure to use the appropriate platform define before including from ustd.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Platform  </th><th class="markdownTableHeadNone">define  </th><th class="markdownTableHeadNone">Comment   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Mac  </td><td class="markdownTableBodyNone"><code>__APPLE__</code>  </td><td class="markdownTableBodyNone">Should be defined already   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Linux  </td><td class="markdownTableBodyNone"><code>__linux__</code>  </td><td class="markdownTableBodyNone">Should be defined already   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Arduino  </td><td class="markdownTableBodyNone"><code>__ATMEGA__</code>  </td><td class="markdownTableBodyNone">Should work with most arduinos   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ATtiny  </td><td class="markdownTableBodyNone"><code>__ATTINY__</code>  </td><td class="markdownTableBodyNone">For very low resource ATMELs   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ESP8266  </td><td class="markdownTableBodyNone"><code>__ESP__</code>  </td><td class="markdownTableBodyNone">For ESP8266 and ESP32   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ESP32  </td><td class="markdownTableBodyNone"><code>__ESP__</code> and  </td><td class="markdownTableBodyNone">ESP32 needs either <code>__ESP32__</code>   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><code>__ESP32__</code>  </td><td class="markdownTableBodyNone">or <code>__ESP32DEV__</code> in addition   </td></tr>
+</table>
+<div class="fragment"><div class="line">{c++}</div><div class="line">// Sample usage:</div><div class="line">#define __ATTINY__ 1</div><div class="line">#include &quot;platform.h&quot;</div><div class="line">#include &quot;queue.h&quot;</div></div><!-- fragment --><h2>Related projects</h2>
+<ul>
+<li>ustd is used by <a href="https://github.com/muwerk/muwerk">muwerk</a> to implement a portable cooperative scheduler with MQTT-like communication queues. </li>
+</ul>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

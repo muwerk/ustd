@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['queue',['queue',['../classustd_1_1queue.html',1,'ustd::queue&lt; T &gt;'],['../classustd_1_1queue.html#a9b2d63ca93012d28464c459b7e25d0da',1,'ustd::queue::queue()']]],
-  ['queue_2eh',['queue.h',['../queue_8h.html',1,'']]]
+  ['readme',['README',['../md_README.html',1,'']]],
+  ['readme_2emd',['README.md',['../README_8md.html',1,'']]],
+  ['resize',['resize',['../classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738',1,'ustd::array']]]
 ];
