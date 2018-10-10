@@ -16,7 +16,7 @@ esp32 and mac and linux.
 
 Make sure to provide the <a
 href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
-defines</a> before including ustd headers.
+define</a> before including ustd headers.
 
 \section Reference
 <a href="https://github.com/muwerk/ustd">ustd github repository</a>
@@ -43,6 +43,10 @@ The array class either:
 object has been created.
 
 The library header-only.
+
+Make sure to provide the <a
+href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
+define</a> before including ustd headers.
 
 ## An example for dynamic mode:
 
