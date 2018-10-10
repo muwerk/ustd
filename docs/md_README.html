@@ -80,7 +80,7 @@ $(function() {
 <p>Make sure to use the appropriate platform define before including from ustd.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Platform  </th><th class="markdownTableHeadNone">define  </th><th class="markdownTableHeadNone">Comment   </th></tr>
+<th class="markdownTableHeadNone">Platform  </th><th class="markdownTableHeadNone">#define  </th><th class="markdownTableHeadNone">Comment   </th></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Mac  </td><td class="markdownTableBodyNone"><code>__APPLE__</code>  </td><td class="markdownTableBodyNone">Should be defined already   </td></tr>
 <tr class="markdownTableBody" class="markdownTableRowEven">
@@ -98,8 +98,10 @@ $(function() {
 </table>
 <div class="fragment"><div class="line">{c++}</div><div class="line">// Sample usage:</div><div class="line">#define __ATTINY__ 1</div><div class="line">#include &quot;platform.h&quot;</div><div class="line">#include &quot;queue.h&quot;</div></div><!-- fragment --><h2>Related projects</h2>
 <ul>
-<li>ustd is used by <a href="https://github.com/muwerk/muwerk">muwerk</a> to implement a portable cooperative scheduler with MQTT-like communication queues. </li>
+<li>ustd is used by <a href="https://github.com/muwerk/muwerk">muwerk</a> to implement a portable cooperative scheduler with MQTT-like communication queues.</li>
 </ul>
+<h2>History</h2>
+<p><code>ustd</code> and <code>muwerk</code> are derivatives and lightweight versions of <a href="https://github.com/yeasoft/Meisterwerk">Meisterwerk</a>. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
