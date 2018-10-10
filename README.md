@@ -16,8 +16,8 @@ Documentation: [mustd ustd:: documentation.](https://muwerk.github.io/ustd/docs/
 
 Make sure to use the appropriate platform define before including from ustd.
 
-| Platform   | define      | Comment                        |
-|------------|-------------|--------------------------------|
+| Platform   | #define       | Comment                        |
+|------------|---------------|--------------------------------|
 | Mac        | `__APPLE__`   | Should be defined already      |
 | Linux      | `__linux__`   | Should be defined already      |
 | Arduino    | `__ATMEGA__`  | Should work with most arduinos |
@@ -36,3 +36,7 @@ Make sure to use the appropriate platform define before including from ustd.
 ## Related projects
 
 * ustd is used by [muwerk](https://github.com/muwerk/muwerk) to implement a portable cooperative scheduler with MQTT-like communication queues.
+
+## History
+
+`ustd` and `muwerk` are derivatives and lightweight versions of [Meisterwerk](https://github.com/yeasoft/Meisterwerk).
