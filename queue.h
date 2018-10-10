@@ -10,9 +10,14 @@ queue.h is a minimal, yet highly portable ring buffer queu implementation
 that runs well on architectures with very limited resources such as attiny 8kb
 avr.
 
+Make sure to provide the <a
+href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
+define</a> before including ustd headers.
+
 ## An example:
 
 ~~~{.cpp}
+#define __ATTINY__ 1  // Appropriate platform define required
 #include <queue.h>
 
 queue<int> que = queue<int>(128);

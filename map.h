@@ -21,9 +21,14 @@ object has been created.
 
 The library header-only.
 
+Make sure to provide the <a
+href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
+define</a> before including ustd headers.
+
 ## An example for dynamic mode:
 
 ~~~{.cpp}
+#define __ATTINY__ 1  // Appropriate platform define required
 #include <map.h>
 
 ustd::map<int,double> myMap;
@@ -35,6 +40,7 @@ double p = myMap[0];
 ## An example for static mode
 
 ~~~{.cpp}
+#define __ATTINY__ 1  // Appropriate platform define required
 #include <map.h>
 
 // map size is fixed 5 (startSize==maxSize), no dynamic extensions:
