@@ -14,6 +14,10 @@ classes. The libraries are header-only and should work with any c++11 compiler
 and support platforms starting with 8k attiny, avr, arduinos, up to esp8266,
 esp32 and mac and linux.
 
+Make sure to provide the <a
+href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
+defines</a> before including ustd headers.
+
 \section Reference
 <a href="https://github.com/muwerk/ustd">ustd github repository</a>
 */
@@ -43,6 +47,7 @@ The library header-only.
 ## An example for dynamic mode:
 
 ~~~{.cpp}
+#define __ATTINY__ 1   // Platform defines required, see doc, mainpage.
 #include <array.h>
 
 ustd::array<int> intArray;

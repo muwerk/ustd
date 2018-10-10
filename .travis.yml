@@ -1,17 +1,40 @@
-# Enable C++ support
-language: cpp
-compiler: gcc
-dist: trusty
+matrix:
+  include:
+    # Enable C++ support
+    - language: cpp
+      compiler: gcc
+      dist: trusty
+      sudo: required
 
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq valgrind
+      before_install:
+        - sudo apt-get update -qq
+        - sudo apt-get install -qq valgrind
 
-# Build steps
-script:
-  - cd Examples/mac-linux
-  - mkdir build
-  - cd build
-  - cmake -DCMAKE_BUILD_TYPE=Debug .. && make
-  - ./ustd-test
-  - valgrind --leak-check=full ./ustd-test
+      # Build steps
+      script:
+        - cd Examples/mac-linux
+        - mkdir build
+        - cd build
+        - cmake -DCMAKE_BUILD_TYPE=Debug .. && make
+        - ./ustd-test
+        - valgrind --leak-check=full ./ustd-test
+
+    - language: python
+      python:
+          - "2.7"
+
+      sudo: false
+      cache:
+          directories:
+              - "~/.platformio"
+
+      env:
+          - PLATFORMIO_CI_SRC=Examples/arduino/ustd-test.cpp
+
+      install:
+          - pip install -U platformio
+
+      script:
+          - pio ci --lib="." --project-option="build_flags=-D __ATMEGA__" --board=uno Examples/arduino/ustd-test.cpp
+
+
