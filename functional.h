@@ -3,7 +3,8 @@
 // https://github.com/winterscar, see:
 // https://github.com/winterscar/functional-avr
 
-/*! \file std::function<> equivalent for low-resource AVRs
+/*! \file functional.h
+std::function<> equivalent for low-resource AVRs
 
 functional.h is a minimal, no dependcy implementation of functionals
 for AVRs, taken from project <a
