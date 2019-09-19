@@ -12,7 +12,7 @@ ustd provides minimal and highly portable implementations for:
 
 classes. 
 
-In additional, for Atmel AVRs a dropin replacement for std::function<> 
+In additional, for Atmel AVRs a drop-in replacement for std::function<> 
 is provided as ustd::function<>
 
 * * \ref functional.h
