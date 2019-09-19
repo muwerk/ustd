@@ -48,7 +48,7 @@ Make sure to use the appropriate platform define before including from ustd.
 
 ## History
 
-* 0.2 (2019-09-19) Functional support for AVRs added (from project [functional-avr](https://github.com/winterscar/functional-avr) by [winterscar](https://github.com/winterscar)).
+* 0.2.1 (2019-09-19) Functional support for AVRs added (from project [functional-avr](https://github.com/winterscar/functional-avr) by [winterscar](https://github.com/winterscar)).
 
 ## References
 
