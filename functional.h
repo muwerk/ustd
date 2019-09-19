@@ -6,7 +6,7 @@
 /*! \file functional.h
 std::function<> equivalent for low-resource AVRs
 
-functional.h is a minimal, no dependcy implementation of functionals
+functional.h is a minimal, no-dependency implementation of functionals
 for AVRs, taken from project <a
 href="https://github.com/winterscar/functional-avr">functional-avr</a> by winterscar.
 
