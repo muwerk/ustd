@@ -19,7 +19,7 @@ void *operator new(size_t size, void *ptr) {
 
 namespace ustd {
 
-/*! \brief std::function<> equivalent for low-resource AVRs
+/*! @file std::function<> equivalent for low-resource AVRs
 
 functional.h is a minimal, no dependcy implementation of functionals
 for AVRs, taken from project <a
@@ -54,7 +54,7 @@ void task(T_TASK *tsk) {
 }
 
 class Something {
-    Somthing() {
+    Something() {
         auto ft = [=]() { this->callback(); };
         task(ft); 
     }
