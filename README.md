@@ -10,6 +10,8 @@ ustd provides minimal and highly portable implementations for:
 
 classes. The libraries are header-only and should work with any c++11 compiler and support platforms starting with 8k attiny, avr, arduinos, up to esp8266, esp32 and mac and linux.
 
+* `functional.h` supports a drop-in replacement for `std::function<>` for AVRs: `ustd::function<>` for low-resource AVRs (see project [functional-avr](https://github.com/winterscar/functional-avr)))
+
 Documentation: [mustd ustd:: documentation.](https://muwerk.github.io/ustd/docs/index.html)
 
 ## Platform defines
@@ -33,10 +35,22 @@ Make sure to use the appropriate platform define before including from ustd.
 #include "queue.h"
 ```
 
+## Installation
+
+`ustd` is available via Arduino library manager or platformio:
+
+* [Arduino ustd](https://www.arduinolibraries.info/libraries/muwerk-ustd-library)
+* [Platformio ustd](https://platformio.org/lib/show/5710/ustd/examples?file=ustd-test.cpp), library ID 5710.
+
 ## Related projects
 
 * ustd is used by [muwerk](https://github.com/muwerk/muwerk) to implement a portable cooperative scheduler with MQTT-like communication queues.
 
 ## History
 
-`ustd` and `muwerk` are derivatives and lightweight versions of [Meisterwerk](https://github.com/yeasoft/Meisterwerk).
+* 0.2 (September 2019) Functional support for AVRs added (from project [functional-avr](https://github.com/winterscar/functional-avr) by [winterscar](https://github.com/winterscar)).
+
+## References
+
+* `functional.h` is taken from project [functional-avr](https://github.com/winterscar/functional-avr) by [winterscar](https://github.com/winterscar)
+* `ustd` and `muwerk` are derivatives and lightweight versions of [Meisterwerk](https://github.com/yeasoft/Meisterwerk).

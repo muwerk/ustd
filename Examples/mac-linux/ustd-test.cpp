@@ -12,6 +12,7 @@
 #include "array.h"
 #include "map.h"
 #include "queue.h"
+#include "functional.h"
 
 using std::cout;
 using std::endl;
