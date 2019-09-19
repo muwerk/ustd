@@ -10,6 +10,8 @@ ustd provides minimal and highly portable implementations for:
 
 classes. The libraries are header-only and should work with any c++11 compiler and support platforms starting with 8k attiny, avr, arduinos, up to esp8266, esp32 and mac and linux.
 
+* `functional.h` supports a drop-in replacement for `std::function<>` for AVRs: `ustd::function<>` for low-resource AVRs (see project [functional-avr](https://github.com/winterscar/functional-avr)))
+
 Documentation: [mustd ustd:: documentation.](https://muwerk.github.io/ustd/docs/index.html)
 
 ## Platform defines
@@ -46,4 +48,9 @@ Make sure to use the appropriate platform define before including from ustd.
 
 ## History
 
-`ustd` and `muwerk` are derivatives and lightweight versions of [Meisterwerk](https://github.com/yeasoft/Meisterwerk).
+* 0.2 (September 2019) Functional support for AVRs added (from project [functional-avr](https://github.com/winterscar/functional-avr) by [winterscar](https://github.com/winterscar)).
+
+## References
+
+* `functional.h` is taken from project [functional-avr](https://github.com/winterscar/functional-avr) by [winterscar](https://github.com/winterscar)
+* `ustd` and `muwerk` are derivatives and lightweight versions of [Meisterwerk](https://github.com/yeasoft/Meisterwerk).
