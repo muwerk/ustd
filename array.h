@@ -10,7 +10,14 @@ ustd provides minimal and highly portable implementations for:
 * * \ref ustd::queue<T>
 * * \ref ustd::map<K,V>
 
-classes. The libraries are header-only and should work with any c++11 compiler
+classes. 
+
+In additional, for Atmel AVRs a dropin replacement for std::function<> 
+is provided as ustd::function<>
+
+* * \ref functional.h
+
+The libraries are header-only and should work with any c++11 compiler
 and support platforms starting with 8k attiny, avr, arduinos, up to esp8266,
 esp32 and mac and linux.
 
