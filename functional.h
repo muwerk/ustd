@@ -3,22 +3,6 @@
 // https://github.com/winterscar, see:
 // https://github.com/winterscar/functional-avr
 
-#pragma once
-
-#if defined __ATTINY__ || defined(__ATMEGA__)
-
-using size_t = decltype(sizeof(int));
-
-#ifdef __ATTINY__
-using nullptr_t = decltype(nullptr);
-#endif
-
-void *operator new(size_t size, void *ptr) {
-    return ptr;
-}
-
-namespace ustd {
-
 /*! \file std::function<> equivalent for low-resource AVRs
 
 functional.h is a minimal, no dependcy implementation of functionals
@@ -64,6 +48,23 @@ class Something {
 }
 ~~~
 */
+#pragma once
+
+#if defined __ATTINY__ || defined(__ATMEGA__)
+
+using size_t = decltype(sizeof(int));
+
+#ifdef __ATTINY__
+using nullptr_t = decltype(nullptr);
+#endif
+
+void *operator new(size_t size, void *ptr) {
+    return ptr;
+}
+
+namespace ustd {
+
+
 
 template <class T> struct tag { using type = T; };
 template <class Tag> using type_t = typename Tag::type;
