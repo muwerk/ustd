@@ -1,4 +1,5 @@
 [![Mac/Linux Build Status](https://travis-ci.org/muwerk/ustd.svg?branch=master)](https://travis-ci.org/muwerk/ustd)
+[![Dev Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://muwerk.github.io/ustd/docs/index.html)
 
 # ustd
 
