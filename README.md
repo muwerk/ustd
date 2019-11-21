@@ -43,6 +43,10 @@ Make sure to use the appropriate platform define before including from ustd.
 * [Arduino ustd](https://www.arduinolibraries.info/libraries/muwerk-ustd-library)
 * [Platformio ustd](https://platformio.org/lib/show/5710/ustd/examples?file=ustd-test.cpp), library ID 5710.
 
+## Example
+
+See [ustdmin](https://github.com/muwerk/Examples/tree/master/ustdmin) for a complete build example with `ustd` and `platformio`.
+
 ## Related projects
 
 * ustd is used by [muwerk](https://github.com/muwerk/muwerk) to implement a portable cooperative scheduler with MQTT-like communication queues.
