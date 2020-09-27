@@ -10,16 +10,26 @@
 #include <Arduino.h>
 #elif defined(__ESP__)
 #define KNOWN_PLATFORM 1
+#ifdef __USE_OLD_FS__
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
 #include <FS.h>
+#else
+#include <LittleFS.h>
+#endif  // __USE_OLD_FS__
 #define HAS_SERIAL (1)
 #if defined(__ESP32__) || defined(__ESP32DEV__)
+#ifdef __USE_OLD_FS__
 #include <SPIFFS.h>
+#else
+#include <LittleFS.h>
+#endif  // __USE_OLD_FS__
 #include <WiFi.h>
 #include <time.h>      // time() ctime()
 #include <sys/time.h>  // struct timeval
 #else                  // ESP8266
-#include <SD.h>        //otherwise bear.ssl doesn't compile...
+#ifdef __USE_OLD_FS__
+#include <SD.h>  //otherwise bear.ssl doesn't compile...
+#endif           // __USE_OLD_FS__
 #include <ESP8266WiFi.h>
 #include <time.h>       // time() ctime()
 #include <sys/time.h>   // struct timeval
