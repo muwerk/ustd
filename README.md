@@ -29,9 +29,9 @@ Make sure to use the appropriate platform define before including from ustd.
 | ESP32    | `__ESP__` and | ESP32 needs either `__ESP32__` |
 |          | `__ESP32__`   | or `__ESP32DEV__` in addition  |
 
-For ESP8266/ESP32 additionally:
+For ESP8266 additionally:
 
-- Define `__USE_OLD_FS__` to continue to use old SPIFFS instead of LittleFS. New default is LittleFS.
+- Define `__USE_OLD_FS__` to continue to use old SPIFFS instead of LittleFS. New default for ESP8266 is LittleFS.
 
 ```c++
 // Sample usage:
@@ -57,6 +57,9 @@ See [ustdmin](https://github.com/muwerk/Examples/tree/master/ustdmin) for a comp
 
 ## History
 
+- 0.3.0 (2020-10-26) Cleanup platform.h: ESP32 continues to use SPIFFS by default, ESP8266 LittleFS (since SPIFFS is
+  deprecated for ESP8266, and LittleFS is not (yet) available for ESP32). This is a breaking change for ESP8266 installations
+  that require the filesystem, since an upgrade from SPIFFS to LittleFS is required, see [munet Readme](https://github.com/muwerk/munet/blob/master/README.md) for additional information.
 - 0.2.2 (2020-09-27) Support for LittleFS as successor of ESP8266/ESP32 filesystem
 - 0.2.1 (2019-09-19) Functional support for AVRs added (from project [functional-avr](https://github.com/winterscar/functional-avr) by [winterscar](https://github.com/winterscar)).
 
