@@ -64,11 +64,10 @@ template <class K, class V> class map {
     ustd::array<V> values; /*! Array of values */
 
   public:
-    map(unsigned int startSize = ARRAY_INIT_SIZE,
-        unsigned int maxSize = ARRAY_MAX_SIZE,
+    map(unsigned int startSize = ARRAY_INIT_SIZE, unsigned int maxSize = ARRAY_MAX_SIZE,
         unsigned int incSize = ARRAY_INC_SIZE, bool shrink = true)
-        : startSize(startSize), maxSize(maxSize), incSize(incSize),
-          shrink(shrink), keys(array<K>(startSize, maxSize, incSize, shrink)),
+        : startSize(startSize), maxSize(maxSize), incSize(incSize), shrink(shrink),
+          keys(array<K>(startSize, maxSize, incSize, shrink)),
           values(array<V>(startSize, maxSize, incSize, shrink)) {
         /*!
          * Constructs a map object. All allocation-hints are optional, the

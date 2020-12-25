@@ -7,16 +7,16 @@
 std::function<> equivalent for low-resource AVRs
 
 functional.h is a minimal, no-dependency implementation of functionals
-for AVRs, taken from project <a
-href="https://github.com/winterscar/functional-avr">functional-avr</a> by winterscar.
+for AVRs, taken from project:
+<a href="https://github.com/winterscar/functional-avr">functional-avr</a> by winterscar.
 
-Make sure to provide the <a
-href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
+Make sure to provide the
+<a href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
 define</a> before including ustd headers.
 
 Note: if you are only interested in using functionals, it might be better
-to directly use project <a
-href="https://github.com/winterscar/functional-avr">functional-avr</a> by winterscar.
+to directly use project <a href="https://github.com/winterscar/functional-avr">functional-avr</a> by
+winterscar.
 
 
 ## An example:
@@ -41,7 +41,7 @@ void task(T_TASK *tsk) {
 class Something {
     Something() {
         auto ft = [=]() { this->callback(); };
-        task(ft); 
+        task(ft);
     }
     void callback() {
         // do something
@@ -64,8 +64,6 @@ void *operator new(size_t size, void *ptr) {
 }
 
 namespace ustd {
-
-
 
 template <class T> struct tag { using type = T; };
 template <class Tag> using type_t = typename Tag::type;
@@ -99,12 +97,10 @@ template <class T> struct remove_const<T const> : tag<T> {};
 template <class T> struct remove_volatile : tag<T> {};
 template <class T> struct remove_volatile<T volatile> : tag<T> {};
 
-template <class T>
-struct remove_cv : remove_const<type_t<remove_volatile<T>>> {};
+template <class T> struct remove_cv : remove_const<type_t<remove_volatile<T>>> {};
 
 template <class T> struct decay3 : remove_cv<T> {};
-template <class R, class... Args>
-struct decay3<R(Args...)> : tag<R (*)(Args...)> {};
+template <class R, class... Args> struct decay3<R(Args...)> : tag<R (*)(Args...)> {};
 template <class T> struct decay2 : decay3<T> {};
 template <class T, size_t N> struct decay2<T[N]> : tag<T *> {};
 
@@ -134,8 +130,7 @@ template <class...> struct voider : tag<void> {};
 template <class... Ts> using void_t = type_t<voider<Ts...>>;
 
 namespace details {
-template <template <class...> class Z, class, class... Ts>
-struct can_apply : false_type {};
+template <template <class...> class Z, class, class... Ts> struct can_apply : false_type {};
 template <template <class...> class Z, class... Ts>
 struct can_apply<Z, void_t<Z<Ts...>>, Ts...> : true_type {};
 }  // namespace details
@@ -143,8 +138,7 @@ template <template <class...> class Z, class... Ts>
 using can_apply = details::can_apply<Z, void, Ts...>;
 
 namespace details {
-template <class From, class To>
-using try_convert = decltype(To{declval<From>()});
+template <class From, class To> using try_convert = decltype(To{declval<From>()});
 }
 template <class From, class To>
 struct is_convertible : can_apply<details::try_convert, From, To> {};
@@ -159,22 +153,18 @@ template <bool b, class T = void> using enable_if_t = type_t<enable_if<b, T>>;
 // res_of
 
 namespace details {
-template <class G, class... Args>
-using invoke_t = decltype(declval<G>()(declval<Args>()...));
+template <class G, class... Args> using invoke_t = decltype(declval<G>()(declval<Args>()...));
 
 template <class Sig, class = void> struct res_of {};
 template <class G, class... Args>
-struct res_of<G(Args...), void_t<invoke_t<G, Args...>>>
-    : tag<invoke_t<G, Args...>> {};
+struct res_of<G(Args...), void_t<invoke_t<G, Args...>>> : tag<invoke_t<G, Args...>> {};
 }  // namespace details
 template <class Sig> using res_of = details::res_of<Sig>;
 template <class Sig> using res_of_t = type_t<res_of<Sig>>;
 
 // aligned_storage
 
-template <size_t size, size_t align> struct alignas(align) aligned_storage_t {
-    char buff[size];
-};
+template <size_t size, size_t align> struct alignas(align) aligned_storage_t { char buff[size]; };
 
 // is_same
 
@@ -183,19 +173,16 @@ template <class A> struct is_same<A, A> : true_type {};
 
 template <class Sig, size_t sz, size_t algn> struct small_task;
 
-template <class R, class... Args, size_t sz, size_t algn>
-struct small_task<R(Args...), sz, algn> {
+template <class R, class... Args, size_t sz, size_t algn> struct small_task<R(Args...), sz, algn> {
     struct vtable_t {
         void (*mover)(void *src, void *dest);
         void (*destroyer)(void *);
-        R (*invoke)(void const *t, Args &&... args);
+        R (*invoke)(void const *t, Args &&...args);
         template <class T> static vtable_t const *get() {
             static const vtable_t table = {
-                [](void *src, void *dest) {
-                    new (dest) T(move(*static_cast<T *>(src)));
-                },
+                [](void *src, void *dest) { new (dest) T(move(*static_cast<T *>(src))); },
                 [](void *t) { static_cast<T *>(t)->~T(); },
-                [](void const *t, Args &&... args) -> R {
+                [](void const *t, Args &&...args) -> R {
                     return (*static_cast<T const *>(t))(forward<Args>(args)...);
                 }};
             return &table;
@@ -203,10 +190,8 @@ struct small_task<R(Args...), sz, algn> {
     };
     vtable_t const *table = nullptr;
     aligned_storage_t<sz, algn> data;
-    template <
-        class F, class dF = decay_t<F>,
-        enable_if_t<!is_same<dF, small_task>{}> * = nullptr,
-        enable_if_t<is_convertible<res_of_t<dF &(Args...)>, R>{}> * = nullptr>
+    template <class F, class dF = decay_t<F>, enable_if_t<!is_same<dF, small_task>{}> * = nullptr,
+              enable_if_t<is_convertible<res_of_t<dF &(Args...)>, R>{}> * = nullptr>
     small_task(F &&f) : table(vtable_t::template get<dF>()) {
         static_assert(sizeof(dF) <= sz, "object too large");
         static_assert(alignof(dF) <= algn, "object too aligned");
@@ -265,8 +250,7 @@ inline bool operator!=(nullptr_t, const small_task<R(Args...), sz, algn> &__f) {
     return static_cast<bool>(__f);
 }
 
-template <class Sig>
-using function = small_task<Sig, sizeof(void *) * 4, alignof(void *)>;
+template <class Sig> using function = small_task<Sig, sizeof(void *) * 4, alignof(void *)>;
 }  // namespace ustd
 
 #endif
