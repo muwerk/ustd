@@ -8,7 +8,8 @@ std::function<> equivalent for low-resource AVRs
 
 functional.h is a minimal, no-dependency implementation of functionals
 for AVRs, taken from project <a
-href="https://github.com/winterscar/functional-avr">functional-avr</a> by winterscar.
+href="https://github.com/winterscar/functional-avr">functional-avr</a> by
+winterscar.
 
 Make sure to provide the <a
 href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
@@ -16,7 +17,8 @@ define</a> before including ustd headers.
 
 Note: if you are only interested in using functionals, it might be better
 to directly use project <a
-href="https://github.com/winterscar/functional-avr">functional-avr</a> by winterscar.
+href="https://github.com/winterscar/functional-avr">functional-avr</a> by
+winterscar.
 
 
 ## An example:
@@ -41,7 +43,7 @@ void task(T_TASK *tsk) {
 class Something {
     Something() {
         auto ft = [=]() { this->callback(); };
-        task(ft); 
+        task(ft);
     }
     void callback() {
         // do something
@@ -64,8 +66,6 @@ void *operator new(size_t size, void *ptr) {
 }
 
 namespace ustd {
-
-
 
 template <class T> struct tag { using type = T; };
 template <class Tag> using type_t = typename Tag::type;
@@ -188,14 +188,14 @@ struct small_task<R(Args...), sz, algn> {
     struct vtable_t {
         void (*mover)(void *src, void *dest);
         void (*destroyer)(void *);
-        R (*invoke)(void const *t, Args &&... args);
+        R (*invoke)(void const *t, Args &&...args);
         template <class T> static vtable_t const *get() {
             static const vtable_t table = {
                 [](void *src, void *dest) {
                     new (dest) T(move(*static_cast<T *>(src)));
                 },
                 [](void *t) { static_cast<T *>(t)->~T(); },
-                [](void const *t, Args &&... args) -> R {
+                [](void const *t, Args &&...args) -> R {
                     return (*static_cast<T const *>(t))(forward<Args>(args)...);
                 }};
             return &table;
