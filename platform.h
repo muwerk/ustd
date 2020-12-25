@@ -10,8 +10,7 @@
 #include <Arduino.h>
 #elif defined(__ESP__)
 #define KNOWN_PLATFORM 1
-#if defined(__USE_OLD_FS__) ||                                                 \
-    (defined(__ESP32__) && !defined(__USE_LITTLE_FS__))
+#if defined(__USE_OLD_FS__) || (defined(__ESP32__) && !defined(__USE_LITTLE_FS__))
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
 //#include <SPIFFS.h>
 #include <FS.h>

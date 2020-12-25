@@ -108,11 +108,9 @@ template <typename T> class array {
     }
 
   public:
-    array(unsigned int startSize = ARRAY_INIT_SIZE,
-          unsigned int maxSize = ARRAY_MAX_SIZE,
+    array(unsigned int startSize = ARRAY_INIT_SIZE, unsigned int maxSize = ARRAY_MAX_SIZE,
           unsigned int incSize = ARRAY_INC_SIZE, bool shrink = true)
-        : startSize(startSize), maxSize(maxSize), incSize(incSize),
-          shrink(shrink) {
+        : startSize(startSize), maxSize(maxSize), incSize(incSize), shrink(shrink) {
         /*!
          * Constructs an array object. All allocation-hints are optional, the
          * array class will allocate memory as needed during writes, if
