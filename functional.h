@@ -7,11 +7,11 @@
 std::function<> equivalent for low-resource AVRs
 
 functional.h is a minimal, no-dependency implementation of functionals
-for AVRs, taken from project <a href="https://github.com/winterscar/functional-avr">functional-avr</a> by
-winterscar.
+for AVRs, taken from project:
+<a href="https://github.com/winterscar/functional-avr">functional-avr</a> by winterscar.
 
-Make sure to provide the <a
-href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
+Make sure to provide the
+<a href="https://github.com/muwerk/ustd/blob/master/README.md">required platform
 define</a> before including ustd headers.
 
 Note: if you are only interested in using functionals, it might be better
@@ -131,14 +131,17 @@ template <class... Ts> using void_t = type_t<voider<Ts...>>;
 
 namespace details {
 template <template <class...> class Z, class, class... Ts> struct can_apply : false_type {};
-template <template <class...> class Z, class... Ts> struct can_apply<Z, void_t<Z<Ts...>>, Ts...> : true_type {};
+template <template <class...> class Z, class... Ts>
+struct can_apply<Z, void_t<Z<Ts...>>, Ts...> : true_type {};
 }  // namespace details
-template <template <class...> class Z, class... Ts> using can_apply = details::can_apply<Z, void, Ts...>;
+template <template <class...> class Z, class... Ts>
+using can_apply = details::can_apply<Z, void, Ts...>;
 
 namespace details {
 template <class From, class To> using try_convert = decltype(To{declval<From>()});
 }
-template <class From, class To> struct is_convertible : can_apply<details::try_convert, From, To> {};
+template <class From, class To>
+struct is_convertible : can_apply<details::try_convert, From, To> {};
 template <> struct is_convertible<void, void> : true_type {};
 
 // enable_if
@@ -153,7 +156,8 @@ namespace details {
 template <class G, class... Args> using invoke_t = decltype(declval<G>()(declval<Args>()...));
 
 template <class Sig, class = void> struct res_of {};
-template <class G, class... Args> struct res_of<G(Args...), void_t<invoke_t<G, Args...>>> : tag<invoke_t<G, Args...>> {};
+template <class G, class... Args>
+struct res_of<G(Args...), void_t<invoke_t<G, Args...>>> : tag<invoke_t<G, Args...>> {};
 }  // namespace details
 template <class Sig> using res_of = details::res_of<Sig>;
 template <class Sig> using res_of_t = type_t<res_of<Sig>>;
@@ -178,7 +182,9 @@ template <class R, class... Args, size_t sz, size_t algn> struct small_task<R(Ar
             static const vtable_t table = {
                 [](void *src, void *dest) { new (dest) T(move(*static_cast<T *>(src))); },
                 [](void *t) { static_cast<T *>(t)->~T(); },
-                [](void const *t, Args &&...args) -> R { return (*static_cast<T const *>(t))(forward<Args>(args)...); }};
+                [](void const *t, Args &&...args) -> R {
+                    return (*static_cast<T const *>(t))(forward<Args>(args)...);
+                }};
             return &table;
         }
     };
