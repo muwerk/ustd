@@ -40,7 +40,6 @@
 #if defined(__linux__) || defined(__APPLE__)
 #define KNOWN_PLATFORM 1
 #define __UNIXOID__ 1
-#include <cassert>
 #include <climits>
 #include <cstring>
 #include <stdio.h>
@@ -49,7 +48,14 @@
 #include <string>
 #include <sys/time.h>
 
-#define USTD_ASSERTS 1
+#define USTD_ASSERT 1
+
+#ifdef USTD_ASSERT
+#include <cassert>
+#else  // else USTD_ASSERT
+#define assert(f)
+#endif  // end USTD_ASSERT
+
 typedef std::string String;
 
 unsigned long micros() {
@@ -118,7 +124,55 @@ class SerialSim {
 
 SerialSim Serial;
 
+#else  // else linux, apple
+
+#ifdef USTD_ASSERT
+#ifdef USE_SERIAL_DBG
+bool assertFailedLine(const char *filename, int line) {
+    Serial.print("Assertion Failed: File ");
+    Serial.print(filename);
+    Serial.print(", Line ");
+    Serial.println(line);
+    return false;
+}
+
+#define assert(f)                                                                                  \
+    if (!(f))                                                                                      \
+    assertFailedLine(__FILE__, __LINE__)
+#else  // else USE_SERIAL_DBG
+#define assert(f)
+#endif  // end USE_SERIAL_DBG
+#else   // else USTD_ASSERT
+#define assert(f)
+#endif  // end USTD_ASSERT
+
 #endif  // end linux, apple
+
+#ifdef USE_SERIAL_DBG
+
+#define DBG_ONLY(f) f
+#define DBG(f) Serial.println(f)
+#define DBGF(...) Serial.printf(__VA_ARGS__)
+#if USE_SERIAL_DBG > 1
+#define DBG2(f) Serial.println(f)
+#if USE_SERIAL_DBG > 2
+#define DBG3(f) Serial.println(f)
+#else
+#define DBG3(f)
+#endif  // end USE_SERIAL_DBG > 2
+#else
+#define DBG2(f)
+#endif  // end USE_SERIAL_DBG > 1
+
+#else
+
+#define DBG_ONLY(f)
+#define DBG(f)
+#define DBGF(...)
+#define DBG2(f)
+#define DBG3(f)
+
+#endif  // USE_SERIAL_DBG
 
 #ifndef UINT_MAX
 #define UINT_MAX (65535)  // or 4294967295 (mostly)
