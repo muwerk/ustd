@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['ustd_20micro_2dstandard_2dlibrary_20for_20low_2dresource_20avrs_29',['Ustd micro-standard-library for low-resource AVRs',['../index.html',1,'']]],
-  ['uint_5fmax_30',['UINT_MAX',['../platform_8h.html#ac998ea02fbd821fc123d60445ce76f38',1,'platform.h']]],
-  ['ustd_31',['ustd',['../namespaceustd.html',1,'']]]
+  ['setinvalidvalue_34',['setInvalidValue',['../classustd_1_1array.html#aaf8494e6f5dfd3c226da3d064847c24a',1,'ustd::array::setInvalidValue()'],['../classustd_1_1map.html#a69684371750cc3ced38e6a6a80656660',1,'ustd::map::setInvalidValue()'],['../classustd_1_1queue.html#a00eae01f6ca758883b6c424863d35f7a',1,'ustd::queue::setInvalidValue()']]]
 ];

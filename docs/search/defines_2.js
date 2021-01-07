@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uint_5fmax_72',['UINT_MAX',['../platform_8h.html#ac998ea02fbd821fc123d60445ce76f38',1,'platform.h']]]
+  ['max_5fmap_5fsize_83',['MAX_MAP_SIZE',['../map_8h.html#a0dcaa63464405845211a092cd6d453d3',1,'map.h']]]
 ];

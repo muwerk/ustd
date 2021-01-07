@@ -122,7 +122,8 @@ $(function() {
 </ul>
 <h2>History</h2>
 <ul>
-<li>0.3.1 (2010-12-25) More SPIFFS vs LittleFS preparations</li>
+<li>0.3.2 (2021-01-07) More consistent debug interface (@tuxpoldo) using <code><a class="el" href="platform_8h.html#a7be8305523c50424eef047e1e3597c94">DBG()</a></code> macros (s. <a href="`platform.h`">https://github.com/muwerk/ustd/blob/2a64a88b59e8bc880d7a1ad63e96d8a66bb1aaf8/platform.h#L151</a> ), fixes to <code>USTD_ASSERT</code> macro that was inconsistently named ASSERT*S*.</li>
+<li>0.3.1 (2020-12-25) More SPIFFS vs LittleFS preparations</li>
 <li>0.3.0 (2020-10-26) Cleanup <a class="el" href="platform_8h.html">platform.h</a>: ESP32 continues to use SPIFFS by default, ESP8266 LittleFS (since SPIFFS is deprecated for ESP8266, and LittleFS is not (yet) available for ESP32). This is a breaking change for ESP8266 installations that require the filesystem, since an upgrade from SPIFFS to LittleFS is required, see <a href="https://github.com/muwerk/munet/blob/master/README.md">munet Readme</a> for additional information.</li>
 <li>0.2.2 (2020-09-27) Support for LittleFS as successor of ESP8266/ESP32 filesystem</li>
 <li>0.2.1 (2019-09-19) Functional support for AVRs added (from project <a href="https://github.com/winterscar/functional-avr">functional-avr</a> by <a href="https://github.com/winterscar">winterscar</a>).</li>

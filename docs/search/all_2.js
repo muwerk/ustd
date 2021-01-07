@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['find_10',['find',['../classustd_1_1map.html#a42ba179f5afb3259fdd217ff2523de6c',1,'ustd::map']]],
-  ['functional_2eh_11',['functional.h',['../functional_8h.html',1,'']]]
+  ['erase_15',['erase',['../classustd_1_1array.html#a890402e4852e5fa34c6867896b5dfffd',1,'ustd::array::erase()'],['../classustd_1_1map.html#ace66c05ddac4f7721d8935e73ae61510',1,'ustd::map::erase()']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['operator_5b_5d_18',['operator[]',['../classustd_1_1array.html#a38a056f7735395b40fffd180e911f31e',1,'ustd::array::operator[](unsigned int i) const'],['../classustd_1_1array.html#a15ee349cbd2f5e8febe91bdfd780cc58',1,'ustd::array::operator[](unsigned int i)'],['../classustd_1_1map.html#a54569a7dbecce8eb43b7da0e29fcfd0b',1,'ustd::map::operator[](K key) const'],['../classustd_1_1map.html#a1b0670916b74ab7628fb3da556589d98',1,'ustd::map::operator[](K key)']]]
+  ['map_21',['map',['../classustd_1_1map.html',1,'ustd::map&lt; K, V &gt;'],['../classustd_1_1map.html#af78aa3e45ae934ee8a4d9a0496babf9c',1,'ustd::map::map()']]],
+  ['map_2eh_22',['map.h',['../map_8h.html',1,'']]],
+  ['max_5fmap_5fsize_23',['MAX_MAP_SIZE',['../map_8h.html#a0dcaa63464405845211a092cd6d453d3',1,'map.h']]]
 ];
