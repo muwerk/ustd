@@ -231,14 +231,10 @@ template <typename T> class array {
         /*! Read content of array element at i, a=myArray[3] */
         if (i >= allocSize) {
             if (incSize == 0) {
-#ifdef USTD_ASSERT
                 assert(i < allocSize);
-#endif
             }
             if (!resize(allocSize + incSize)) {
-#ifdef USTD_ASSERT
                 assert(i < allocSize);
-#endif
             }
         }
         if (i >= size && i <= allocSize)
@@ -253,14 +249,10 @@ template <typename T> class array {
         /*! Assign content of array element at i, e.g. myArray[3]=3 */
         if (i >= allocSize) {
             if (incSize == 0) {
-#ifdef USTD_ASSERT
                 assert(i < allocSize);
-#endif
             }
             if (!resize(allocSize + incSize)) {
-#ifdef USTD_ASSERT
                 assert(i < allocSize);
-#endif
             }
         }
         if (i >= size && i <= allocSize)
