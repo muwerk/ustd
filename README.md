@@ -57,7 +57,8 @@ See [ustdmin](https://github.com/muwerk/Examples/tree/master/ustdmin) for a comp
 
 ## History
 
-- 0.3.1 (2010-12-25) More SPIFFS vs LittleFS preparations
+- 0.3.2 (2021-01-07) More consistent debug interface (@tuxpoldo) using `DBG()` macros (s. [https://github.com/muwerk/ustd/blob/2a64a88b59e8bc880d7a1ad63e96d8a66bb1aaf8/platform.h#L151](`platform.h`) ), fixes to `USTD_ASSERT` macro that was inconsistently named ASSERT*S*.
+- 0.3.1 (2020-12-25) More SPIFFS vs LittleFS preparations
 - 0.3.0 (2020-10-26) Cleanup platform.h: ESP32 continues to use SPIFFS by default, ESP8266 LittleFS (since SPIFFS is
   deprecated for ESP8266, and LittleFS is not (yet) available for ESP32). This is a breaking change for ESP8266 installations
   that require the filesystem, since an upgrade from SPIFFS to LittleFS is required, see [munet Readme](https://github.com/muwerk/munet/blob/master/README.md) for additional information.
