@@ -52,8 +52,9 @@
 
 #ifdef USTD_ASSERT
 #include <cassert>
+#define ASSERT(f) assert(f)
 #else  // else USTD_ASSERT
-#define assert(f)
+#define ASSERT(f)
 #endif  // end USTD_ASSERT
 
 typedef std::string String;
@@ -136,14 +137,14 @@ bool assertFailedLine(const char *filename, int line) {
     return false;
 }
 
-#define assert(f)                                                                                  \
+#define ASSERT(f)                                                                                  \
     if (!(f))                                                                                      \
     assertFailedLine(__FILE__, __LINE__)
 #else  // else USE_SERIAL_DBG
-#define assert(f)
+#define ASSERT(f)
 #endif  // end USE_SERIAL_DBG
 #else   // else USTD_ASSERT
-#define assert(f)
+#define ASSERT(f)
 #endif  // end USTD_ASSERT
 
 #endif  // end linux, apple
@@ -162,6 +163,7 @@ bool assertFailedLine(const char *filename, int line) {
 #endif  // end USE_SERIAL_DBG > 2
 #else
 #define DBG2(f)
+#define DBG3(f)
 #endif  // end USE_SERIAL_DBG > 1
 
 #else
