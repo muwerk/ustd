@@ -231,10 +231,10 @@ template <typename T> class array {
         /*! Read content of array element at i, a=myArray[3] */
         if (i >= allocSize) {
             if (incSize == 0) {
-                assert(i < allocSize);
+                ASSERT(i < allocSize);
             }
             if (!resize(allocSize + incSize)) {
-                assert(i < allocSize);
+                ASSERT(i < allocSize);
             }
         }
         if (i >= size && i <= allocSize)
@@ -249,10 +249,10 @@ template <typename T> class array {
         /*! Assign content of array element at i, e.g. myArray[3]=3 */
         if (i >= allocSize) {
             if (incSize == 0) {
-                assert(i < allocSize);
+                ASSERT(i < allocSize);
             }
             if (!resize(allocSize + incSize)) {
-                assert(i < allocSize);
+                ASSERT(i < allocSize);
             }
         }
         if (i >= size && i <= allocSize)
