@@ -151,28 +151,38 @@ bool assertFailedLine(const char *filename, int line) {
 
 #ifdef USE_SERIAL_DBG
 
+#define DBG_INIT(f) Serial.begin(f)
 #define DBG_ONLY(f) f
 #define DBG(f) Serial.println(f)
+#define DBGP(f) Serial.print(f)
 #define DBGF(...) Serial.printf(__VA_ARGS__)
 #if USE_SERIAL_DBG > 1
 #define DBG2(f) Serial.println(f)
+#define DBGP2(f) Serial.print(f)
 #if USE_SERIAL_DBG > 2
 #define DBG3(f) Serial.println(f)
+#define DBGP3(f) Serial.print(f)
 #else
 #define DBG3(f)
+#define DBGP3(f)
 #endif  // end USE_SERIAL_DBG > 2
 #else
 #define DBG2(f)
 #define DBG3(f)
+#define DBGP2(f)
+#define DBGP3(f)
 #endif  // end USE_SERIAL_DBG > 1
 
 #else
 
+#define DBG_INIT(f)
 #define DBG_ONLY(f)
 #define DBG(f)
 #define DBGF(...)
 #define DBG2(f)
 #define DBG3(f)
+#define DBGP2(f)
+#define DBGP3(f)
 
 #endif  // USE_SERIAL_DBG
 
