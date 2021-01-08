@@ -166,7 +166,7 @@ template <typename T> class array {
             else
                 mv = allocSize;
         }
-        T *arrn = ualloc(newSize);  // new T[newSize];
+        T *arrn = ualloc(newSize ? newSize : ARRAY_INIT_SIZE);  // new T[newSize];
         if (arrn == nullptr)
             return false;
         for (unsigned int i = 0; i < mv; i++) {
@@ -174,7 +174,9 @@ template <typename T> class array {
         }
         ufree(arr);
         arr = arrn;
-        allocSize = newSize;
+        allocSize = newSize ? newSize : ARRAY_INIT_SIZE;
+        if (newSize < size)
+            size = newSize;
         return true;
     }
 
@@ -225,6 +227,13 @@ template <typename T> class array {
             }
         }
         return true;
+    }
+
+    bool erase() {
+        /*! Delete all array elements. memory might be freed, if shrink=True
+         * during array creation.
+         */
+        return resize(0);
     }
 
     T operator[](unsigned int i) const {
