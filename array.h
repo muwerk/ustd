@@ -166,7 +166,7 @@ template <typename T> class array {
             else
                 mv = allocSize;
         }
-        T *arrn = ualloc(newSize);  // new T[newSize];
+        T *arrn = ualloc(newSize ? newSize : ARRAY_INIT_SIZE);  // new T[newSize];
         if (arrn == nullptr)
             return false;
         for (unsigned int i = 0; i < mv; i++) {
@@ -174,7 +174,9 @@ template <typename T> class array {
         }
         ufree(arr);
         arr = arrn;
-        allocSize = newSize;
+        allocSize = newSize ? newSize : ARRAY_INIT_SIZE;
+        if (newSize < size)
+            size = newSize;
         return true;
     }
 
@@ -227,14 +229,21 @@ template <typename T> class array {
         return true;
     }
 
+    bool erase() {
+        /*! Delete all array elements. memory might be freed, if shrink=True
+         * during array creation.
+         */
+        return resize(0);
+    }
+
     T operator[](unsigned int i) const {
         /*! Read content of array element at i, a=myArray[3] */
         if (i >= allocSize) {
             if (incSize == 0) {
-                assert(i < allocSize);
+                ASSERT(i < allocSize);
             }
             if (!resize(allocSize + incSize)) {
-                assert(i < allocSize);
+                ASSERT(i < allocSize);
             }
         }
         if (i >= size && i <= allocSize)
@@ -249,10 +258,10 @@ template <typename T> class array {
         /*! Assign content of array element at i, e.g. myArray[3]=3 */
         if (i >= allocSize) {
             if (incSize == 0) {
-                assert(i < allocSize);
+                ASSERT(i < allocSize);
             }
             if (!resize(allocSize + incSize)) {
-                assert(i < allocSize);
+                ASSERT(i < allocSize);
             }
         }
         if (i >= size && i <= allocSize)
