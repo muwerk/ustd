@@ -8,6 +8,7 @@
 #elif defined(__ATMEGA__)
 #define KNOWN_PLATFORM 1
 #include <Arduino.h>
+#include <new.h>  // New Arduino core new operator
 #elif defined(__ESP__)
 #define KNOWN_PLATFORM 1
 #if defined(__USE_OLD_FS__) || (defined(__ESP32__) && !defined(__USE_LITTLE_FS__))
