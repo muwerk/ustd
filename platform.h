@@ -178,6 +178,7 @@ bool assertFailedLine(const char *filename, int line) {
 #define DBG_INIT(f)
 #define DBG_ONLY(f)
 #define DBG(f)
+#define DBGP(f)
 #define DBGF(...)
 #define DBG2(f)
 #define DBG3(f)
