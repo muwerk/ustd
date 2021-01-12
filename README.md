@@ -62,7 +62,8 @@ See [ustdmin](https://github.com/muwerk/Examples/tree/master/ustdmin) for a comp
 
 ## History
 
-- 0.3.5 (2021-01-12) New function freeMemory(), new platform define `__UNO__`.
+- 0.3.6 (2021-01-12) Support for UNO and MEGA in functional.h via `__ARDUINO__` define.
+- 0.3.5 (2021-01-12) New function freeMemory(), new platform define `__UNO__`. (Both `__UNO__` and `__ATMEGA__` implicitly define `__ARDUINO__`)
 - 0.3.4 (2021-01-11) Small doc fixes.
 - 0.3.3 (2021-01-08) ustd::array::resize() did not correctly update the
   array size, which would lead to memory corrupts (tuxpoldo). Improvements
