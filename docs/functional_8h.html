@@ -75,12 +75,12 @@ $(function() {
 <p>Note: if you are only interested in using functionals, it might be better to directly use project <a href="https://github.com/winterscar/functional-avr">functional-avr</a> by winterscar.</p>
 <h2>An example:</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#define __ATTINY__ 1  // Appropriate platform define required</span></div>
-<div class="line">                      <span class="comment">// Note: only __ATTINY__ and __ATMEGA__ are supported.</span></div>
+<div class="line">                      <span class="comment">// Note: only __ATTINY__ and __ARDUINO__ are supported.</span></div>
 <div class="line">                      <span class="comment">// All other platforms should use std::function&lt;&gt;</span></div>
 <div class="line">                      <span class="comment">// from standard library.</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="functional_8h.html">functional.h</a>&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#if defined (__ATTINY__) || defined (__ATMEGA__)</span></div>
+<div class="line"><span class="preprocessor">#if defined (__ATTINY__) || defined (__ARDUINO__)</span></div>
 <div class="line"><span class="keyword">typedef</span> ustd::function&lt;void()&gt; T_TASK;</div>
 <div class="line"><span class="preprocessor">#else // use standard library instead:</span></div>
 <div class="line"><span class="keyword">typedef</span> std::function&lt;void()&gt; T_TASK;</div>
