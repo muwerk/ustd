@@ -23,12 +23,12 @@ winterscar.
 
 ~~~{.cpp}
 #define __ATTINY__ 1  // Appropriate platform define required
-                      // Note: only __ATTINY__ and __ATMEGA__ are supported.
+                      // Note: only __ATTINY__ and __ARDUINO__ are supported.
                       // All other platforms should use std::function<>
                       // from standard library.
 #include <functional.h>
 
-#if defined (__ATTINY__) || defined (__ATMEGA__)
+#if defined (__ATTINY__) || defined (__ARDUINO__)
 typedef ustd::function<void()> T_TASK;
 #else // use standard library instead:
 typedef std::function<void()> T_TASK;
@@ -51,7 +51,7 @@ class Something {
 */
 #pragma once
 
-#if defined __ATTINY__ || defined(__ATMEGA__)
+#if defined __ATTINY__ || defined(__ARDUINO__)
 
 using size_t = decltype(sizeof(int));
 
