@@ -62,6 +62,7 @@ See [ustdmin](https://github.com/muwerk/Examples/tree/master/ustdmin) for a comp
 
 ## History
 
+- 0.3.5 (2021-01-12) New function freeMemory(), new platform define `__UNO__`.
 - 0.3.4 (2021-01-11) Small doc fixes.
 - 0.3.3 (2021-01-08) ustd::array::resize() did not correctly update the
   array size, which would lead to memory corrupts (tuxpoldo). Improvements
