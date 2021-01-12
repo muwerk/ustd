@@ -91,17 +91,23 @@ $(function() {
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">Arduino  </td><td class="markdownTableBodyNone"><code>__ATMEGA__</code>  </td><td class="markdownTableBodyNone">Should work with most arduinos   </td></tr>
 <tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Arduino  </td><td class="markdownTableBodyNone"><code>__UNO__</code>  </td><td class="markdownTableBodyNone">Should work with low resource arduinos   </td></tr>
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">ATtiny  </td><td class="markdownTableBodyNone"><code>__ATTINY__</code>  </td><td class="markdownTableBodyNone">For very low resource ATMELs   </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ESP8266  </td><td class="markdownTableBodyNone"><code>__ESP__</code>  </td><td class="markdownTableBodyNone">For ESP8266 and ESP32   </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">ESP32  </td><td class="markdownTableBodyNone"><code>__ESP__</code> and  </td><td class="markdownTableBodyNone">ESP32 needs either <code>__ESP32__</code>   </td></tr>
+<td class="markdownTableBodyNone">ESP8266  </td><td class="markdownTableBodyNone"><code>__ESP__</code>  </td><td class="markdownTableBodyNone">For ESP8266 and ESP32   </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><code>__ESP32__</code>  </td><td class="markdownTableBodyNone">or <code>__ESP32DEV__</code> in addition   </td></tr>
+<td class="markdownTableBodyNone">ESP32  </td><td class="markdownTableBodyNone"><code>__ESP__</code> and  </td><td class="markdownTableBodyNone">ESP32 needs either <code>__ESP32__</code>   </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"><code>__ESP32__</code>  </td><td class="markdownTableBodyNone">or <code>__ESP32DEV__</code> in addition to <code>__ESP__</code>   </td></tr>
 </table>
 <p>For ESP8266 additionally:</p>
 <ul>
 <li>Define <code>__USE_OLD_FS__</code> to continue to use old SPIFFS instead of LittleFS. New default for ESP8266 is LittleFS.</li>
+</ul>
+<p>For 'standard' Arduinos:</p>
+<ul>
+<li>Both <code>__ATMEGA__</code> and <code>__UNO__</code> define additionally <code>__ARDUINO__</code> which can be used to check for the 'standard' Arduino core.</li>
 </ul>
 <div class="fragment"><div class="line"> {c++}</div>
 <div class="line">// Sample usage:</div>
@@ -122,6 +128,7 @@ $(function() {
 </ul>
 <h2>History</h2>
 <ul>
+<li>0.3.5 (2021-01-12) New function freeMemory(), new platform define <code>__UNO__</code>.</li>
 <li>0.3.4 (2021-01-11) Small doc fixes.</li>
 <li>0.3.3 (2021-01-08) <a class="el" href="classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738">ustd::array::resize()</a> did not correctly update the array size, which would lead to memory corrupts (tuxpoldo). Improvements for debug macros.</li>
 <li>0.3.2 (2021-01-07) More consistent debug interface (<a href="https://github.com/tuxpoldo">tuxpoldo</a>) using <code><a class="el" href="platform_8h.html#a7be8305523c50424eef047e1e3597c94">DBG()</a></code> macros (s. <a href="https://github.com/muwerk/ustd/blob/2a64a88b59e8bc880d7a1ad63e96d8a66bb1aaf8/platform.h#L151"><code>platform.h</code></a> ), fixes to <code>USTD_ASSERT</code> macro that was inconsistently named ASSERT*S*.</li>
