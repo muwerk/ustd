@@ -5,8 +5,14 @@
 #define KNOWN_PLATFORM 1
 #include <Arduino.h>
 #include <SoftwareSerial.h>
+#elif defined(__UNO__)
+#define KNOWN_PLATFORM 1
+#define __ARDUINO__ 1
+#include <Arduino.h>
+#include <new.h>  // New Arduino core new operator
 #elif defined(__ATMEGA__)
 #define KNOWN_PLATFORM 1
+#define __ARDUINO__ 1
 #include <Arduino.h>
 #include <new.h>  // New Arduino core new operator
 #elif defined(__ESP__)
@@ -45,6 +51,7 @@
 #include <cstring>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <iostream>
 #include <string>
 #include <sys/time.h>
@@ -150,7 +157,7 @@ bool assertFailedLine(const char *filename, int line) {
 
 #endif  // end linux, apple
 
-#ifdef __ATMEGA__
+#ifdef __ARDUINO__
 // from: https://learn.adafruit.com/memories-of-an-arduino/measuring-free-memory
 #ifdef __arm__
 // should use uinstd.h to define sbrk but Due causes a conflict
@@ -168,6 +175,22 @@ int freeMemory() {
 #else   // __arm__
     return __brkval ? &top - __brkval : &top - __malloc_heap_start;
 #endif  // __arm__
+}
+#elif defined(__ESP__)
+int freeMemory() {
+    return (int)ESP.getFreeHeap();
+}
+#elif defined(__UNIXOID__)
+// To keep the API compatible, this function gives back max INT_MAX as free memory.
+int freeMemory() {
+    long pages = sysconf(_SC_PHYS_PAGES);
+    long page_size = sysconf(_SC_PAGE_SIZE);
+    long long memfree = pages * page_size;
+    if (memfree > INT_MAX) {
+        return INT_MAX;
+    } else {
+        return (int)memfree;
+    };
 }
 #endif
 

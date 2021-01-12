@@ -23,6 +23,7 @@ using ustd::queue;
 
 int main() {
     cout << "Testing ustd..." << endl;
+    cout << "Memory free is more than: " << freeMemory() << endl;
 
     array<int> ar = array<int>(1, 100, 1);
     queue<int> qu = queue<int>(128);
