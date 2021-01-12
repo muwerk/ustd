@@ -19,19 +19,24 @@ Documentation: [ustd:: documentation.](https://muwerk.github.io/ustd/docs/index.
 
 Make sure to use the appropriate platform define before including from ustd.
 
-| Platform | #define       | Comment                        |
-| -------- | ------------- | ------------------------------ |
-| Mac      | `__APPLE__`   | Should be defined already      |
-| Linux    | `__linux__`   | Should be defined already      |
-| Arduino  | `__ATMEGA__`  | Should work with most arduinos |
-| ATtiny   | `__ATTINY__`  | For very low resource ATMELs   |
-| ESP8266  | `__ESP__`     | For ESP8266 and ESP32          |
-| ESP32    | `__ESP__` and | ESP32 needs either `__ESP32__` |
-|          | `__ESP32__`   | or `__ESP32DEV__` in addition  |
+| Platform | #define       | Comment                                    |
+| -------- | ------------- | ------------------------------------------ |
+| Mac      | `__APPLE__`   | Should be defined already                  |
+| Linux    | `__linux__`   | Should be defined already                  |
+| Arduino  | `__ATMEGA__`  | Should work with most arduinos             |
+| Arduino  | `__UNO__`     | Should work with low resource arduinos     |
+| ATtiny   | `__ATTINY__`  | For very low resource ATMELs               |
+| ESP8266  | `__ESP__`     | For ESP8266 and ESP32                      |
+| ESP32    | `__ESP__` and | ESP32 needs either `__ESP32__`             |
+|          | `__ESP32__`   | or `__ESP32DEV__` in addition to `__ESP__` |
 
 For ESP8266 additionally:
 
 - Define `__USE_OLD_FS__` to continue to use old SPIFFS instead of LittleFS. New default for ESP8266 is LittleFS.
+
+For 'standard' Arduinos:
+
+- Both `__ATMEGA__` and `__UNO__` define additionally `__ARDUINO__` which can be used to check for the 'standard' Arduino core.
 
 ```c++
 // Sample usage:
@@ -57,6 +62,7 @@ See [ustdmin](https://github.com/muwerk/Examples/tree/master/ustdmin) for a comp
 
 ## History
 
+- 0.3.5 (2021-01-12) New function freeMemory(), new platform define `__UNO__`.
 - 0.3.4 (2021-01-11) Small doc fixes.
 - 0.3.3 (2021-01-08) ustd::array::resize() did not correctly update the
   array size, which would lead to memory corrupts (tuxpoldo). Improvements

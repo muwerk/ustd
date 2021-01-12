@@ -59,9 +59,12 @@ using size_t = decltype(sizeof(int));
 using nullptr_t = decltype(nullptr);
 #endif
 
+// NEW_H is some new Arduino implementation of new operator
+#ifndef NEW_H
 void *operator new(size_t size, void *ptr) {
     return ptr;
 }
+#endif
 
 namespace ustd {
 
