@@ -31,6 +31,7 @@ define</a> before including ustd headers.
 
 #include "platform.h"
 
+//! \brief The ustd namespace
 namespace ustd {
 
 #define ARRAY_INC_SIZE 16
