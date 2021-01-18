@@ -1,51 +1,111 @@
 // platform.h - adapt platform specific stuff
 #pragma once
 
+// https://docs.platformio.org/en/latest/plus/debugging.html
+// MCU       CPU        RAM   Flash   EEPROM      Clock
+// ATtiny85            512b      8k     512b      20MHz
+// Uno                   2k     32k       1k      16MHz
+// Mega                  8k    256k       4k      16MHz
+// STM32F103C8T6        20k     64k               72MHz
+// "Bluepill" Cortex-M3
+// STM32F411CEU6       128k    512k              100MHz
+// "Blackpill" Cortex-M4F
+// Esp8266              80k 512k-4M           80-160MHz
+// ESP32               520k   2M-4M          160-240MHz
+
+#define USTD_FEATURE_MEM_512B 1  // ATtiny85
+#define USTD_FEATURE_MEM_2K 2    // Arduino UNO, ATtiny1614, AT328P
+#define USTD_FEATURE_MEM_8K 3    // Arduino MEGA
+#define USTD_FEATURE_MEM_32k 4   // ESP8266, Bluepill
+#define USTD_FEATURE_MEM_128 5   // Blackpill
+#define USTD_FEATURE_MEM_512k 6  // ESP32
+#define USTD_FEATURE_MEM_1M 7
+
+/*
+A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
+// #if USTD_FEATURE_MEMORY >= USTD_FEATURE_MEM_2K
+// we have at least 2k RAM
+// #endif
+
+// Platforms use the following defines to show feature-availability:
+#define USTD_FEATURE_FILESYSTEM
+#define USTD_FEATURE_FS_SPIFFS
+#define USTD_FEATURE_FS_LITTLEFS
+#define USTD_FEATURE_FS_SD
+
+#define USTD_FEATURE_EEPROM
+
+#define USTD_FEATURE_SYSTEMCLOCK
+#define USTD_FEATURE_CLK_READ
+#define USTD_FEATURE_CLK_SET
+
+#define USTD_FEATURE_NET
+*/
 #ifdef __ATTINY__
 #define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_512B
+#define USTD_FEATURE_EEPROM
 #include <Arduino.h>
 #include <SoftwareSerial.h>
 #elif defined(__UNO__)
 #define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_2K
+#define USTD_FEATURE_EEPROM
 #define __ARDUINO__ 1
 #include <Arduino.h>
 #include <new.h>  // New Arduino core new operator
 #elif defined(__ATMEGA__)
 #define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_8K
+#define USTD_FEATURE_EEPROM
 #define __ARDUINO__ 1
 #include <Arduino.h>
 #include <new.h>  // New Arduino core new operator
 #elif defined(__ESP__)
 #define KNOWN_PLATFORM 1
+#define USTD_FEATURE_FILESYSTEM
 #if defined(__USE_OLD_FS__) || (defined(__ESP32__) && !defined(__USE_LITTLE_FS__))
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
 #if defined(__ESP32__)
+#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_512K
 #include <SPIFFS.h>
+#define USTD_FEATURE_FS_SPIFFS
 #endif
 #include <FS.h>
 #define __USE_SPIFFS_FS__
 #else
+#define USTD_FEATURE_FS_LITTLEFS
 #include <LittleFS.h>
 #define __USE_LITTLE_FS__
 #endif  // __USE_OLD_FS__ || ESP32 && !LITTLE_FS
 #define HAS_SERIAL (1)
 #if defined(__ESP32__) || defined(__ESP32DEV__)
 #include <WiFi.h>
-#include <time.h>      // time() ctime()
+#define USTD_FEATURE_NETWORK
+#include <time.h>  // time() ctime()
+#define USTD_FEATURE_SYSTEMCLOCK
+#define USTD_FEATURE_CLK_READ
+#define USTD_FEATURE_CLK_SET
 #include <sys/time.h>  // struct timeval
 #else                  // ESP8266
 #if defined(__USE_OLD_FS__) || defined(__USE_SPIFFS_FS__)
 //#include <SD.h>  //otherwise bear.ssl doesn't compile...
 #endif  // __USE_OLD_FS__
 #include <ESP8266WiFi.h>
+#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_32K
+#define USTD_FEATURE_NETWORK
 #include <time.h>       // time() ctime()
 #include <sys/time.h>   // struct timeval
 #include <coredecls.h>  // settimeofday_cb()
-#endif                  // ESP8266
-#endif                  // ESP
+#define USTD_FEATURE_SYSTEMCLOCK
+#define USTD_FEATURE_CLK_READ
+#define USTD_FEATURE_CLK_SET
+#endif  // ESP8266
+#endif  // ESP
 
 #if defined(__linux__) || defined(__APPLE__)
 #define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_1M
 #define __UNIXOID__ 1
 #include <climits>
 #include <cstring>
@@ -55,6 +115,11 @@
 #include <iostream>
 #include <string>
 #include <sys/time.h>
+#define USTD_FEATURE_NETWORK
+#define USTD_FEATURE_FILESYSTEM
+#define USTD_FEATURE_SYSTEMCLOCK
+#define USTD_FEATURE_CLK_READ
+#define USTD_FEATURE_CLK_SET
 
 #define USTD_ASSERT 1
 
