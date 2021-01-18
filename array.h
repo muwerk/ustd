@@ -2,18 +2,17 @@
 
 #pragma once
 
-/*! \mainpage Ustd micro-standard-library for low-resource AVRs
+/*! \mainpage ustd micro-standard-library for low-resource AVRs
 \section Introduction
-ustd provides minimal and highly portable implementations for:
 
-* * \ref ustd::array<T>
-* * \ref ustd::queue<T>
-* * \ref ustd::map<K,V>
+ustd provides minimal and highly portable implementations of the following classes:
 
-classes.
+* * \ref ustd::array<T>, a lightweight c++11 array implementation.
+* * \ref ustd::queue<T>, a lightweight c++11 ring buffer queue implementation.
+* * \ref ustd::map<K,V>, a lightweight c++11 dictionary map implementation.
 
-In additional, for Atmel AVRs a drop-in replacement for std::function<>
-is provided as ustd::function<>
+Additionally a drop-in replacement for `std::function<>` is provided as
+`ustd::function<>` for Atmel AVRs
 
 * * \ref functional.h
 
@@ -31,6 +30,7 @@ define</a> before including ustd headers.
 
 #include "platform.h"
 
+//! \brief The ustd namespace
 namespace ustd {
 
 #define ARRAY_INC_SIZE 16
