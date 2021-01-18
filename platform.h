@@ -1,6 +1,7 @@
 // platform.h - adapt platform specific stuff
 #pragma once
 
+//================= Platform defines ==========================
 // https://docs.platformio.org/en/latest/plus/debugging.html
 // MCU       CPU        RAM   Flash   EEPROM      Clock
 // ATtiny85            512b      8k     512b      20MHz
@@ -28,71 +29,89 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 // #endif
 
 // Platforms use the following defines to show feature-availability:
+
+// Filesystem:
 #define USTD_FEATURE_FILESYSTEM
 #define USTD_FEATURE_FS_SPIFFS
 #define USTD_FEATURE_FS_LITTLEFS
 #define USTD_FEATURE_FS_SD
+// User override-options for FS:
+#define USTD_FEATURE_FS_FORCE_SPIFFS
+#define USTD_FEATURE_FS_FORCE_NO_FS
 
+// EEPROM:
 #define USTD_FEATURE_EEPROM
 
+// Time:
 #define USTD_FEATURE_SYSTEMCLOCK
 #define USTD_FEATURE_CLK_READ
 #define USTD_FEATURE_CLK_SET
 
+// Network:
 #define USTD_FEATURE_NET
 */
-#ifdef __ATTINY__
+
+// Compatibility-1
+#if !defined(DONT_USE_FEATURE_COMPATIBILITY)
+#if defined(__USE_OLD_FS__)
+#define USTD_FEATURE_FS_FORCE_SPIFFS
+#pragma message("Please use USTD_FEATURE_FS_FORCE_SPIFFS instead of __USE_OLD_FS__")
+#endif
+#if defined(__USE_SPIFFS_FS__)
+#pragma message("Please use USTD_FEATURE_FS_FORCE_SPIFFS instead of __USE_SPIFFS_FS__")
+#endif
+#if defined(__USE_LITTLE_FS__)
+#pragma message("Please do not use __USE_LITTLEFS__")
+#endif
+#endif  // DONT_USE_FEATURE_COMPATIBILITY
+// Compatibility-1 end (see below for more)
+
+// ------------- ATTINY ---------------------------------------
+#if defined(__ATTINY__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
 #define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_512B
 #define USTD_FEATURE_EEPROM
 #include <Arduino.h>
 #include <SoftwareSerial.h>
-#elif defined(__UNO__)
+#endif  // ATTINY
+
+// ------------- Arduino UNO ----------------------------------
+#if defined(__UNO__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
 #define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_2K
 #define USTD_FEATURE_EEPROM
 #define __ARDUINO__ 1
 #include <Arduino.h>
 #include <new.h>  // New Arduino core new operator
-#elif defined(__ATMEGA__)
+#endif            // Arduino UNO
+
+// ------------- Arduino MEGA ---------------------------------
+#if defined(__ATMEGA__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
 #define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_8K
 #define USTD_FEATURE_EEPROM
 #define __ARDUINO__ 1
 #include <Arduino.h>
 #include <new.h>  // New Arduino core new operator
-#elif defined(__ESP__)
-#define KNOWN_PLATFORM 1
-#define USTD_FEATURE_FILESYSTEM
-#if defined(__USE_OLD_FS__) || (defined(__ESP32__) && !defined(__USE_LITTLE_FS__))
-#define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
-#if defined(__ESP32__)
-#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_512K
-#include <SPIFFS.h>
-#define USTD_FEATURE_FS_SPIFFS
+#endif            // Arduino Mega
+
+// ------------- ESP8266 --------------------------------------
+#if defined(__ESP__) && !defined(__ESP32__) && !defined(__ESP32DEV__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
 #endif
-#include <FS.h>
-#define __USE_SPIFFS_FS__
-#else
-#define USTD_FEATURE_FS_LITTLEFS
-#include <LittleFS.h>
-#define __USE_LITTLE_FS__
-#endif  // __USE_OLD_FS__ || ESP32 && !LITTLE_FS
-#define HAS_SERIAL (1)
-#if defined(__ESP32__) || defined(__ESP32DEV__)
-#include <WiFi.h>
-#define USTD_FEATURE_NETWORK
-#include <time.h>  // time() ctime()
-#define USTD_FEATURE_SYSTEMCLOCK
-#define USTD_FEATURE_CLK_READ
-#define USTD_FEATURE_CLK_SET
-#include <sys/time.h>  // struct timeval
-#else                  // ESP8266
-#if defined(__USE_OLD_FS__) || defined(__USE_SPIFFS_FS__)
-//#include <SD.h>  //otherwise bear.ssl doesn't compile...
-#endif  // __USE_OLD_FS__
-#include <ESP8266WiFi.h>
+#define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_32K
+#include <ESP8266WiFi.h>
 #define USTD_FEATURE_NETWORK
 #include <time.h>       // time() ctime()
 #include <sys/time.h>   // struct timeval
@@ -100,10 +119,57 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_SYSTEMCLOCK
 #define USTD_FEATURE_CLK_READ
 #define USTD_FEATURE_CLK_SET
+#if !defined(USTD_FEATURE_FS_FORCE_NO_FS)
+#define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
+#if defined(USTD_FEATURE_FS_FORCE_SPIFFS)
+#include <SPIFFS.h>
+#define USTD_FEATURE_FS_SPIFFS
+#else  // Use standard LittleFS
+#define USTD_FEATURE_FS_LITTLEFS
+#include <LittleFS.h>
+#endif  // FORCE_SPIFFS
+#endif  // FORCE_NO_FS
 #endif  // ESP8266
-#endif  // ESP
 
+// ------------- ESP32 and ESP32DEV ---------------------------
+#if defined(__ESP32__) || defined(__ESP32DEV__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_512K
+#include <WiFi.h>
+#define USTD_FEATURE_NETWORK
+#include <time.h>      // time() ctime()
+#include <sys/time.h>  // struct timeval
+#define USTD_FEATURE_SYSTEMCLOCK
+#define USTD_FEATURE_CLK_READ
+#define USTD_FEATURE_CLK_SET
+#if !defined(USTD_FEATURE_FS_FORCE_NO_FS)
+#define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
+#include <SPIFFS.h>
+#include <FS.h>
+#define USTD_FEATURE_FS_SPIFFS
+#endif  // FORCE_NO_FS
+#endif  // ESP32 || ESP32DEV
+
+//------- compatibility-2
+#if !defined(DONT_USE_FEATURE_COMPATIBILITY)
+#if defined(USTD_FEATURE_FS_LITTLEFS)
+#define __USE_LITTLEFS__
+#endif
+#if defined(USTD_FEATURE_FS_SPIFFS)
+#define __USE_SPIFFS_FS__
+#define __USE_OLD_FS__
+#endif
+#endif  // DONT_USE_FEATURE_COMPATIBILITY
+//-------- end compatibility-2
+
+// ------------- Unixoids -------------------------------------
 #if defined(__linux__) || defined(__APPLE__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
 #define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_1M
 #define __UNIXOID__ 1
@@ -121,6 +187,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_CLK_READ
 #define USTD_FEATURE_CLK_SET
 
+// ------------- Compatibility libs for Unixoids --------------
 #define USTD_ASSERT 1
 
 #ifdef USTD_ASSERT
@@ -199,7 +266,7 @@ class SerialSim {
 SerialSim Serial;
 
 #else  // else linux, apple
-
+// ------------- Debug helpers and small tools for MCUs -------
 #ifdef USTD_ASSERT
 #ifdef USE_SERIAL_DBG
 bool assertFailedLine(const char *filename, int line) {
