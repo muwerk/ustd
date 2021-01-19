@@ -56,10 +56,10 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #if !defined(DONT_USE_FEATURE_COMPATIBILITY)
 #if defined(__USE_OLD_FS__)
 #define USTD_FEATURE_FS_FORCE_SPIFFS
-#pragma message("Please use USTD_FEATURE_FS_FORCE_SPIFFS instead of __USE_OLD_FS__")
+#pragma message("Please use USTD_OPTION_FS_FORCE_SPIFFS instead of __USE_OLD_FS__")
 #endif
 #if defined(__USE_SPIFFS_FS__)
-#pragma message("Please use USTD_FEATURE_FS_FORCE_SPIFFS instead of __USE_SPIFFS_FS__")
+#pragma message("Please use USTD_OPTION_FS_FORCE_SPIFFS instead of __USE_SPIFFS_FS__")
 #endif
 #if defined(__USE_LITTLE_FS__)
 #pragma message("Please do not use __USE_LITTLEFS__")
@@ -120,9 +120,9 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_SYSTEMCLOCK
 #define USTD_FEATURE_CLK_READ
 #define USTD_FEATURE_CLK_SET
-#if !defined(USTD_FEATURE_FS_FORCE_NO_FS)
+#if !defined(USTD_OPTION_FS_FORCE_NO_FS)
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
-#if defined(USTD_FEATURE_FS_FORCE_SPIFFS)
+#if defined(USTD_OPTION_FS_FORCE_SPIFFS)
 #include <SPIFFS.h>
 #define USTD_FEATURE_FS_SPIFFS
 #else  // Use standard LittleFS
@@ -146,7 +146,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_SYSTEMCLOCK
 #define USTD_FEATURE_CLK_READ
 #define USTD_FEATURE_CLK_SET
-#if !defined(USTD_FEATURE_FS_FORCE_NO_FS)
+#if !defined(USTD_OPTION_FS_FORCE_NO_FS)
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
 #include <SPIFFS.h>
 #include <FS.h>
