@@ -67,6 +67,8 @@ For 'standard' Arduinos:
 
 #### Possible values for `USTD_FEATURE_MEMORY`
 
+(Automatically derived by `platform.h` from platform define `__xxx__`)
+
 | Value                      | Example platform                         |
 | -------------------------- | ---------------------------------------- |
 | `USTD_FEATURE_MEM_512B`    | ATtiny85
