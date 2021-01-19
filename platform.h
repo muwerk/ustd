@@ -35,9 +35,10 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_FS_SPIFFS
 #define USTD_FEATURE_FS_LITTLEFS
 #define USTD_FEATURE_FS_SD
+
 // User override-options for FS:
-#define USTD_FEATURE_FS_FORCE_SPIFFS
-#define USTD_FEATURE_FS_FORCE_NO_FS
+#define USTD_OPTION_FS_FORCE_SPIFFS
+#define USTD_OPTION_FS_FORCE_NO_FS
 
 // EEPROM:
 #define USTD_FEATURE_EEPROM
