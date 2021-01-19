@@ -60,6 +60,11 @@ For 'standard' Arduinos:
 | `USTD_FEATURE_FS_SPIFFS`   | Filesystem is SPIFFS format (legacy ESP8266 and all ESP32) |
 | `USTD_FEATURE_FS_LITTLEFS` | Filesystem is LittleFS (standard for ESP8266)
 | `USTD_FEATURE_FS_SD`       | Future: SD Filesystem                               |
+| `USTD_FEATURE_EEPROM`      | Platform has EEPROM storage                         |
+| `USTD_FEATURE_SYSTEMCLOCK` | System has a clock                                  |
+| `USTD_FEATURE_CLK_READ`    | Time can be read                                    |
+| `USTD_FEATURE_CLK_SET`     | Time can be set                                     |
+| `USTD_FEATURE_NET`         | Network access available                            |
 
 #### Possible values for `USTD_FEATURE_MEMORY`
 
