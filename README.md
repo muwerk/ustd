@@ -120,7 +120,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.4.0 (2021-01-19) [not yet released] Feature defines in `platform.h` for better hardware
+- 0.4.0 (2021-01-19) Feature defines in `platform.h` for better hardware
         specific adaptations.
 - 0.3.6 (2021-01-12) Support for UNO and MEGA in functional.h via `__ARDUINO__` define.
 - 0.3.5 (2021-01-12) New function `freeMemory()`, new platform define `__UNO__`. (Both `__UNO__`
