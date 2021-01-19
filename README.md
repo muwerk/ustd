@@ -42,8 +42,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 
 | Option | Commend                                                      |
 | ------ | ------------------------------------------------------------ |
-| `USTD_OPTION_FS_FORCE_SPIFFS` | to continue to use old SPIFFS instead of LittleFS. New default for
-  ESP8266 is LittleFS. |
+| `USTD_OPTION_FS_FORCE_SPIFFS` | to continue to use old SPIFFS instead of LittleFS. New default for ESP8266 is LittleFS. |
 | `USTD_OPTION_FS_FORCE_NO_FS` | Disable all filesystem related functionality                     |
 
 For 'standard' Arduinos:
