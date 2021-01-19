@@ -6,16 +6,19 @@
         "type": "git",
         "url": "https://github.com/muwerk/ustd.git"
     },
-    "authors": [{
-        "name": "Dominik Schlösser",
-        "email": "dsc@dosc.net",
-        "maintainer": true
-    }, {
-        "name": "Leo Moll",
-        "email": "leo@yeasoft.com",
-        "maintainer": true
-    }],
-    "version": "0.3.6",
+    "authors": [
+        {
+            "name": "Dominik Schlösser",
+            "email": "dsc@dosc.net",
+            "maintainer": true
+        },
+        {
+            "name": "Leo Moll",
+            "email": "leo@yeasoft.com",
+            "maintainer": true
+        }
+    ],
+    "version": "0.4.0",
     "frameworks": "*",
     "platforms": "*"
 }
