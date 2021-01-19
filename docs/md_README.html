@@ -105,9 +105,10 @@ $(function() {
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Option   </th><th class="markdownTableHeadNone">Commend    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>USTD_OPTION_FS_FORCE_SPIFFS</code>   </td><td class="markdownTableBodyNone">to continue to use old SPIFFS instead of LittleFS. New default for   </td></tr>
+<td class="markdownTableBodyNone"><code>USTD_OPTION_FS_FORCE_SPIFFS</code>   </td><td class="markdownTableBodyNone">to continue to use old SPIFFS instead of LittleFS. New default for ESP8266 is LittleFS.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>USTD_OPTION_FS_FORCE_NO_FS</code>   </td><td class="markdownTableBodyNone">Disable all filesystem related functionality   </td></tr>
 </table>
-<p>ESP8266 is LittleFS. | | <code>USTD_OPTION_FS_FORCE_NO_FS</code> | Disable all filesystem related functionality |</p>
 <p>For 'standard' Arduinos:</p>
 <ul>
 <li>Both <code>__ATMEGA__</code> and <code>__UNO__</code> define additionally <code>__ARDUINO__</code> which can be used to check for the 'standard' Arduino core.</li>
