@@ -18,17 +18,17 @@ Note: if you are only interested in using functionals, it might be better
 to directly use project <a href="https://github.com/winterscar/functional-avr">functional-avr</a> by
 winterscar.
 
-
 ## An example:
 
 ~~~{.cpp}
-#define __ATTINY__ 1  // Appropriate platform define required
-                      // Note: only __ATTINY__ and __ARDUINO__ are supported.
+#define __UNO__ 1     // Appropriate platform define required
+                      // Note: only __ARDUINO__ is supported.
+                      // __ATTINY__ is no longer supported.
                       // All other platforms should use std::function<>
                       // from standard library.
 #include <functional.h>
 
-#if defined (__ATTINY__) || defined (__ARDUINO__)
+#if defined (__ARDUINO__)
 typedef ustd::function<void()> T_TASK;
 #else // use standard library instead:
 typedef std::function<void()> T_TASK;
@@ -52,15 +52,16 @@ class Something {
 #pragma once
 
 #if defined __ATTINY__ || defined(__ARDUINO__)
-
-using size_t = decltype(sizeof(int));
+// ATTINY is broken currently.
+// using size_t = decltype(sizeof(int));
 
 #ifdef __ATTINY__
+#include <Arduino.h>
 using nullptr_t = decltype(nullptr);
 #endif
 
 // NEW_H is some new Arduino implementation of new operator
-#ifndef NEW_H
+#if !defined(NEW_H)
 void *operator new(size_t size, void *ptr) {
     return ptr;
 }

@@ -120,6 +120,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.4.1 (2021-01-22) Bugfix for USTD_FEATURE_MEMORY handling. ATtiny no longer supports ustd::function<>.
 - 0.4.0 (2021-01-19) Feature defines in `platform.h` for better hardware
         specific adaptations.
 - 0.3.6 (2021-01-12) Support for UNO and MEGA in functional.h via `__ARDUINO__` define.

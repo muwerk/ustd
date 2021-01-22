@@ -14,13 +14,20 @@
 // Esp8266              80k 512k-4M           80-160MHz
 // ESP32               520k   2M-4M          160-240MHz
 
-#define USTD_FEATURE_MEM_512B 1  // ATtiny85
-#define USTD_FEATURE_MEM_2K 2    // Arduino UNO, ATtiny1614, AT328P
-#define USTD_FEATURE_MEM_8K 3    // Arduino MEGA
-#define USTD_FEATURE_MEM_32k 4   // ESP8266, Bluepill
-#define USTD_FEATURE_MEM_128 5   // Blackpill
-#define USTD_FEATURE_MEM_512k 6  // ESP32
-#define USTD_FEATURE_MEM_1M 7
+// ATtiny85
+#define USTD_FEATURE_MEM_512B 512
+// Arduino UNO, ATtiny1614, AT328P
+#define USTD_FEATURE_MEM_2K 2048
+// Arduino MEGA
+#define USTD_FEATURE_MEM_8K 8192
+// ESP8266, Bluepill
+#define USTD_FEATURE_MEM_32k 32768
+// Blackpill
+#define USTD_FEATURE_MEM_128 131072
+// ESP32
+#define USTD_FEATURE_MEM_512k 524288
+// Unixoids
+#define USTD_FEATURE_MEM_1M 1048576
 
 /*
 A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
@@ -73,7 +80,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
-#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_512B
+#define USTD_FEATURE_MEMORY 512
 #define USTD_FEATURE_EEPROM
 #include <Arduino.h>
 #include <SoftwareSerial.h>
@@ -85,7 +92,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
-#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_2K
+#define USTD_FEATURE_MEMORY 2048
 #define USTD_FEATURE_EEPROM
 #define __ARDUINO__ 1
 #include <Arduino.h>
@@ -98,7 +105,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
-#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_8K
+#define USTD_FEATURE_MEMORY 8192
 #define USTD_FEATURE_EEPROM
 #define __ARDUINO__ 1
 #include <Arduino.h>
@@ -111,7 +118,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
-#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_32K
+#define USTD_FEATURE_MEMORY 80000
 #include <ESP8266WiFi.h>
 #define USTD_FEATURE_NETWORK
 #include <time.h>       // time() ctime()
@@ -138,7 +145,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
-#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_512K
+#define USTD_FEATURE_MEMORY 524288
 #include <WiFi.h>
 #define USTD_FEATURE_NETWORK
 #include <time.h>      // time() ctime()
@@ -172,7 +179,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
-#define USTD_FEATURE_MEMORY USTD_FEATURE_MEM_1M
+#define USTD_FEATURE_MEMORY 1048576
 #define __UNIXOID__ 1
 #include <climits>
 #include <cstring>
