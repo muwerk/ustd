@@ -112,6 +112,17 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <new.h>  // New Arduino core new operator
 #endif            // Arduino Mega
 
+// ------------- STM32F103C8T6 Bluepill -----------------------
+#if defined(__BLUEPILL__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 20480
+#define __STM32__ 1
+#include <Arduino.h>
+#endif  // Bluepill
+
 // ------------- ESP8266 --------------------------------------
 #if defined(__ESP__) && !defined(__ESP32__) && !defined(__ESP32DEV__)
 #if defined(KNOWN_PLATFORM)
@@ -297,7 +308,7 @@ bool assertFailedLine(const char *filename, int line) {
 
 #endif  // end linux, apple
 
-#ifdef __ARDUINO__
+#if defined(__ARDUINO__) || defined(__STM32__)
 // from: https://learn.adafruit.com/memories-of-an-arduino/measuring-free-memory
 #ifdef __arm__
 // should use uinstd.h to define sbrk but Due causes a conflict
