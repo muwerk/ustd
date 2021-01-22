@@ -53,14 +53,15 @@ class Something {
 
 #if defined __ATTINY__ || defined(__ARDUINO__)
 // ATTINY is broken currently.
-using size_t = decltype(sizeof(int));
+// using size_t = decltype(sizeof(int));
 
 #ifdef __ATTINY__
+#include <Arduino.h>
 using nullptr_t = decltype(nullptr);
 #endif
 
 // NEW_H is some new Arduino implementation of new operator
-#ifndef NEW_H
+#if !defined(NEW_H)
 void *operator new(size_t size, void *ptr) {
     return ptr;
 }
