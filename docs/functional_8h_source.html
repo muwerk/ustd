@@ -74,209 +74,210 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#if defined __ATTINY__ || defined(__ARDUINO__)</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">using</span> <span class="keywordtype">size_t</span> = decltype(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">// ATTINY is broken currently.</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// using size_t = decltype(sizeof(int));</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#ifdef __ATTINY__</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">using</span> nullptr_t = decltype(<span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">// NEW_H is some new Arduino implementation of new operator</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#ifndef NEW_H</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> *<span class="keyword">operator</span> <span class="keyword">new</span>(<span class="keywordtype">size_t</span> size, <span class="keywordtype">void</span> *ptr) {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> ptr;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceustd.html">ustd</a> {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>tag { <span class="keyword">using</span> type = T; };</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Tag&gt; <span class="keyword">using</span> type_t = <span class="keyword">typename</span> Tag::type;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">// using size_t=decltype(sizeof(int));</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">// move</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; T &amp;&amp;move(T &amp;t) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T &amp;&amp;<span class="keyword">&gt;</span>(t);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">// forward</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_reference : tag&lt;T&gt; {};</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_reference&lt;T &amp;&gt; : tag&lt;T&gt; {};</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">using</span> remove_reference_t = type_t&lt;remove_reference&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; T &amp;&amp;forward(remove_reference_t&lt;T&gt; &amp;t) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T &amp;&amp;<span class="keyword">&gt;</span>(t);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; T &amp;&amp;forward(remove_reference_t&lt;T&gt; &amp;&amp;t) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T &amp;&amp;<span class="keyword">&gt;</span>(t);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">// decay</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_const : tag&lt;T&gt; {};</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_const&lt;T const&gt; : tag&lt;T&gt; {};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_volatile : tag&lt;T&gt; {};</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_volatile&lt;T volatile&gt; : tag&lt;T&gt; {};</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_cv : remove_const&lt;type_t&lt;remove_volatile&lt;T&gt;&gt;&gt; {};</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>decay3 : remove_cv&lt;T&gt; {};</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args&gt; <span class="keyword">struct </span>decay3&lt;R(Args...)&gt; : tag&lt;R (*)(Args...)&gt; {};</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>decay2 : decay3&lt;T&gt; {};</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">size_t</span> N&gt; <span class="keyword">struct </span>decay2&lt;T[N]&gt; : tag&lt;T *&gt; {};</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>decay : decay2&lt;remove_reference_t&lt;T&gt;&gt; {};</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">using</span> decay_t = type_t&lt;decay&lt;T&gt;&gt;;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">// is_convertible</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; T declval();  <span class="comment">// no implementation</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, T t&gt; <span class="keyword">struct </span>integral_constant {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">static</span> constexpr T value = t;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    constexpr integral_constant(){};</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    constexpr <span class="keyword">operator</span> T()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    constexpr T operator()()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">return</span> value;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;};</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> b&gt; <span class="keyword">using</span> bool_t = integral_constant&lt;bool, b&gt;;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">using</span> true_type = bool_t&lt;true&gt;;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">using</span> false_type = bool_t&lt;false&gt;;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span>...&gt; <span class="keyword">struct </span>voider : tag&lt;void&gt; {};</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span>... Ts&gt; <span class="keyword">using</span> void_t = type_t&lt;voider&lt;Ts...&gt;&gt;;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="keyword">namespace </span>details {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">class</span>...&gt; <span class="keyword">class </span>Z, <span class="keyword">class</span>, <span class="keyword">class</span>... Ts&gt; <span class="keyword">struct </span>can_apply : false_type {};</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">class</span>...&gt; <span class="keyword">class </span>Z, <span class="keyword">class</span>... Ts&gt;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">struct </span>can_apply&lt;Z, void_t&lt;Z&lt;Ts...&gt;&gt;, Ts...&gt; : true_type {};</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}  <span class="comment">// namespace details</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">class</span>...&gt; <span class="keyword">class </span>Z, <span class="keyword">class</span>... Ts&gt;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keyword">using</span> can_apply = details::can_apply&lt;Z, void, Ts...&gt;;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">namespace </span>details {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> From, <span class="keyword">class</span> To&gt; <span class="keyword">using</span> try_convert = decltype(To{declval&lt;From&gt;()});</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> From, <span class="keyword">class</span> To&gt;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">struct </span>is_convertible : can_apply&lt;details::try_convert, From, To&gt; {};</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>is_convertible&lt;void, void&gt; : true_type {};</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">// enable_if</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">bool</span>, <span class="keyword">class</span> = <span class="keywordtype">void</span>&gt; <span class="keyword">struct </span>enable_if {};</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>enable_if&lt;true, T&gt; : tag&lt;T&gt; {};</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> b, <span class="keyword">class</span> T = <span class="keywordtype">void</span>&gt; <span class="keyword">using</span> enable_if_t = type_t&lt;enable_if&lt;b, T&gt;&gt;;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">// res_of</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">namespace </span>details {</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>G, <span class="keyword">class</span>... Args&gt; <span class="keyword">using</span> invoke_t = decltype(declval&lt;G&gt;()(declval&lt;Args&gt;()...));</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig, <span class="keyword">class</span> = <span class="keywordtype">void</span>&gt; <span class="keyword">struct </span>res_of {};</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>G, <span class="keyword">class</span>... Args&gt;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keyword">struct </span>res_of&lt;G(Args...), void_t&lt;invoke_t&lt;G, Args...&gt;&gt;&gt; : tag&lt;invoke_t&lt;G, Args...&gt;&gt; {};</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}  <span class="comment">// namespace details</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig&gt; <span class="keyword">using</span> res_of = details::res_of&lt;Sig&gt;;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig&gt; <span class="keyword">using</span> res_of_t = type_t&lt;res_of&lt;Sig&gt;&gt;;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">// aligned_storage</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> align&gt; <span class="keyword">struct </span>alignas(align) aligned_storage_t { <span class="keywordtype">char</span> buff[size]; };</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">// is_same</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> A, <span class="keyword">class</span> B&gt; <span class="keyword">struct </span>is_same : false_type {};</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> A&gt; <span class="keyword">struct </span>is_same&lt;A, A&gt; : true_type {};</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt; <span class="keyword">struct </span>small_task;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt; <span class="keyword">struct </span>small_task&lt;R(Args...), sz, algn&gt; {</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keyword">struct </span>vtable_t {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        void (*mover)(<span class="keywordtype">void</span> *src, <span class="keywordtype">void</span> *dest);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        void (*destroyer)(<span class="keywordtype">void</span> *);</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        R (*invoke)(<span class="keywordtype">void</span> <span class="keyword">const</span> *t, Args &amp;&amp;...args);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">static</span> vtable_t <span class="keyword">const</span> *get() {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keyword">static</span> <span class="keyword">const</span> vtable_t table = {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                [](<span class="keywordtype">void</span> *src, <span class="keywordtype">void</span> *dest) { <span class="keyword">new</span> (dest) T(move(*<span class="keyword">static_cast&lt;</span>T *<span class="keyword">&gt;</span>(src))); },</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                [](<span class="keywordtype">void</span> *t) { <span class="keyword">static_cast&lt;</span>T *<span class="keyword">&gt;</span>(t)-&gt;~T(); },</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                [](<span class="keywordtype">void</span> <span class="keyword">const</span> *t, Args &amp;&amp;...args) -&gt; R {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                    <span class="keywordflow">return</span> (*<span class="keyword">static_cast&lt;</span>T <span class="keyword">const </span>*<span class="keyword">&gt;</span>(t))(forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                }};</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">return</span> &amp;table;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    };</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    vtable_t <span class="keyword">const</span> *table = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    aligned_storage_t&lt;sz, algn&gt; data;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> F, <span class="keyword">class</span> dF = decay_t&lt;F&gt;, enable_if_t&lt;!is_same&lt;dF, small_task&gt;{}&gt; * = <span class="keywordtype">nullptr</span>,</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;              enable_if_t&lt;is_convertible&lt;res_of_t&lt;dF &amp;(Args...)&gt;, R&gt;{}&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    small_task(F &amp;&amp;f) : table(vtable_t::template get&lt;dF&gt;()) {</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        static_assert(<span class="keyword">sizeof</span>(dF) &lt;= sz, <span class="stringliteral">&quot;object too large&quot;</span>);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        static_assert(<span class="keyword">alignof</span>(dF) &lt;= algn, <span class="stringliteral">&quot;object too aligned&quot;</span>);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keyword">new</span> (&amp;data) dF(forward&lt;F&gt;(f));</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    ~small_task() {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span> (table)</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            table-&gt;destroyer(&amp;data);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    small_task(<span class="keyword">const</span> small_task &amp;o) : table(o.table) {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        data = o.data;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    small_task(small_task &amp;&amp;o) : table(o.table) {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">if</span> (table)</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            table-&gt;mover(&amp;o.data, &amp;data);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    small_task() {</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    small_task &amp;operator=(<span class="keyword">const</span> small_task &amp;o) {</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        this-&gt;~small_task();</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keyword">new</span> (<span class="keyword">this</span>) small_task(move(o));</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    small_task &amp;operator=(small_task &amp;&amp;o) {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        this-&gt;~small_task();</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keyword">new</span> (<span class="keyword">this</span>) small_task(move(o));</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> bool()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">return</span> table;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    R operator()(Args... args)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keywordflow">return</span> table-&gt;invoke(&amp;data, forward&lt;Args&gt;(args)...);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    }</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;};</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> small_task&lt;R(Args...), sz, algn&gt; &amp;__f, nullptr_t) {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">return</span> !<span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(__f);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;}</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(nullptr_t, <span class="keyword">const</span> small_task&lt;R(Args...), sz, algn&gt; &amp;__f) {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">return</span> !<span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(__f);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> small_task&lt;R(Args...), sz, algn&gt; &amp;__f, nullptr_t) {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(__f);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator!=(nullptr_t, <span class="keyword">const</span> small_task&lt;R(Args...), sz, algn&gt; &amp;__f) {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(__f);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig&gt; <span class="keyword">using</span> <span class="keyword">function</span> = small_task&lt;Sig, <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) * 4, <span class="keyword">alignof</span>(<span class="keywordtype">void</span> *)&gt;;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}  <span class="comment">// namespace ustd</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">using</span> nullptr_t = decltype(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">// NEW_H is some new Arduino implementation of new operator</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#if !defined(NEW_H)</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> *<span class="keyword">operator</span> <span class="keyword">new</span>(<span class="keywordtype">size_t</span> size, <span class="keywordtype">void</span> *ptr) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> ptr;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceustd.html">ustd</a> {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>tag { <span class="keyword">using</span> type = T; };</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Tag&gt; <span class="keyword">using</span> type_t = <span class="keyword">typename</span> Tag::type;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">// using size_t=decltype(sizeof(int));</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">// move</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; T &amp;&amp;move(T &amp;t) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T &amp;&amp;<span class="keyword">&gt;</span>(t);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">// forward</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_reference : tag&lt;T&gt; {};</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_reference&lt;T &amp;&gt; : tag&lt;T&gt; {};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">using</span> remove_reference_t = type_t&lt;remove_reference&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; T &amp;&amp;forward(remove_reference_t&lt;T&gt; &amp;t) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T &amp;&amp;<span class="keyword">&gt;</span>(t);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; T &amp;&amp;forward(remove_reference_t&lt;T&gt; &amp;&amp;t) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>T &amp;&amp;<span class="keyword">&gt;</span>(t);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">// decay</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_const : tag&lt;T&gt; {};</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_const&lt;T const&gt; : tag&lt;T&gt; {};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_volatile : tag&lt;T&gt; {};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_volatile&lt;T volatile&gt; : tag&lt;T&gt; {};</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>remove_cv : remove_const&lt;type_t&lt;remove_volatile&lt;T&gt;&gt;&gt; {};</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>decay3 : remove_cv&lt;T&gt; {};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args&gt; <span class="keyword">struct </span>decay3&lt;R(Args...)&gt; : tag&lt;R (*)(Args...)&gt; {};</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>decay2 : decay3&lt;T&gt; {};</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, <span class="keywordtype">size_t</span> N&gt; <span class="keyword">struct </span>decay2&lt;T[N]&gt; : tag&lt;T *&gt; {};</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>decay : decay2&lt;remove_reference_t&lt;T&gt;&gt; {};</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">using</span> decay_t = type_t&lt;decay&lt;T&gt;&gt;;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">// is_convertible</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; T declval();  <span class="comment">// no implementation</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T, T t&gt; <span class="keyword">struct </span>integral_constant {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">static</span> constexpr T value = t;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    constexpr integral_constant(){};</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    constexpr <span class="keyword">operator</span> T()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    constexpr T operator()()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> b&gt; <span class="keyword">using</span> bool_t = integral_constant&lt;bool, b&gt;;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">using</span> true_type = bool_t&lt;true&gt;;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keyword">using</span> false_type = bool_t&lt;false&gt;;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span>...&gt; <span class="keyword">struct </span>voider : tag&lt;void&gt; {};</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span>... Ts&gt; <span class="keyword">using</span> void_t = type_t&lt;voider&lt;Ts...&gt;&gt;;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">namespace </span>details {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">class</span>...&gt; <span class="keyword">class </span>Z, <span class="keyword">class</span>, <span class="keyword">class</span>... Ts&gt; <span class="keyword">struct </span>can_apply : false_type {};</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">class</span>...&gt; <span class="keyword">class </span>Z, <span class="keyword">class</span>... Ts&gt;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">struct </span>can_apply&lt;Z, void_t&lt;Z&lt;Ts...&gt;&gt;, Ts...&gt; : true_type {};</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}  <span class="comment">// namespace details</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">template</span> &lt;<span class="keyword">class</span>...&gt; <span class="keyword">class </span>Z, <span class="keyword">class</span>... Ts&gt;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">using</span> can_apply = details::can_apply&lt;Z, void, Ts...&gt;;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="keyword">namespace </span>details {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> From, <span class="keyword">class</span> To&gt; <span class="keyword">using</span> try_convert = decltype(To{declval&lt;From&gt;()});</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> From, <span class="keyword">class</span> To&gt;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">struct </span>is_convertible : can_apply&lt;details::try_convert, From, To&gt; {};</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>is_convertible&lt;void, void&gt; : true_type {};</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">// enable_if</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">bool</span>, <span class="keyword">class</span> = <span class="keywordtype">void</span>&gt; <span class="keyword">struct </span>enable_if {};</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">struct </span>enable_if&lt;true, T&gt; : tag&lt;T&gt; {};</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">bool</span> b, <span class="keyword">class</span> T = <span class="keywordtype">void</span>&gt; <span class="keyword">using</span> enable_if_t = type_t&lt;enable_if&lt;b, T&gt;&gt;;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">// res_of</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">namespace </span>details {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>G, <span class="keyword">class</span>... Args&gt; <span class="keyword">using</span> invoke_t = decltype(declval&lt;G&gt;()(declval&lt;Args&gt;()...));</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig, <span class="keyword">class</span> = <span class="keywordtype">void</span>&gt; <span class="keyword">struct </span>res_of {};</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>G, <span class="keyword">class</span>... Args&gt;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keyword">struct </span>res_of&lt;G(Args...), void_t&lt;invoke_t&lt;G, Args...&gt;&gt;&gt; : tag&lt;invoke_t&lt;G, Args...&gt;&gt; {};</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}  <span class="comment">// namespace details</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig&gt; <span class="keyword">using</span> res_of = details::res_of&lt;Sig&gt;;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig&gt; <span class="keyword">using</span> res_of_t = type_t&lt;res_of&lt;Sig&gt;&gt;;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">// aligned_storage</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> align&gt; <span class="keyword">struct </span>alignas(align) aligned_storage_t { <span class="keywordtype">char</span> buff[size]; };</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">// is_same</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> A, <span class="keyword">class</span> B&gt; <span class="keyword">struct </span>is_same : false_type {};</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> A&gt; <span class="keyword">struct </span>is_same&lt;A, A&gt; : true_type {};</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt; <span class="keyword">struct </span>small_task;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt; <span class="keyword">struct </span>small_task&lt;R(Args...), sz, algn&gt; {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">struct </span>vtable_t {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        void (*mover)(<span class="keywordtype">void</span> *src, <span class="keywordtype">void</span> *dest);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        void (*destroyer)(<span class="keywordtype">void</span> *);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        R (*invoke)(<span class="keywordtype">void</span> <span class="keyword">const</span> *t, Args &amp;&amp;...args);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">static</span> vtable_t <span class="keyword">const</span> *get() {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keyword">static</span> <span class="keyword">const</span> vtable_t table = {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                [](<span class="keywordtype">void</span> *src, <span class="keywordtype">void</span> *dest) { <span class="keyword">new</span> (dest) T(move(*<span class="keyword">static_cast&lt;</span>T *<span class="keyword">&gt;</span>(src))); },</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                [](<span class="keywordtype">void</span> *t) { <span class="keyword">static_cast&lt;</span>T *<span class="keyword">&gt;</span>(t)-&gt;~T(); },</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                [](<span class="keywordtype">void</span> <span class="keyword">const</span> *t, Args &amp;&amp;...args) -&gt; R {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    <span class="keywordflow">return</span> (*<span class="keyword">static_cast&lt;</span>T <span class="keyword">const </span>*<span class="keyword">&gt;</span>(t))(forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                }};</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">return</span> &amp;table;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    };</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    vtable_t <span class="keyword">const</span> *table = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    aligned_storage_t&lt;sz, algn&gt; data;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">class</span> F, <span class="keyword">class</span> dF = decay_t&lt;F&gt;, enable_if_t&lt;!is_same&lt;dF, small_task&gt;{}&gt; * = <span class="keywordtype">nullptr</span>,</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;              enable_if_t&lt;is_convertible&lt;res_of_t&lt;dF &amp;(Args...)&gt;, R&gt;{}&gt; * = <span class="keywordtype">nullptr</span>&gt;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    small_task(F &amp;&amp;f) : table(vtable_t::template get&lt;dF&gt;()) {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        static_assert(<span class="keyword">sizeof</span>(dF) &lt;= sz, <span class="stringliteral">&quot;object too large&quot;</span>);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        static_assert(<span class="keyword">alignof</span>(dF) &lt;= algn, <span class="stringliteral">&quot;object too aligned&quot;</span>);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keyword">new</span> (&amp;data) dF(forward&lt;F&gt;(f));</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    ~small_task() {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">if</span> (table)</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            table-&gt;destroyer(&amp;data);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    small_task(<span class="keyword">const</span> small_task &amp;o) : table(o.table) {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        data = o.data;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    small_task(small_task &amp;&amp;o) : table(o.table) {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">if</span> (table)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            table-&gt;mover(&amp;o.data, &amp;data);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    small_task() {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    small_task &amp;operator=(<span class="keyword">const</span> small_task &amp;o) {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        this-&gt;~small_task();</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keyword">new</span> (<span class="keyword">this</span>) small_task(move(o));</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    small_task &amp;operator=(small_task &amp;&amp;o) {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        this-&gt;~small_task();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keyword">new</span> (<span class="keyword">this</span>) small_task(move(o));</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> bool()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keywordflow">return</span> table;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    R operator()(Args... args)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordflow">return</span> table-&gt;invoke(&amp;data, forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;};</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(<span class="keyword">const</span> small_task&lt;R(Args...), sz, algn&gt; &amp;__f, nullptr_t) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">return</span> !<span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(__f);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(nullptr_t, <span class="keyword">const</span> small_task&lt;R(Args...), sz, algn&gt; &amp;__f) {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">return</span> !<span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(__f);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator!=(<span class="keyword">const</span> small_task&lt;R(Args...), sz, algn&gt; &amp;__f, nullptr_t) {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(__f);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class </span>R, <span class="keyword">class</span>... Args, <span class="keywordtype">size_t</span> sz, <span class="keywordtype">size_t</span> algn&gt;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator!=(nullptr_t, <span class="keyword">const</span> small_task&lt;R(Args...), sz, algn&gt; &amp;__f) {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><span class="keywordtype">bool</span><span class="keyword">&gt;</span>(__f);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> Sig&gt; <span class="keyword">using</span> <span class="keyword">function</span> = small_task&lt;Sig, <span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) * 4, <span class="keyword">alignof</span>(<span class="keywordtype">void</span> *)&gt;;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}  <span class="comment">// namespace ustd</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespaceustd_html"><div class="ttname"><a href="namespaceustd.html">ustd</a></div><div class="ttdoc">The ustd namespace.</div><div class="ttdef"><b>Definition:</b> array.h:34</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
