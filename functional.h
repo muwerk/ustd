@@ -52,7 +52,7 @@ class Something {
 #pragma once
 
 #if defined __ATTINY__ || defined(__ARDUINO__)
-
+// ATTINY is broken currently.
 using size_t = decltype(sizeof(int));
 
 #ifdef __ATTINY__
