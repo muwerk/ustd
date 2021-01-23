@@ -34,10 +34,13 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | Arduino  | `__UNO__`         | Should work with low resource arduinos     |
 | Arduino  | `__ATMEGA__`      | Should work with most arduinos             |
 | ATtiny   | `__ATTINY__`      | For very low resource ATMELs               |
-| STP32    | `__BLUEPILL__`    | STM32 ARM                                  |
+| STM32    | `__BLUEPILL__`    | STM32F103C8T6 ARM                          |
 | ESP8266  | `__ESP__`         | For ESP8266 and ESP32                      |
 | ESP32    | `__ESP__` and `__ESP32__`| ESP32                               |
 | ESP32DEV | `__ESP__` and `__ESP32DEV__`| ESP32 git head                   |
+
+**Note::** If the desired MCU is not in that list, select one with similar characteristics, these
+platform defines are used to generate feature-lists that are used by muwerk's modules.
 
 ### Additional selectable options
 
