@@ -3,16 +3,16 @@
 
 //================= Platform defines ==========================
 // https://docs.platformio.org/en/latest/plus/debugging.html
-// MCU       CPU        RAM   Flash   EEPROM      Clock
+// MCU       CPU        RAM   Flash   EEPROM      Clock  Family
 // ATtiny85            512b      8k     512b      20MHz
-// Uno                   2k     32k       1k      16MHz
-// Mega                  8k    256k       4k      16MHz
-// STM32F103C8T6        20k     64k               72MHz
+// Uno                   2k     32k       1k      16MHz  __ARDUINO__
+// Mega                  8k    256k       4k      16MHz  __ARDUINO__
+// STM32F103C8T6        20k     64k               72MHz  __ARM__
 // "Bluepill" Cortex-M3
-// STM32F411CEU6       128k    512k              100MHz
+// STM32F411CEU6       128k    512k              100MHz  __ARM__
 // "Blackpill" Cortex-M4F
-// Esp8266              80k 512k-4M           80-160MHz
-// ESP32               520k   2M-4M          160-240MHz
+// Esp8266              80k 512k-4M           80-160MHz  __ESP__
+// ESP32               520k   2M-4M          160-240MHz  __ESP__
 
 // ATtiny85
 #define USTD_FEATURE_MEM_512B 512
@@ -119,7 +119,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif
 #define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY 20480
-#define __STM32__ 1
+#define __ARM__ 1
 #include <Arduino.h>
 #endif  // Bluepill
 
@@ -156,6 +156,8 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
+// This is probably somewhat inconsistent:
+#define __ESP__
 #define USTD_FEATURE_MEMORY 524288
 #include <WiFi.h>
 #define USTD_FEATURE_NETWORK
@@ -317,7 +319,7 @@ bool assertFailedLine(const char *filename, int line) {
 
 #endif  // end linux, apple
 
-#if defined(__ARDUINO__) || defined(__STM32__)
+#if defined(__ARDUINO__) || defined(__ARM__)
 // from: https://learn.adafruit.com/memories-of-an-arduino/measuring-free-memory
 #ifdef __arm__
 // should use uinstd.h to define sbrk but Due causes a conflict
