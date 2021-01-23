@@ -172,6 +172,15 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // FORCE_NO_FS
 #endif  // ESP32 || ESP32DEV
 
+#if defined(__MAIXBIT__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 6000000
+#include <Arduino.h>
+#endif
+
 //------- compatibility-2
 #if !defined(DONT_USE_FEATURE_COMPATIBILITY)
 #if defined(USTD_FEATURE_FS_LITTLEFS)
