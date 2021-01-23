@@ -55,14 +55,14 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 
 #### Family defines
 
-| Platform define | Automatically defined family                        |
-| --------------- | --------------------------------------------------- |
-| `__UNO__`       | `__ARDUINO__`                                       |
-| `__MEGA__`      | `__ARDUINO__`                                       |
-| `__BLUEPILL__`  | `__ARM__`                                           |
-| `__ESP__`       |  t.b.d.                                             |
-| `__ESP32__`     |    "                                                |
-| `__ESPDEV__`    |    "                                                |
+| Platform define | Automatically defined family                        | Comment
+| --------------- | --------------------------------------------------- | ----------------------------- 
+| `__UNO__`       | `__ARDUINO__`                                       | 8-bit Atmel Arduinos
+| `__MEGA__`      | `__ARDUINO__`                                       |    "
+| `__BLUEPILL__`  | `__ARM__`                                           | ARM cortex based MCUs
+| `__ESP__`       |  t.b.d.                                             | t.b.d.
+| `__ESP32__`     |    "                                                |   "
+| `__ESPDEV__`    |    "                                                |   "
 
 #### Features
 
