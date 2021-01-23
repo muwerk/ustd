@@ -79,6 +79,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `USTD_FEATURE_CLK_READ`    | Time can be read                                    |
 | `USTD_FEATURE_CLK_SET`     | Time can be set                                     |
 | `USTD_FEATURE_NET`         | Network access available                            |
+| `USTD_FEATURE_FREE_MEMORY` | freeMemory() is available                           |
 
 #### Possible values for `USTD_FEATURE_MEMORY`
 
