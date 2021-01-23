@@ -156,6 +156,8 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
+// This is probably somewhat inconsistent:
+#define __ESP__
 #define USTD_FEATURE_MEMORY 524288
 #include <WiFi.h>
 #define USTD_FEATURE_NETWORK
