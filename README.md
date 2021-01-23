@@ -38,6 +38,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | ESP8266  | `__ESP__`         | For ESP8266 and ESP32                      |
 | ESP32    | `__ESP32__`       | ESP32                                      |
 | ESP32DEV | `__ESP32DEV__`    | ESP32 git head                             |
+| Maix Bit | `__MAIXBIT__`     | Sipeed Maix Bit RISC-V                     |
 
 **Note::** If the desired MCU is not in that list, select one with similar characteristics, these
 platform defines are used to generate feature-lists that are used by muwerk's modules.
@@ -63,7 +64,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__ESP__`       |  t.b.d.                                             | t.b.d.
 | `__ESP32__`     |    "                                                |   "
 | `__ESPDEV__`    |    "                                                |   "
-
+| `__MAIXBIT__`   | `__RISC_V__`                                        | RISC-V based MCUs
 #### Features
 
 | Define                     | Comment                                             |
@@ -85,13 +86,13 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 
 | Value                      | Example platform                         |
 | -------------------------- | ---------------------------------------- |
-| `USTD_FEATURE_MEM_512B`    | ATtiny85
-| `USTD_FEATURE_MEM_2K`      | Arduino UNO, ATtiny1614, AT328P
-| `USTD_FEATURE_MEM_8K`      | Arduino MEGA
-| `USTD_FEATURE_MEM_32k`     | ESP8266, Bluepill
-| `USTD_FEATURE_MEM_128`     | Blackpill
-| `USTD_FEATURE_MEM_512k`    | ESP32
-| `USTD_FEATURE_MEM_1M`      | Unixoids
+| `USTD_FEATURE_MEM_512B`    | ATtiny85                                 |
+| `USTD_FEATURE_MEM_2K`      | Arduino UNO, ATtiny1614, AT328P          |
+| `USTD_FEATURE_MEM_8K`      | Arduino MEGA                             |
+| `USTD_FEATURE_MEM_32k`     | ESP8266, Bluepill                        |
+| `USTD_FEATURE_MEM_128`     | Blackpill                                |
+| `USTD_FEATURE_MEM_512k`    | ESP32                                    |
+| `USTD_FEATURE_MEM_1M`      | Unixoids & RISC-V                        |
 
 To make code dependent on a memory-class, use something like:
 
