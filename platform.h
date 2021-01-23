@@ -174,11 +174,13 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // FORCE_NO_FS
 #endif  // ESP32 || ESP32DEV
 
+// ------ RISC-V Maix Bit -------------------------------------
 #if defined(__MAIXBIT__)
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
+#define __RISC_V__
 #define USTD_FEATURE_MEMORY 6000000
 #include <Arduino.h>
 #endif
@@ -320,6 +322,7 @@ bool assertFailedLine(const char *filename, int line) {
 #endif  // end linux, apple
 
 #if defined(__ARDUINO__) || defined(__ARM__)
+#define USTD_FEATURE_FREE_MEMORY
 // from: https://learn.adafruit.com/memories-of-an-arduino/measuring-free-memory
 #ifdef __arm__
 // should use uinstd.h to define sbrk but Due causes a conflict
