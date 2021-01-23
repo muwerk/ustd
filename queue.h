@@ -39,7 +39,7 @@ template <class T> class queue {
     unsigned int size;
     unsigned int quePtr0;
     unsigned int quePtr1;
-    T bad;
+    T bad = {};
 
   public:
     queue(unsigned int maxQueueSize) : maxSize(maxQueueSize) {
@@ -47,7 +47,6 @@ template <class T> class queue {
         @param maxQueueSize The maximum number of <T> pointer entries, the queue
         can hold.
         */
-        memset(&bad, 0, sizeof(bad));
         quePtr0 = 0;
         quePtr1 = 0;
         size = 0;
@@ -98,7 +97,7 @@ template <class T> class queue {
 
     void setInvalidValue(T &entryInvalidValue) {
         /*! Set the value for <T>entry that's given back, if read from an empty
-        queue is requested. By default, an entry all memset to zero is given
+        queue is requested. By default, an entry all set to zero is given
         back. Using this function, the value of an invalid read can be
         configured.
         * @param entryInvalidValue The value that is given back in case an

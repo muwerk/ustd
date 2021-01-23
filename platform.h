@@ -157,7 +157,9 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif
 #define KNOWN_PLATFORM 1
 // This is probably somewhat inconsistent:
+#ifndef __ESP__
 #define __ESP__
+#endif
 #define USTD_FEATURE_MEMORY 524288
 #include <WiFi.h>
 #define USTD_FEATURE_NETWORK
@@ -342,10 +344,12 @@ int freeMemory() {
 #endif  // __arm__
 }
 #elif defined(__ESP__)
+#define USTD_FEATURE_FREE_MEMORY
 int freeMemory() {
     return (int)ESP.getFreeHeap();
 }
 #elif defined(__UNIXOID__)
+#define USTD_FEATURE_FREE_MEMORY
 // To keep the API compatible, this function gives back max INT_MAX as free memory.
 int freeMemory() {
     long pages = sysconf(_SC_PHYS_PAGES);

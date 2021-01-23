@@ -90,7 +90,7 @@ template <typename T> class array {
     bool shrink = true;
     unsigned int allocSize;
     unsigned int size;
-    T bad;
+    T bad = {};
 
     T *ualloc(unsigned int n) {
 #if defined(__ATTINY__)
@@ -126,7 +126,6 @@ template <typename T> class array {
          * memory, if the array size shrinks (due to erase()).
          */
         size = 0;
-        memset(&bad, 0, sizeof(bad));
         if (maxSize < startSize)
             maxSize = startSize;
         allocSize = startSize;
@@ -182,7 +181,7 @@ template <typename T> class array {
 
     void setInvalidValue(T &entryInvalidValue) {
         /*! Set the value for <T>entry that's given back, if read of an invalid
-        index is requested. By default, an entry all memset to zero is given
+        index is requested. By default, an entry all set to zero is given
         back. Using this function, the value of an invalid read can be
         configured.
         * @param entryInvalidValue The value that is given back in case an
