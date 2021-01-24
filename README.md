@@ -29,16 +29,18 @@ Make sure to use the appropriate platform define before including from `ustd`.
 
 | Platform | #define (by user) | Comment                                    |
 | -------- | ----------------- | ------------------------------------------ |
-| Mac      | `__APPLE__`       | Should be defined already                  |
-| Linux    | `__linux__`       | Should be defined already                  |
+| ATtiny   | `__ATTINY__`      | For very low resource ATMELs               |
 | Arduino  | `__UNO__`         | Should work with low resource arduinos     |
 | Arduino  | `__ATMEGA__`      | Should work with most arduinos             |
-| ATtiny   | `__ATTINY__`      | For very low resource ATMELs               |
-| STM32    | `__BLUEPILL__`    | STM32F103C8T6 ARM                          |
+| FeatherM0| `__FEATHER_M0__`  | Adafruit feather M0 (Wifi)                 |
+| STM32    | `__BLUEPILL__`    | STM32F103C8T6 ARM Cortex-M3                |
+| NRF52    | `__NRF52__`       | Feather NRF52832 Cortex-M4                 |
 | ESP8266  | `__ESP__`         | For ESP8266 and ESP32                      |
 | ESP32    | `__ESP32__`       | ESP32                                      |
 | ESP32DEV | `__ESP32DEV__`    | ESP32 git head                             |
 | Maix Bit | `__MAIXBIT__`     | Sipeed Maix Bit RISC-V                     |
+| Mac      | `__APPLE__`       | Should be defined already                  |
+| Linux    | `__linux__`       | Should be defined already                  |
 
 **Note::** If the desired MCU is not in that list, select one with similar characteristics, these
 platform defines are used to generate feature-lists that are used by muwerk's modules.
@@ -60,11 +62,16 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | --------------- | --------------------------------------------------- | ----------------------------- 
 | `__UNO__`       | `__ARDUINO__`                                       | 8-bit Atmel Arduinos
 | `__MEGA__`      | `__ARDUINO__`                                       |    "
-| `__BLUEPILL__`  | `__ARM__`                                           | ARM cortex based MCUs
+| `__FEATHER_MO__`| `__ARM__`                                           | ARM cortex
+| `__BLUEPILL__`  | `__ARM__`                                           |   "
+| `__NRF52__`     | `__ARM__`                                           |   "
 | `__ESP__`       |  t.b.d.                                             | t.b.d.
 | `__ESP32__`     |    "                                                |   "
 | `__ESPDEV__`    |    "                                                |   "
 | `__MAIXBIT__`   | `__RISC_V__`                                        | RISC-V based MCUs
+| `__APPLE__`     | `__UNIXOID__`                                       | macOS computer
+| `__linux__`     | `__UNIXOID__`                                       | Linux computer
+
 #### Features
 
 | Define                     | Comment                                             |
@@ -90,9 +97,9 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `USTD_FEATURE_MEM_512B`    | ATtiny85                                 |
 | `USTD_FEATURE_MEM_2K`      | Arduino UNO, ATtiny1614, AT328P          |
 | `USTD_FEATURE_MEM_8K`      | Arduino MEGA                             |
-| `USTD_FEATURE_MEM_32k`     | ESP8266, Bluepill                        |
-| `USTD_FEATURE_MEM_128`     | Blackpill                                |
-| `USTD_FEATURE_MEM_512k`    | ESP32                                    |
+| `USTD_FEATURE_MEM_32K`     | ESP8266, Bluepill                        |
+| `USTD_FEATURE_MEM_128K`     | Blackpill                                |
+| `USTD_FEATURE_MEM_512K`    | ESP32                                    |
 | `USTD_FEATURE_MEM_1M`      | Unixoids & RISC-V                        |
 
 To make code dependent on a memory-class, use something like:
