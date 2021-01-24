@@ -51,7 +51,7 @@ class Something {
 */
 #pragma once
 
-#if defined __ATTINY__ || defined(__ARDUINO__)
+#if defined __ATTINY__ || defined(__ARDUINO__) || defined(__ARM__) || defined(__RISC_V__)
 // ATTINY is broken currently.
 // using size_t = decltype(sizeof(int));
 
@@ -61,7 +61,7 @@ using nullptr_t = decltype(nullptr);
 #endif
 
 // NEW_H is some new Arduino implementation of new operator
-#if !defined(NEW_H)
+#if !defined(NEW_H) && !defined(USTD_FEATURE_SUPPORTS_NEW_OPERATOR)
 void *operator new(size_t size, void *ptr) {
     return ptr;
 }

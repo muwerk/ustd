@@ -57,7 +57,7 @@ template <class K, class V> class map {
     unsigned int maxSize;
     unsigned int incSize;
     bool shrink;
-    V bad;
+    V bad = {};
 
   public:
     ustd::array<K> keys;   /*! Array of keys */
@@ -85,7 +85,6 @@ template <class K, class V> class map {
          */
 
         size = 0;
-        memset(&bad, 0, sizeof(bad));
         allocSize = startSize;
     }
 
@@ -97,7 +96,7 @@ template <class K, class V> class map {
         /*! Read value of map for given key, a=myMap[3].
         @param key map-key
         @return Corresponding value. The value set be setInvalidValue() is given
-        back for invalid reads (or by default a value memset to zero) */
+        back for invalid reads (or by default a value set to zero) */
         for (unsigned int i = 0; i < keys.length(); i++) {
             if (keys[i] == key)
                 return values[i];
@@ -157,7 +156,7 @@ template <class K, class V> class map {
 
     void setInvalidValue(V &entryInvalidValue) {
         /*! Set the value for <V>value that's given back, if read of an invalid
-        key is requested. By default, an entry all memset to zero is given back.
+        key is requested. By default, an entry all set to zero is given back.
         Using this function, the value of an invalid read can be configured.
         * @param entryInvalidValue The value that is given back in case an
         invalid operation (e.g. read out of invalid key) is tried.

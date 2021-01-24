@@ -3,16 +3,17 @@
 
 //================= Platform defines ==========================
 // https://docs.platformio.org/en/latest/plus/debugging.html
-// MCU       CPU        RAM   Flash   EEPROM      Clock
+// MCU       CPU        RAM   Flash   EEPROM      Clock  Family
 // ATtiny85            512b      8k     512b      20MHz
-// Uno                   2k     32k       1k      16MHz
-// Mega                  8k    256k       4k      16MHz
-// STM32F103C8T6        20k     64k               72MHz
+// Uno                   2k     32k       1k      16MHz  __ARDUINO__
+// Mega                  8k    256k       4k      16MHz  __ARDUINO__
+// Feater M0 Cortex M0  32k
+// STM32F103C8T6        20k     64k               72MHz  __ARM__
 // "Bluepill" Cortex-M3
-// STM32F411CEU6       128k    512k              100MHz
+// STM32F411CEU6       128k    512k              100MHz  __ARM__
 // "Blackpill" Cortex-M4F
-// Esp8266              80k 512k-4M           80-160MHz
-// ESP32               520k   2M-4M          160-240MHz
+// Esp8266              80k 512k-4M           80-160MHz  __ESP__
+// ESP32               320k   2M-4M          160-240MHz  __ESP__
 
 // ATtiny85
 #define USTD_FEATURE_MEM_512B 512
@@ -21,11 +22,11 @@
 // Arduino MEGA
 #define USTD_FEATURE_MEM_8K 8192
 // ESP8266, Bluepill
-#define USTD_FEATURE_MEM_32k 32768
+#define USTD_FEATURE_MEM_32K 32768
 // Blackpill
-#define USTD_FEATURE_MEM_128 131072
+#define USTD_FEATURE_MEM_128K 131072
 // ESP32
-#define USTD_FEATURE_MEM_512k 524288
+#define USTD_FEATURE_MEM_512K 524288
 // Unixoids
 #define USTD_FEATURE_MEM_1M 1048576
 
@@ -112,6 +113,40 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <new.h>  // New Arduino core new operator
 #endif            // Arduino Mega
 
+// ------------- Adafruit M0 Wifi ----------------------------
+#if defined(__FEATHER_M0__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 32768
+#define __ARM__ 1
+#include <Arduino.h>
+#endif  // Feather M0
+
+// ------------- STM32F103C8T6 Bluepill -----------------------
+#if defined(__BLUEPILL__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 20480
+#define USTD_FEATURE_SUPPORTS_NEW_OPERATOR
+#define __ARM__ 1
+#include <Arduino.h>
+#endif  // Bluepill
+
+// ------------- Adafruit Bluefruit feather (NRF52832) --------
+#if defined(__NRF52__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 65536
+#define __ARM__ 1
+#include <Arduino.h>
+#endif  // NRF52
+
 // ------------- ESP8266 --------------------------------------
 #if defined(__ESP__) && !defined(__ESP32__) && !defined(__ESP32DEV__)
 #if defined(KNOWN_PLATFORM)
@@ -145,7 +180,11 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #error "Platform already defined"
 #endif
 #define KNOWN_PLATFORM 1
-#define USTD_FEATURE_MEMORY 524288
+// This is probably somewhat inconsistent:
+#ifndef __ESP__
+#define __ESP__
+#endif
+#define USTD_FEATURE_MEMORY 320000
 #include <WiFi.h>
 #define USTD_FEATURE_NETWORK
 #include <time.h>      // time() ctime()
@@ -160,6 +199,17 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_FS_SPIFFS
 #endif  // FORCE_NO_FS
 #endif  // ESP32 || ESP32DEV
+
+// ------ RISC-V Maix Bit -------------------------------------
+#if defined(__MAIXBIT__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define __RISC_V__
+#define USTD_FEATURE_MEMORY 6000000
+#include <Arduino.h>
+#endif
 
 //------- compatibility-2
 #if !defined(DONT_USE_FEATURE_COMPATIBILITY)
@@ -297,7 +347,8 @@ bool assertFailedLine(const char *filename, int line) {
 
 #endif  // end linux, apple
 
-#ifdef __ARDUINO__
+#if defined(__ARDUINO__) || defined(__ARM__)
+#define USTD_FEATURE_FREE_MEMORY
 // from: https://learn.adafruit.com/memories-of-an-arduino/measuring-free-memory
 #ifdef __arm__
 // should use uinstd.h to define sbrk but Due causes a conflict
@@ -317,10 +368,12 @@ int freeMemory() {
 #endif  // __arm__
 }
 #elif defined(__ESP__)
+#define USTD_FEATURE_FREE_MEMORY
 int freeMemory() {
     return (int)ESP.getFreeHeap();
 }
 #elif defined(__UNIXOID__)
+#define USTD_FEATURE_FREE_MEMORY
 // To keep the API compatible, this function gives back max INT_MAX as free memory.
 int freeMemory() {
     long pages = sysconf(_SC_PHYS_PAGES);
