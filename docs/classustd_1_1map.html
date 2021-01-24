@@ -418,7 +418,7 @@ template&lt;class K , class V &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Corresponding value. The value set be <a class="el" href="classustd_1_1map.html#a69684371750cc3ced38e6a6a80656660">setInvalidValue()</a> is given back for invalid reads (or by default a value memset to zero)</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Corresponding value. The value set be <a class="el" href="classustd_1_1map.html#a69684371750cc3ced38e6a6a80656660">setInvalidValue()</a> is given back for invalid reads (or by default a value set to zero)</dd></dl>
 
 </div>
 </div>
@@ -475,7 +475,7 @@ template&lt;class K , class V &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set the value for &lt;V&gt;value that's given back, if read of an invalid key is requested. By default, an entry all memset to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Set the value for &lt;V&gt;value that's given back, if read of an invalid key is requested. By default, an entry all set to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">entryInvalidValue</td><td>The value that is given back in case an invalid operation (e.g. read out of invalid key) is tried.</td></tr>
   </table>

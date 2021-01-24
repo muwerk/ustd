@@ -131,8 +131,8 @@ class ustd::array&lt; T &gt;</h3>
 <div class="line"> </div>
 <div class="line">printf(<span class="stringliteral">&quot;[0]:%d [1]:%d length=%d\n&quot;</span>, intArray[0], intArray[1], intArray.<a class="code" href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">length</a>())</div>
 <div class="ttc" id="aclassustd_1_1array_html"><div class="ttname"><a href="classustd_1_1array.html">ustd::array</a></div><div class="ttdoc">Lightweight c++11 array implementation.</div><div class="ttdef"><b>Definition:</b> array.h:83</div></div>
-<div class="ttc" id="aclassustd_1_1array_html_ad8ffaa95ed88955e91df6e80ef4274b6"><div class="ttname"><a href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">ustd::array::add</a></div><div class="ttdeci">int add(T &amp;entry)</div><div class="ttdef"><b>Definition:</b> array.h:194</div></div>
-<div class="ttc" id="aclassustd_1_1array_html_af87de14c31ad629df2b4a6ee1275c340"><div class="ttname"><a href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">ustd::array::length</a></div><div class="ttdeci">unsigned int length() const</div><div class="ttdef"><b>Definition:</b> array.h:284</div></div>
+<div class="ttc" id="aclassustd_1_1array_html_ad8ffaa95ed88955e91df6e80ef4274b6"><div class="ttname"><a href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">ustd::array::add</a></div><div class="ttdeci">int add(T &amp;entry)</div><div class="ttdef"><b>Definition:</b> array.h:193</div></div>
+<div class="ttc" id="aclassustd_1_1array_html_af87de14c31ad629df2b4a6ee1275c340"><div class="ttname"><a href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">ustd::array::length</a></div><div class="ttdeci">unsigned int length() const</div><div class="ttdef"><b>Definition:</b> array.h:283</div></div>
 </div><!-- fragment --><h2>An example for static mode</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;array.h&gt;</span></div>
 <div class="line"> </div>
@@ -525,7 +525,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set the value for &lt;T&gt;entry that's given back, if read of an invalid index is requested. By default, an entry all memset to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Set the value for &lt;T&gt;entry that's given back, if read of an invalid index is requested. By default, an entry all set to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">entryInvalidValue</td><td>The value that is given back in case an invalid operation (e.g. read out of bounds) is tried.</td></tr>
   </table>

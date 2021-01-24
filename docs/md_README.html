@@ -82,24 +82,33 @@ $(function() {
 <p>Make sure to use the appropriate platform define before including from <code>ustd</code>.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Platform   </th><th class="markdownTableHeadNone">#define   </th><th class="markdownTableHeadNone">Comment    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Mac   </td><td class="markdownTableBodyNone"><code>__APPLE__</code>   </td><td class="markdownTableBodyNone">Should be defined already    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Linux   </td><td class="markdownTableBodyNone"><code>__linux__</code>   </td><td class="markdownTableBodyNone">Should be defined already    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Arduino   </td><td class="markdownTableBodyNone"><code>__ATMEGA__</code>   </td><td class="markdownTableBodyNone">Should work with most arduinos    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Arduino   </td><td class="markdownTableBodyNone"><code>__UNO__</code>   </td><td class="markdownTableBodyNone">Should work with low resource arduinos    </td></tr>
+<th class="markdownTableHeadNone">Platform   </th><th class="markdownTableHeadNone">#define (by user)   </th><th class="markdownTableHeadNone">Comment    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">ATtiny   </td><td class="markdownTableBodyNone"><code>__ATTINY__</code>   </td><td class="markdownTableBodyNone">For very low resource ATMELs    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">ESP8266   </td><td class="markdownTableBodyNone"><code>__ESP__</code>   </td><td class="markdownTableBodyNone">For ESP8266 and ESP32    </td></tr>
+<td class="markdownTableBodyNone">Arduino   </td><td class="markdownTableBodyNone"><code>__UNO__</code>   </td><td class="markdownTableBodyNone">Should work with low resource arduinos    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ESP32   </td><td class="markdownTableBodyNone"><code>__ESP__</code> and <code>__ESP32__</code>   </td><td class="markdownTableBodyNone">ESP32    </td></tr>
+<td class="markdownTableBodyNone">Arduino   </td><td class="markdownTableBodyNone"><code>__ATMEGA__</code>   </td><td class="markdownTableBodyNone">Should work with most arduinos    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">ESP32DEV   </td><td class="markdownTableBodyNone"><code>__ESP__</code> and <code>__ESP32DEV__</code>   </td><td class="markdownTableBodyNone">ESP32 git head   </td></tr>
+<td class="markdownTableBodyNone">FeatherM0   </td><td class="markdownTableBodyNone"><code>__FEATHER_M0__</code>   </td><td class="markdownTableBodyNone">Adafruit feather M0 (Wifi)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">STM32   </td><td class="markdownTableBodyNone"><code>__BLUEPILL__</code>   </td><td class="markdownTableBodyNone">STM32F103C8T6 ARM Cortex-M3    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">NRF52   </td><td class="markdownTableBodyNone"><code>__NRF52__</code>   </td><td class="markdownTableBodyNone">Feather NRF52832 Cortex-M4    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ESP8266   </td><td class="markdownTableBodyNone"><code>__ESP__</code>   </td><td class="markdownTableBodyNone">For ESP8266 and ESP32    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">ESP32   </td><td class="markdownTableBodyNone"><code>__ESP32__</code>   </td><td class="markdownTableBodyNone">ESP32    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ESP32DEV   </td><td class="markdownTableBodyNone"><code>__ESP32DEV__</code>   </td><td class="markdownTableBodyNone">ESP32 git head    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Maix Bit   </td><td class="markdownTableBodyNone"><code>__MAIXBIT__</code>   </td><td class="markdownTableBodyNone">Sipeed Maix Bit RISC-V    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Mac   </td><td class="markdownTableBodyNone"><code>__APPLE__</code>   </td><td class="markdownTableBodyNone">Should be defined already    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Linux   </td><td class="markdownTableBodyNone"><code>__linux__</code>   </td><td class="markdownTableBodyNone">Should be defined already   </td></tr>
 </table>
+<p><b>Note:</b> If the desired MCU is not in that list, select one with similar characteristics, these platform defines are used to generate feature-lists that are used by muwerk's modules.</p>
 <h2>Additional selectable options</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -109,11 +118,36 @@ $(function() {
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>USTD_OPTION_FS_FORCE_NO_FS</code>   </td><td class="markdownTableBodyNone">Disable all filesystem related functionality   </td></tr>
 </table>
-<p>For 'standard' Arduinos:</p>
-<ul>
-<li>Both <code>__ATMEGA__</code> and <code>__UNO__</code> define additionally <code>__ARDUINO__</code> which can be used to check for the 'standard' Arduino core.</li>
-</ul>
 <h2>Defines generated by <code><a class="el" href="platform_8h_source.html">platform.h</a></code> depending on the platform define above</h2>
+<p><b>Note:</b> All defines below are <em>automatically</em> generated, they are derived from the platform define above:</p>
+<h3>Family defines</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Platform define   </th><th class="markdownTableHeadNone">Automatically defined family   </th><th class="markdownTableHeadNone">Comment    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>__UNO__</code>   </td><td class="markdownTableBodyNone"><code>__ARDUINO__</code>   </td><td class="markdownTableBodyNone">8-bit Atmel Arduinos    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>__MEGA__</code>   </td><td class="markdownTableBodyNone"><code>__ARDUINO__</code>   </td><td class="markdownTableBodyNone">"    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">`__FEATHER_MO__`   </td><td class="markdownTableBodyNone">`__ARM__`   </td><td class="markdownTableBodyNone">ARM cortex    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">`__BLUEPILL__`   </td><td class="markdownTableBodyNone">`__ARM__`   </td><td class="markdownTableBodyNone">"    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>__NRF52__</code>   </td><td class="markdownTableBodyNone"><code>__ARM__</code>   </td><td class="markdownTableBodyNone">"    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">`__ESP__`   </td><td class="markdownTableBodyNone">t.b.d.   </td><td class="markdownTableBodyNone">t.b.d.    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">`__ESP32__`   </td><td class="markdownTableBodyNone">"   </td><td class="markdownTableBodyNone">"    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">`__ESPDEV__`   </td><td class="markdownTableBodyNone">"   </td><td class="markdownTableBodyNone">"    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">`__MAIXBIT__`   </td><td class="markdownTableBodyNone">`__RISC_V__`   </td><td class="markdownTableBodyNone">RISC-V based MCUs    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">`__APPLE__`   </td><td class="markdownTableBodyNone">`__UNIXOID__`   </td><td class="markdownTableBodyNone">macOS computer    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">`__linux__`   </td><td class="markdownTableBodyNone">`__UNIXOID__`   </td><td class="markdownTableBodyNone">Linux computer   </td></tr>
+</table>
+<h3>Features</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Define   </th><th class="markdownTableHeadNone">Comment    </th></tr>
@@ -136,7 +170,11 @@ $(function() {
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>USTD_FEATURE_CLK_SET</code>   </td><td class="markdownTableBodyNone">Time can be set    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>USTD_FEATURE_NET</code>   </td><td class="markdownTableBodyNone">Network access available   </td></tr>
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_NET</code>   </td><td class="markdownTableBodyNone">Network access available    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_FREE_MEMORY</code>   </td><td class="markdownTableBodyNone">freeMemory() is available    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_SUPPORTS_NEW_OPERATOR</code>   </td><td class="markdownTableBodyNone">Platform SDK has it's own <code>new</code> operator   </td></tr>
 </table>
 <h3>Possible values for <code>USTD_FEATURE_MEMORY</code></h3>
 <p>(Automatically derived by <code><a class="el" href="platform_8h_source.html">platform.h</a></code> from platform define <code>__xxx__</code>)</p>
@@ -150,13 +188,13 @@ $(function() {
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_8K</code>   </td><td class="markdownTableBodyNone">Arduino MEGA    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_32k</code>   </td><td class="markdownTableBodyNone">ESP8266, Bluepill    </td></tr>
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_32K</code>   </td><td class="markdownTableBodyNone">ESP8266, Bluepill, Cortex M0, M3, M4F    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_128</code>   </td><td class="markdownTableBodyNone">Blackpill    </td></tr>
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_128K</code>   </td><td class="markdownTableBodyNone">Blackpill, ESP32    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_512k</code>   </td><td class="markdownTableBodyNone">ESP32    </td></tr>
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_512K</code>   </td><td class="markdownTableBodyNone"></td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_1M</code>   </td><td class="markdownTableBodyNone">Unixoids   </td></tr>
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_MEM_1M</code>   </td><td class="markdownTableBodyNone">Unixoids &amp; RISC-V   </td></tr>
 </table>
 <p>To make code dependent on a memory-class, use something like:</p>
 <div class="fragment"><div class="line"> {c++}</div>
@@ -183,6 +221,7 @@ $(function() {
 </ul>
 <h1>History </h1>
 <ul>
+<li>0.4.2 (2021-01-24) New platforms <code>__FEATHER_M0__</code> (ARM Cortex M0), <code>__BLUEPILL__</code> (ARM Cortex M3), <code>__NRF42__</code> (ARM Cortex M4F), <code>__MAIXBIT__</code> (RISC-V). Bugfix for zero-initialisation of array, map, and queue (no longer uses memset).</li>
 <li>0.4.1 (2021-01-22) Bugfix for USTD_FEATURE_MEMORY handling. ATtiny no longer supports ustd::function&lt;&gt;.</li>
 <li>0.4.0 (2021-01-19) Feature defines in <code><a class="el" href="platform_8h_source.html">platform.h</a></code> for better hardware specific adaptations.</li>
 <li>0.3.6 (2021-01-12) Support for UNO and MEGA in <a class="el" href="functional_8h.html">functional.h</a> via <code>__ARDUINO__</code> define.</li>
