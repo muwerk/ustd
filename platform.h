@@ -163,6 +163,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_CLK_READ
 #define USTD_FEATURE_CLK_SET
 #if !defined(USTD_OPTION_FS_FORCE_NO_FS)
+#define USTD_FEATURE_FILESYSTEM
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
 #if defined(USTD_OPTION_FS_FORCE_SPIFFS)
 #include <SPIFFS.h>
@@ -193,6 +194,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_CLK_READ
 #define USTD_FEATURE_CLK_SET
 #if !defined(USTD_OPTION_FS_FORCE_NO_FS)
+#define USTD_FEATURE_FILESYSTEM
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
 #include <SPIFFS.h>
 #include <FS.h>
