@@ -98,9 +98,9 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `USTD_FEATURE_MEM_512B`    | ATtiny85                                 |
 | `USTD_FEATURE_MEM_2K`      | Arduino UNO, ATtiny1614, AT328P          |
 | `USTD_FEATURE_MEM_8K`      | Arduino MEGA                             |
-| `USTD_FEATURE_MEM_32K`     | ESP8266, Bluepill                        |
-| `USTD_FEATURE_MEM_128K`     | Blackpill                                |
-| `USTD_FEATURE_MEM_512K`    | ESP32                                    |
+| `USTD_FEATURE_MEM_32K`     | ESP8266, Bluepill, Cortex M0, M3, M4F    |
+| `USTD_FEATURE_MEM_128K`    | Blackpill, ESP32                         |
+| `USTD_FEATURE_MEM_512K`    |                                          |
 | `USTD_FEATURE_MEM_1M`      | Unixoids & RISC-V                        |
 
 To make code dependent on a memory-class, use something like:
