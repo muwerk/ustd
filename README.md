@@ -144,6 +144,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.4.4 (2021-01-25) Missing `USTD_FEATURE_FILESYSTEM` defines for ESPs added.
 - 0.4.2 (2021-01-24) New platforms `__FEATHER_M0__` (ARM Cortex M0), `__BLUEPILL__` (ARM Cortex M3), 
         `__NRF42__` (ARM Cortex M4F), `__MAIXBIT__` (RISC-V). Bugfix for zero-initialisation of array,
         map, and queue (no longer uses memset).
