@@ -3,6 +3,7 @@ ustd
 
 [![Mac/Linux Build Status](https://travis-ci.org/muwerk/ustd.svg?branch=master)](https://travis-ci.org/muwerk/ustd)
 [![Dev Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://muwerk.github.io/ustd/docs/index.html)
+![Cmake](https://github.com/muwerk/ustd/workflows/CMake/badge.svg)
 
 ustd provides minimal and highly portable implementations  of the following classes:
 
