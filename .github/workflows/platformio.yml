@@ -30,6 +30,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install --upgrade platformio
     - name: Install NRF52 tool from adafruit for NRF52 platform
+      run:
         pip install --upgrade adafruit-nrfutil
     - name: Make ustd lib files available for tests
       run:
