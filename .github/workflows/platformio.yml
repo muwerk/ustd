@@ -31,7 +31,8 @@ jobs:
         pip install --upgrade platformio
     - name: Make ustd lib files available for tests
       run:
-        echo `pwd`
-        cp ~/*.h ~/Examples/platformio/include
+        cp -v ~/*.h ~/Examples/platformio/include
     - name: Run PlatformIO
-      run: pio run -e uno -e esp32
+      run:
+        cd Examples/platformio 
+        pio run -e uno -e esp32
