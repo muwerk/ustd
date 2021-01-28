@@ -3,8 +3,8 @@ ustd
 
 [![Mac/Linux Build Status](https://travis-ci.org/muwerk/ustd.svg?branch=master)](https://travis-ci.org/muwerk/ustd)
 [![Dev Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://muwerk.github.io/ustd/docs/index.html)
-![Cmake](https://github.com/muwerk/ustd/workflows/CMake/badge.svg)
-![PlatformIO CI](https://github.com/muwerk/ustd/workflows/PlatformIO%20CI/badge.svg)
+[![Cmake](https://github.com/muwerk/ustd/workflows/CMake/badge.svg)](https://github.com/muwerk/ustd/actions)
+[![PlatformIO CI](https://github.com/muwerk/ustd/workflows/PlatformIO%20CI/badge.svg)](https://github.com/muwerk/ustd/actions)
 
 ustd provides minimal and highly portable implementations  of the following classes:
 
@@ -146,6 +146,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- CI    (2021-01-28) Use Github actions to test build for all platform defines.
 - 0.4.4 (2021-01-25) Missing `USTD_FEATURE_FILESYSTEM` defines for ESPs added.
 - 0.4.2 (2021-01-24) New platforms `__FEATHER_M0__` (ARM Cortex M0), `__BLUEPILL__` (ARM Cortex M3), 
         `__NRF42__` (ARM Cortex M4F), `__MAIXBIT__` (RISC-V). Bugfix for zero-initialisation of array,
