@@ -38,6 +38,10 @@ jobs:
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build . --config $BUILD_TYPE
 
+    - name: Install valgrind
+      shell: bash
+      run: sudo apt install valgrind
+      
     - name: Test
       working-directory: ${{github.workspace}}/Examples/mac-linux/build
       shell: bash
