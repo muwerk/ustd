@@ -34,4 +34,4 @@ jobs:
         cp -v ${{github.workspace}}/*.h ${{github.workspace}}/Examples/platformio/include
     - name: Run PlatformIO
       run:
-        pio run -d ${{github.workspace}}/Examples/platformio -e uno -e esp32
+        pio run -d ${{github.workspace}}/Examples/platformio
