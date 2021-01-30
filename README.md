@@ -146,9 +146,10 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.5.0 (2021-01-30) In order to prevent name-clashes for include-files for Arduino-IDE users, all
+- 0.5.0 (2021-01-30) **BREAKING CHANGE:** In order to prevent name-clashes for include-files for Arduino-IDE users, all
         ustd include files now have an `ustd_` prefix. Compatibility-versions without `ustd_` that
-        include the `ustd_` versions are provided.
+        include the `ustd_` versions are provided, with exception of queue.h (clash with ESP8266-Wifi) and
+        platform.h (clash with RISC-V sdk).
 - CI    (2021-01-28) Use Github actions to test build for all platform defines.
 - 0.4.4 (2021-01-25) Missing `USTD_FEATURE_FILESYSTEM` defines for ESPs added.
 - 0.4.2 (2021-01-24) New platforms `__FEATHER_M0__` (ARM Cortex M0), `__BLUEPILL__` (ARM Cortex M3), 
