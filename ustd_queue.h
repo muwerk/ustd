@@ -1,4 +1,4 @@
-// queue.h - ustd queue class
+// ustd_queue.h - ustd queue class
 
 #pragma once
 
@@ -6,7 +6,7 @@ namespace ustd {
 
 /*! \brief Lightweight c++11 ring buffer queue implementation.
 
-queue.h is a minimal, yet highly portable ring buffer queu implementation
+ustd_queue.h is a minimal, yet highly portable ring buffer queu implementation
 that runs well on architectures with very limited resources such as attiny 8kb
 avr.
 

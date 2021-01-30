@@ -1,4 +1,4 @@
-// array.h - array class
+// ustd_array.h - array class
 
 #pragma once
 
@@ -39,7 +39,7 @@ namespace ustd {
 
 /*! \brief Lightweight c++11 array implementation.
 
-array.h is a minimal, yet highly portable array data type implementation
+ustd_array.h is a minimal, yet highly portable array data type implementation
 that runs well on architectures with very limited resources such as attiny 8kb
 avr.
 

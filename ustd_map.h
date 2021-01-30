@@ -1,4 +1,4 @@
-// map.h - ustd queue class
+// ustd_map.h - ustd queue class
 
 #pragma once
 #include "ustd_array.h"
@@ -9,7 +9,7 @@ namespace ustd {
 
 /*! \brief Lightweight c++11 dictionary map implementation.
 
-map.h is a minimal, yet highly portable dictionary map type implementation
+ustd_map.h is a minimal, yet highly portable dictionary map type implementation
 that runs well on architectures with very limited resources such as attiny 8kb
 avr.
 
