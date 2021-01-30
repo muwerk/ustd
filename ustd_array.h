@@ -28,7 +28,7 @@ define</a> before including ustd headers.
 <a href="https://github.com/muwerk/ustd">ustd github repository</a>
 */
 
-#include "platform.h"
+#include "ustd_platform.h"
 
 //! \brief The ustd namespace
 namespace ustd {
@@ -59,7 +59,7 @@ define</a> before including ustd headers.
 
 ~~~{.cpp}
 #define __ATTINY__ 1   // Platform defines required, see doc, mainpage.
-#include <array.h>
+#include <ustd_array.h>
 
 ustd::array<int> intArray;
 
@@ -73,7 +73,7 @@ printf("[0]:%d [1]:%d length=%d\n", intArray[0], intArray[1], intArray.length())
 ## An example for static mode
 
 ~~~{.cpp}
-#include <array.h>
+#include <ustd_array.h>
 
 // array length is fixed 5 (startSize==maxSize), no dynamic extensions:
 ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);

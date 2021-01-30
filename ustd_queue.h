@@ -18,7 +18,7 @@ define</a> before including ustd headers.
 
 ~~~{.cpp}
 #define __ATTINY__ 1  // Appropriate platform define required
-#include <queue.h>
+#include <ustd_queue.h>
 
 queue<int> que = queue<int>(128);
 

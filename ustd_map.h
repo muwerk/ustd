@@ -1,7 +1,7 @@
 // map.h - ustd queue class
 
 #pragma once
-#include "array.h"
+#include "ustd_array.h"
 
 namespace ustd {
 
@@ -29,7 +29,7 @@ define</a> before including ustd headers.
 
 ~~~{.cpp}
 #define __ATTINY__ 1  // Appropriate platform define required
-#include <map.h>
+#include <ustd_map.h>
 
 ustd::map<int,double> myMap;
 
@@ -41,7 +41,7 @@ double p = myMap[0];
 
 ~~~{.cpp}
 #define __ATTINY__ 1  // Appropriate platform define required
-#include <map.h>
+#include <ustd_map.h>
 
 // map size is fixed 5 (startSize==maxSize), no dynamic extensions:
 ustd::map<int, float> mayMap = ustd::map<int,float>(5, 5, 0, false);

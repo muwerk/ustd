@@ -26,7 +26,7 @@ winterscar.
                       // __ATTINY__ is no longer supported.
                       // All other platforms should use std::function<>
                       // from standard library.
-#include <functional.h>
+#include <ustd_functional.h>
 
 #if defined (__ARDUINO__)
 typedef ustd::function<void()> T_TASK;
