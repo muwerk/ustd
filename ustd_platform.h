@@ -1,4 +1,4 @@
-// platform.h - adapt platform specific stuff
+// ustd_platform.h - adapt platform specific stuff
 #pragma once
 
 //================= Platform defines ==========================
