@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "aefilmopqrsuv~",
   1: "amq",
   2: "u",
-  3: "f",
+  3: "u",
   4: "aefilmopqrs~",
   5: "v",
   6: "u"
