@@ -1,8 +1,9 @@
-#include "platform.h"
+// Note: platform define is in platform.ini
+#include "ustd_platform.h"
 
-#include "array.h"
-#include "queue.h"
-#include "map.h"
+#include "ustd_array.h"
+#include "ustd_queue.h"
+#include "ustd_map.h"
 
 void setup() {
     ustd::array<int> ar = ustd::array<int>(1, 100, 1);
