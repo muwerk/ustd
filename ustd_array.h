@@ -238,11 +238,15 @@ template <typename T> class array {
     T operator[](unsigned int i) const {
         /*! Read content of array element at i, a=myArray[3] */
         if (i >= allocSize) {
+#if defined(__UNIXOID__)
             if (incSize == 0) {
-                ASSERT(i < allocSize);
+                assert(i < allocSize);
             }
+#endif
             if (!resize(allocSize + incSize)) {
-                ASSERT(i < allocSize);
+#if defined(__UNIXOID__)
+                assert(i < allocSize);
+#endif
             }
         }
         if (i >= size && i <= allocSize)
@@ -256,11 +260,15 @@ template <typename T> class array {
     T &operator[](unsigned int i) {
         /*! Assign content of array element at i, e.g. myArray[3]=3 */
         if (i >= allocSize) {
+#if defined(__UNIXOID__)
             if (incSize == 0) {
-                ASSERT(i < allocSize);
+                assert(i < allocSize);
             }
+#endif
             if (!resize(allocSize + incSize)) {
-                ASSERT(i < allocSize);
+#if defined(__UNIXOID__)
+                assert(i < allocSize);
+#endif
             }
         }
         if (i >= size && i <= allocSize)

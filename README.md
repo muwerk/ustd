@@ -146,6 +146,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.5.x (not released) Feather M4 added: `__FEATHER_M4__`. ASSERT() macros removed due to clashes.
 - 0.5.0 (2021-01-30) **BREAKING CHANGE:** In order to prevent name-clashes for include-files for Arduino-IDE users, all
         ustd include files now have an `ustd_` prefix. Compatibility-versions without `ustd_` that
         include the `ustd_` versions are provided, with exception of queue.h (clash with ESP8266-Wifi) and
