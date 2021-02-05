@@ -187,6 +187,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // FEATHER_M4
 
 // ------------- Arduino BLE Sense (NRF52840) -----------------
+/* Currently broken:
 #if defined(__NANOBLE__)
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
@@ -196,6 +197,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define __ARM__ 1
 #include <Arduino.h>
 #endif  // NANOBLE
+*/
 
 // ------------- ESP32 and ESP32DEV ---------------------------
 #if defined(__ESP32__) || defined(__ESP32DEV__)
@@ -270,6 +272,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_CLK_SET
 
 // ------------- Compatibility libs for Unixoids --------------
+/*
 #define USTD_ASSERT 1
 
 #ifdef USTD_ASSERT
@@ -278,7 +281,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #else  // else USTD_ASSERT
 #define ASSERT(f)
 #endif  // end USTD_ASSERT
-
+*/
 typedef std::string String;
 
 unsigned long micros() {
@@ -347,8 +350,9 @@ class SerialSim {
 
 SerialSim Serial;
 
-#else  // else linux, apple
+#else   // else linux, apple
 // ------------- Debug helpers and small tools for MCUs -------
+/*
 #if defined(USTD_ASSERT) && !defined(__NANOBLE__)
 #ifdef USE_SERIAL_DBG
 bool assertFailedLine(const char *filename, int line) {
@@ -368,7 +372,7 @@ bool assertFailedLine(const char *filename, int line) {
 #else   // else USTD_ASSERT
 #define ASSERT(f)
 #endif  // end USTD_ASSERT
-
+*/
 #endif  // end linux, apple
 
 #if defined(__ARDUINO__) || defined(__ARM__)
