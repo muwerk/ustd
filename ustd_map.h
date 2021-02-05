@@ -101,7 +101,6 @@ template <class K, class V> class map {
             if (keys[i] == key)
                 return values[i];
         }
-        ASSERT(false);  // key not found
         return bad;
     }
 
@@ -117,14 +116,12 @@ template <class K, class V> class map {
         }
         int i = keys.add(key);
         if (i == -1) {
-            ASSERT(false);  // key not found
             return bad;
         }
         if (i >= 0) {
             size++;
             return values[i];
         }
-        ASSERT(false);  // key not found
         return bad;
     }
 
