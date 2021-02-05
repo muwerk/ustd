@@ -221,6 +221,7 @@ $(function() {
 </ul>
 <h1>History </h1>
 <ul>
+<li>0.5.x (not released) Feather M4 added: <code>__FEATHER_M4__</code>. ASSERT() macros removed due to clashes.</li>
 <li>0.5.0 (2021-01-30) <b>BREAKING CHANGE:</b> In order to prevent name-clashes for include-files for Arduino-IDE users, all ustd include files now have an <code>ustd_</code> prefix. Compatibility-versions without <code>ustd_</code> that include the <code>ustd_</code> versions are provided, with exception of queue.h (clash with ESP8266-Wifi) and platform.h (clash with RISC-V sdk).</li>
 <li>CI (2021-01-28) Use Github actions to test build for all platform defines.</li>
 <li>0.4.4 (2021-01-25) Missing <code>USTD_FEATURE_FILESYSTEM</code> defines for ESPs added.</li>
