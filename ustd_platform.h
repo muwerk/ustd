@@ -175,6 +175,28 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // FORCE_NO_FS
 #endif  // ESP8266
 
+// ------------- Adafruit Feather M4 Express ------------------
+#if defined(__FEATHER_M4__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 192000
+#define __ARM__ 1
+#include <Arduino.h>
+#endif  // FEATHER_M4
+
+// ------------- Arduino BLE Sense (NRF52840) -----------------
+#if defined(__NANOBLE__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 256000
+#define __ARM__ 1
+#include <Arduino.h>
+#endif  // NANOBLE
+
 // ------------- ESP32 and ESP32DEV ---------------------------
 #if defined(__ESP32__) || defined(__ESP32DEV__)
 #if defined(KNOWN_PLATFORM)
@@ -327,7 +349,7 @@ SerialSim Serial;
 
 #else  // else linux, apple
 // ------------- Debug helpers and small tools for MCUs -------
-#ifdef USTD_ASSERT
+#if defined(USTD_ASSERT) && !defined(__NANOBLE__)
 #ifdef USE_SERIAL_DBG
 bool assertFailedLine(const char *filename, int line) {
     Serial.print("Assertion Failed: File ");
