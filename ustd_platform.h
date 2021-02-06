@@ -277,6 +277,8 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <iostream>
 #include <string>
 #include <sys/time.h>
+#include <cassert>
+
 #define USTD_FEATURE_NETWORK
 #define USTD_FEATURE_FILESYSTEM
 #define USTD_FEATURE_SYSTEMCLOCK
@@ -286,9 +288,8 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 // ------------- Compatibility libs for Unixoids --------------
 /*
 #define USTD_ASSERT 1
-
-#ifdef USTD_ASSERT
 #include <cassert>
+#ifdef USTD_ASSERT
 #define ASSERT(f) assert(f)
 #else  // else USTD_ASSERT
 #define ASSERT(f)
