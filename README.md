@@ -35,6 +35,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | Arduino  | `__UNO__`         | Should work with low resource arduinos     |
 | Arduino  | `__ATMEGA__`      | Should work with most arduinos             |
 | FeatherM0| `__FEATHER_M0__`  | Adafruit feather M0 (Wifi)                 |
+| FeatherM4| `__FEATHER_M4__`  | Adafruit feather M4 (Wifi)                 |
 | STM32    | `__BLUEPILL__`    | STM32F103C8T6 ARM Cortex-M3                |
 | STM32    | `__BLACKPILL__`   | STM32F411 ARM Cortex-M4                    |
 | NRF52    | `__NRF52__`       | Feather NRF52832 Cortex-M4                 |
