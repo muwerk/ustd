@@ -36,6 +36,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | Arduino  | `__ATMEGA__`      | Should work with most arduinos             |
 | FeatherM0| `__FEATHER_M0__`  | Adafruit feather M0 (Wifi)                 |
 | STM32    | `__BLUEPILL__`    | STM32F103C8T6 ARM Cortex-M3                |
+| STM32    | `__BLACKPILL__`   | STM32F411 ARM Cortex-M4                    |
 | NRF52    | `__NRF52__`       | Feather NRF52832 Cortex-M4                 |
 | ESP8266  | `__ESP__`         | For ESP8266 and ESP32                      |
 | ESP32    | `__ESP32__`       | ESP32                                      |
@@ -65,7 +66,9 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__UNO__`       | `__ARDUINO__`                                       | 8-bit Atmel Arduinos
 | `__MEGA__`      | `__ARDUINO__`                                       |    "
 | `__FEATHER_MO__`| `__ARM__`                                           | ARM cortex
+| `__FEATHER_M4__`| `__ARM__`                                           |   "
 | `__BLUEPILL__`  | `__ARM__`                                           |   "
+| `__BLACKPILL__` | `__ARM__`                                           |   "
 | `__NRF52__`     | `__ARM__`                                           |   "
 | `__ESP__`       |  t.b.d.                                             | t.b.d.
 | `__ESP32__`     |    "                                                |   "
@@ -146,7 +149,10 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.5.x (not released) Feather M4 added: `__FEATHER_M4__`. ASSERT() macros removed due to clashes.
+- 0.5.x (not released) New platforms
+  - Platforms: Feather M4 added: `__FEATHER_M4__`
+  - Blackpill STM32F411 added.
+  - ASSERT() macros removed due to clashes.
 - 0.5.0 (2021-01-30) **BREAKING CHANGE:** In order to prevent name-clashes for include-files for Arduino-IDE users, all
         ustd include files now have an `ustd_` prefix. Compatibility-versions without `ustd_` that
         include the `ustd_` versions are provided, with exception of queue.h (clash with ESP8266-Wifi) and
