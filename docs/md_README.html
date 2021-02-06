@@ -92,7 +92,11 @@ $(function() {
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">FeatherM0   </td><td class="markdownTableBodyNone"><code>__FEATHER_M0__</code>   </td><td class="markdownTableBodyNone">Adafruit feather M0 (Wifi)    </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">FeatherM4   </td><td class="markdownTableBodyNone"><code>__FEATHER_M4__</code>   </td><td class="markdownTableBodyNone">Adafruit feather M4 (Wifi)    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">STM32   </td><td class="markdownTableBodyNone"><code>__BLUEPILL__</code>   </td><td class="markdownTableBodyNone">STM32F103C8T6 ARM Cortex-M3    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">STM32   </td><td class="markdownTableBodyNone"><code>__BLACKPILL__</code>   </td><td class="markdownTableBodyNone">STM32F411 ARM Cortex-M4    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">NRF52   </td><td class="markdownTableBodyNone"><code>__NRF52__</code>   </td><td class="markdownTableBodyNone">Feather NRF52832 Cortex-M4    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -131,7 +135,11 @@ $(function() {
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">`__FEATHER_MO__`   </td><td class="markdownTableBodyNone">`__ARM__`   </td><td class="markdownTableBodyNone">ARM cortex    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">`__BLUEPILL__`   </td><td class="markdownTableBodyNone">`__ARM__`   </td><td class="markdownTableBodyNone">"    </td></tr>
+<td class="markdownTableBodyNone">`__FEATHER_M4__`   </td><td class="markdownTableBodyNone">`__ARM__`   </td><td class="markdownTableBodyNone">"    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>__BLUEPILL__</code>   </td><td class="markdownTableBodyNone"><code>__ARM__</code>   </td><td class="markdownTableBodyNone">"    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">`__BLACKPILL__`   </td><td class="markdownTableBodyNone">`__ARM__`   </td><td class="markdownTableBodyNone">"    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>__NRF52__</code>   </td><td class="markdownTableBodyNone"><code>__ARM__</code>   </td><td class="markdownTableBodyNone">"    </td></tr>
 <tr class="markdownTableRowEven">
@@ -221,7 +229,12 @@ $(function() {
 </ul>
 <h1>History </h1>
 <ul>
-<li>0.5.x (not released) Feather M4 added: <code>__FEATHER_M4__</code>. ASSERT() macros removed due to clashes.</li>
+<li>0.5.x (not released) New platforms<ul>
+<li>Platforms: Feather M4 added: <code>__FEATHER_M4__</code></li>
+<li>Blackpill STM32F411 added.</li>
+<li>ASSERT() macros removed due to clashes.</li>
+</ul>
+</li>
 <li>0.5.0 (2021-01-30) <b>BREAKING CHANGE:</b> In order to prevent name-clashes for include-files for Arduino-IDE users, all ustd include files now have an <code>ustd_</code> prefix. Compatibility-versions without <code>ustd_</code> that include the <code>ustd_</code> versions are provided, with exception of queue.h (clash with ESP8266-Wifi) and platform.h (clash with RISC-V sdk).</li>
 <li>CI (2021-01-28) Use Github actions to test build for all platform defines.</li>
 <li>0.4.4 (2021-01-25) Missing <code>USTD_FEATURE_FILESYSTEM</code> defines for ESPs added.</li>
