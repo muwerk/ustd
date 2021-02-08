@@ -230,10 +230,8 @@ $(function() {
 <h1>History </h1>
 <ul>
 <li>0.5.x (not released) New platforms<ul>
-<li>Support for copy-constructors in <code><a class="el" href="classustd_1_1array.html" title="Lightweight c++11 array implementation.">ustd::array</a></code>, <code><a class="el" href="classustd_1_1queue.html" title="Lightweight c++11 ring buffer queue implementation.">ustd::queue</a></code>, and <code><a class="el" href="classustd_1_1map.html" title="Lightweight c++11 dictionary map implementation.">ustd::map</a></code>.</li>
 <li>Platforms: Feather M4 added: <code>__FEATHER_M4__</code></li>
 <li>Blackpill STM32F411 added.</li>
-<li>Arduino Nano 33 BLE added. <b>Note:</b> requires platformio's <code>lib_ldf_mode = chain+</code> definition in <code>platform.ini</code>, otherwise platformio will get confused about including <code>WiFi.h</code>, because of faulty <code>#ifdef</code> parsing of <code>ustd_platformio.h</code>.</li>
 <li>ASSERT() macros removed due to clashes.</li>
 </ul>
 </li>
