@@ -135,7 +135,7 @@ template <typename T> class array {
     array(const array<T> &ar) {
         arr = ualloc(ar.allocSize);
         if (arr) {
-            memcpy(arr, ar.arr, allocSize);
+            memcpy(arr, ar.arr, ar.size * sizeof(T));
             startSize = ar.startSize;
             maxSize = ar.maxSize;
             incSize = ar.incSize;

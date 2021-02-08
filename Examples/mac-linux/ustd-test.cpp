@@ -21,12 +21,28 @@ using ustd::array;
 using ustd::map;
 using ustd::queue;
 
-void checkCopy(array<int> ar) {
+bool checkCopy(array<int> ar) {
+    bool aerr = false;
     printf("COPY ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
+    for (int i = 0; i < ar.length(); i++) {
+        if (ar[i] != i) {
+            aerr = true;
+            printf("COPY Array: err at: %d\n", i);
+        }
+    }
+    return aerr;
 }
 
-void checkRef(array<int> &ar) {
+bool checkRef(array<int> &ar) {
+    bool aerr = false;
     printf("REF ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
+    for (int i = 0; i < ar.length(); i++) {
+        if (ar[i] != i) {
+            aerr = true;
+            printf("REF Array: err at: %d\n", i);
+        }
+    }
+    return aerr;
 }
 
 int main() {
@@ -37,6 +53,7 @@ int main() {
     queue<int> qu = queue<int>(128);
     map<int, int> mp = map<int, int>(7, 100, 1);
 
+    bool aerr = false;
     for (int i = 0; i < 100; i++) {
         // printf("%d ", i);
         ar[i] = i;
@@ -50,9 +67,11 @@ int main() {
     printf("qu len: %d\n", qu.length());
     printf("mp len: %d\n", mp.length());
 
-    checkCopy(ar);
+    if (checkCopy(ar))
+        aerr = true;
 
-    checkRef(ar);
+    if (checkRef(ar))
+        aerr = true;
 
     for (int i = 0; i < 100; i++)
         qu.pop();
@@ -69,7 +88,6 @@ int main() {
         exit(-1);
     } else
         printf("Map selftest ok over %d!\n", mp.length());
-    bool aerr = false;
     for (int i = 0; i < ar.length(); i++) {
         if (ar[i] != i) {
             aerr = true;
