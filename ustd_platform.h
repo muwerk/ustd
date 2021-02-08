@@ -199,7 +199,6 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // FEATHER_M4
 
 // ------------- Arduino BLE Sense (NRF52840) -----------------
-/* Currently broken:
 #if defined(__NANOBLE__)
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
@@ -209,7 +208,6 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define __ARM__ 1
 #include <Arduino.h>
 #endif  // NANOBLE
-*/
 
 // ------------- ESP32 and ESP32DEV ---------------------------
 #if defined(__ESP32__) || defined(__ESP32DEV__)
