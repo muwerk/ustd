@@ -45,6 +45,19 @@ bool checkRef(array<int> &ar) {
     return aerr;
 }
 
+bool checkInitializers() {
+    const int in[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    array<int> ar(in, 20);
+    printf("Initlen=%d=n", ar.length());
+    for (unsigned int i = 0; i < 20; i++) {
+        if (ar[i] != i + 1) {
+            printf("init-Array: err at: %d\n", i);
+            return false;
+        }
+    }
+    return true;
+}
+
 int main() {
     cout << "Testing ustd..." << endl;
     cout << "Memory free is more than: " << freeMemory() << endl;
