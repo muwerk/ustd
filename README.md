@@ -151,7 +151,7 @@ History
 -------
 
 - 0.5.x (not released) New platforms
-  - Support for copy-constructor in `ustd::array` and `ustd::map`.
+  - Support for copy-constructors in `ustd::array`, `ustd::queue`, and `ustd::map`.
   - Platforms: Feather M4 added: `__FEATHER_M4__`
   - Blackpill STM32F411 added.
   - Arduino Nano 33 BLE added. **Note:** requires platformio's `lib_ldf_mode = chain+` definition
