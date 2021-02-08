@@ -133,9 +133,10 @@ template <typename T> class array {
     }
 
     array(const array<T> &ar) {
+        /*! array copy constructor */
         arr = ualloc(ar.allocSize);
         if (arr) {
-            memcpy(arr, ar.arr, ar.size * sizeof(T));
+            // memcpy(arr, ar.arr, ar.size * sizeof(T));
             startSize = ar.startSize;
             maxSize = ar.maxSize;
             incSize = ar.incSize;
@@ -143,6 +144,9 @@ template <typename T> class array {
             allocSize = ar.allocSize;
             size = ar.size;
             bad = ar.bad;
+            for (unsigned int i = 0; i < size; i++) {
+                arr[i] = ar.arr[i];
+            }
         }
     }
 
