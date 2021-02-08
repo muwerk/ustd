@@ -1,4 +1,3 @@
-// Note: platform define is in platform.ini
 #include "ustd_platform.h"
 
 #include "ustd_array.h"

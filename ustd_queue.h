@@ -1,4 +1,4 @@
-// queue.h - ustd queue class
+// ustd_queue.h - ustd queue class
 
 #pragma once
 
@@ -6,7 +6,7 @@ namespace ustd {
 
 /*! \brief Lightweight c++11 ring buffer queue implementation.
 
-queue.h is a minimal, yet highly portable ring buffer queu implementation
+ustd_queue.h is a minimal, yet highly portable ring buffer queu implementation
 that runs well on architectures with very limited resources such as attiny 8kb
 avr.
 
@@ -18,7 +18,7 @@ define</a> before including ustd headers.
 
 ~~~{.cpp}
 #define __ATTINY__ 1  // Appropriate platform define required
-#include <queue.h>
+#include <ustd_queue.h>
 
 queue<int> que = queue<int>(128);
 
@@ -54,6 +54,26 @@ template <class T> class queue {
         que = (T *)malloc(sizeof(T) * maxSize);
         if (que == nullptr)
             maxSize = 0;
+    }
+
+    queue(const queue &qu) {
+        peakSize = qu.peakSize;
+        maxSize = qu.maxSize;
+        size = qu.size;
+        quePtr0 = qu.quePtr0;
+        quePtr1 = qu.quePtr1;
+        bad = qu.bad;
+        que = (T *)malloc(sizeof(T) * maxSize);
+        if (que == nullptr) {
+            maxSize = 0;
+            size = 0;
+        } else {
+            unsigned int in = quePtr0;
+            for (unsigned int i = 0; i < size; i++) {
+                que[in] = qu.que[in];
+                in = (in + 1) % maxSize;
+            }
+        }
     }
 
     ~queue() {
