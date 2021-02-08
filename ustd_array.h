@@ -132,6 +132,20 @@ template <typename T> class array {
         arr = ualloc(allocSize);  // new T[allocSize];
     }
 
+    array(const array<T> &ar) {
+        arr = ualloc(ar.allocSize);
+        if (arr) {
+            memcpy(arr, ar.arr, allocSize);
+            startSize = ar.startSize;
+            maxSize = ar.maxSize;
+            incSize = ar.incSize;
+            shrink = ar.shrink;
+            allocSize = ar.allocSize;
+            size = ar.size;
+            bad = ar.bad;
+        }
+    }
+
     ~array() {
         /*! Free resources */
         if (arr != nullptr) {

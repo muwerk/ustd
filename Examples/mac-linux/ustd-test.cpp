@@ -21,6 +21,14 @@ using ustd::array;
 using ustd::map;
 using ustd::queue;
 
+void checkCopy(array<int> ar) {
+    printf("COPY ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
+}
+
+void checkRef(array<int> &ar) {
+    printf("REF ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
+}
+
 int main() {
     cout << "Testing ustd..." << endl;
     cout << "Memory free is more than: " << freeMemory() << endl;
@@ -41,6 +49,10 @@ int main() {
     printf("ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
     printf("qu len: %d\n", qu.length());
     printf("mp len: %d\n", mp.length());
+
+    checkCopy(ar);
+
+    checkRef(ar);
 
     for (int i = 0; i < 100; i++)
         qu.pop();
