@@ -151,8 +151,12 @@ History
 -------
 
 - 0.5.x (not released) New platforms
+  - Support for copy-constructor in `ustd::array` and `ustd::map`.
   - Platforms: Feather M4 added: `__FEATHER_M4__`
   - Blackpill STM32F411 added.
+  - Arduino Nano 33 BLE added. **Note:** requires platformio's `lib_ldf_mode = chain+` definition
+    in `platform.ini`, otherwise platformio will get confused about including `WiFi.h`, because
+    of faulty `#ifdef` parsing of `ustd_platformio.h`.
   - ASSERT() macros removed due to clashes.
 - 0.5.0 (2021-01-30) **BREAKING CHANGE:** In order to prevent name-clashes for include-files for Arduino-IDE users, all
         ustd include files now have an `ustd_` prefix. Compatibility-versions without `ustd_` that

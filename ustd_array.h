@@ -132,6 +132,41 @@ template <typename T> class array {
         arr = ualloc(allocSize);  // new T[allocSize];
     }
 
+    array(const T initarray[], unsigned int count) {
+        /*! construct array with const T[] c-array of length count
+        @param initarray c-array of type T
+        @param count number of entries in initarray */
+        allocSize = count;
+        startSize = count;
+        maxSize = ARRAY_MAX_SIZE;
+        incSize = ARRAY_INC_SIZE;
+        shrink = true;
+        size = count;
+        bad = {};
+        arr = ualloc(allocSize);  // new T[allocSize];
+        for (unsigned int i = 0; i < size; i++) {
+            arr[i] = initarray[i];
+        }
+    }
+
+    array(const array<T> &ar) {
+        /*! array copy constructor */
+        arr = ualloc(ar.allocSize);
+        if (arr) {
+            // memcpy(arr, ar.arr, ar.size * sizeof(T));
+            startSize = ar.startSize;
+            maxSize = ar.maxSize;
+            incSize = ar.incSize;
+            shrink = ar.shrink;
+            allocSize = ar.allocSize;
+            size = ar.size;
+            bad = ar.bad;
+            for (unsigned int i = 0; i < size; i++) {
+                arr[i] = ar.arr[i];
+            }
+        }
+    }
+
     ~array() {
         /*! Free resources */
         if (arr != nullptr) {

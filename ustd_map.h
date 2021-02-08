@@ -88,6 +88,20 @@ template <class K, class V> class map {
         allocSize = startSize;
     }
 
+    /* Implicit, no need:
+    map(const map &mp) {
+        size = mp.size;
+        peakSize = mp.peakSize;
+        allocSize = mp.allocSize;
+        startSize = mp.startSize;
+        maxSize = mp.maxSize;
+        incSize = mp.incSize;
+        shrink = mp.shrink;
+        bad = mp.bad;
+        keys = mp.keys;
+        values = mp.values;
+    } */
+
     ~map() {
         /*! Free resources */
     }
