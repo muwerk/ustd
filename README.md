@@ -39,6 +39,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | STM32    | `__BLUEPILL__`    | STM32F103C8T6 ARM Cortex-M3                |
 | STM32    | `__BLACKPILL__`   | STM32F411 ARM Cortex-M4                    |
 | NRF52    | `__NRF52__`       | Feather NRF52832 Cortex-M4                 |
+| Nano33BLE| `__NANOBLE__`     | Arduino Nano 33 BLE (Sense) nRF52840       |
 | ESP8266  | `__ESP__`         | For ESP8266 and ESP32                      |
 | ESP32    | `__ESP32__`       | ESP32                                      |
 | ESP32DEV | `__ESP32DEV__`    | ESP32 git head                             |
@@ -71,6 +72,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__BLUEPILL__`  | `__ARM__`                                           |   "
 | `__BLACKPILL__` | `__ARM__`                                           |   "
 | `__NRF52__`     | `__ARM__`                                           |   "
+| `__NANOBLE__`   | `__ARM__`                                           |   "
 | `__ESP__`       |  t.b.d.                                             | t.b.d.
 | `__ESP32__`     |    "                                                |   "
 | `__ESPDEV__`    |    "                                                |   "
