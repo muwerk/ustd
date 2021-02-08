@@ -77,12 +77,16 @@ $(function() {
 <p>Lightweight c++11 array implementation.  
  <a href="classustd_1_1array.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="array_8h_source.html">array.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="ustd__array_8h_source.html">ustd_array.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a73c2b783f194317522106e1ead813b52"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a73c2b783f194317522106e1ead813b52">array</a> (unsigned int startSize=ARRAY_INIT_SIZE, unsigned int maxSize=ARRAY_MAX_SIZE, unsigned int incSize=ARRAY_INC_SIZE, bool shrink=true)</td></tr>
 <tr class="separator:a73c2b783f194317522106e1ead813b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e18cb3a897021064668316b6289bf77"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a0e18cb3a897021064668316b6289bf77">array</a> (const T initarray[], unsigned int count)</td></tr>
+<tr class="separator:a0e18cb3a897021064668316b6289bf77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97bac5f79dd5ebdc15aa8f400fd6a9b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#af97bac5f79dd5ebdc15aa8f400fd6a9b">array</a> (const <a class="el" href="classustd_1_1array.html">array</a>&lt; T &gt; &amp;ar)</td></tr>
+<tr class="separator:af97bac5f79dd5ebdc15aa8f400fd6a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcab8dfd53e397edac42f05974d0a2ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#abcab8dfd53e397edac42f05974d0a2ba">~array</a> ()</td></tr>
 <tr class="separator:abcab8dfd53e397edac42f05974d0a2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1086ea57bc2f8af77e44d2a1a3b86738"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738">resize</a> (unsigned int newSize)</td></tr>
@@ -111,7 +115,7 @@ Public Member Functions</h2></td></tr>
 class ustd::array&lt; T &gt;</h3>
 
 <p>Lightweight c++11 array implementation. </p>
-<p><a class="el" href="array_8h_source.html">array.h</a> is a minimal, yet highly portable array data type implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
+<p><a class="el" href="ustd__array_8h_source.html">ustd_array.h</a> is a minimal, yet highly portable array data type implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
 <p>The array class either:</p>
 <ul>
 <li>allocates memory dynamically on array-writes or array-reads, or</li>
@@ -121,7 +125,7 @@ class ustd::array&lt; T &gt;</h3>
 <p>Make sure to provide the <a href="https://github.com/muwerk/ustd/blob/master/README.md">required platform define</a> before including ustd headers.</p>
 <h2>An example for dynamic mode:</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#define __ATTINY__ 1   </span><span class="comment">// Platform defines required, see doc, mainpage.</span></div>
-<div class="line"><span class="preprocessor">#include &lt;array.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;ustd_array.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray;</div>
 <div class="line"> </div>
@@ -130,17 +134,17 @@ class ustd::array&lt; T &gt;</h3>
 <div class="line"><span class="keywordtype">int</span> p = intArray[0];</div>
 <div class="line"> </div>
 <div class="line">printf(<span class="stringliteral">&quot;[0]:%d [1]:%d length=%d\n&quot;</span>, intArray[0], intArray[1], intArray.<a class="code" href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">length</a>())</div>
-<div class="ttc" id="aclassustd_1_1array_html"><div class="ttname"><a href="classustd_1_1array.html">ustd::array</a></div><div class="ttdoc">Lightweight c++11 array implementation.</div><div class="ttdef"><b>Definition:</b> array.h:83</div></div>
-<div class="ttc" id="aclassustd_1_1array_html_ad8ffaa95ed88955e91df6e80ef4274b6"><div class="ttname"><a href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">ustd::array::add</a></div><div class="ttdeci">int add(T &amp;entry)</div><div class="ttdef"><b>Definition:</b> array.h:193</div></div>
-<div class="ttc" id="aclassustd_1_1array_html_af87de14c31ad629df2b4a6ee1275c340"><div class="ttname"><a href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">ustd::array::length</a></div><div class="ttdeci">unsigned int length() const</div><div class="ttdef"><b>Definition:</b> array.h:283</div></div>
+<div class="ttc" id="aclassustd_1_1array_html"><div class="ttname"><a href="classustd_1_1array.html">ustd::array</a></div><div class="ttdoc">Lightweight c++11 array implementation.</div><div class="ttdef"><b>Definition:</b> ustd_array.h:83</div></div>
+<div class="ttc" id="aclassustd_1_1array_html_ad8ffaa95ed88955e91df6e80ef4274b6"><div class="ttname"><a href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">ustd::array::add</a></div><div class="ttdeci">int add(T &amp;entry)</div><div class="ttdef"><b>Definition:</b> ustd_array.h:228</div></div>
+<div class="ttc" id="aclassustd_1_1array_html_af87de14c31ad629df2b4a6ee1275c340"><div class="ttname"><a href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">ustd::array::length</a></div><div class="ttdeci">unsigned int length() const</div><div class="ttdef"><b>Definition:</b> ustd_array.h:326</div></div>
 </div><!-- fragment --><h2>An example for static mode</h2>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;array.h&gt;</span></div>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;ustd_array.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// array length is fixed 5 (startSize==maxSize), no dynamic extensions:</span></div>
 <div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray = <a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a>(5, 5, 0, <span class="keyword">false</span>);</div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a73c2b783f194317522106e1ead813b52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73c2b783f194317522106e1ead813b52">&#9670;&nbsp;</a></span>array()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c2b783f194317522106e1ead813b52">&#9670;&nbsp;</a></span>array() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -195,6 +199,80 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a0e18cb3a897021064668316b6289bf77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e18cb3a897021064668316b6289bf77">&#9670;&nbsp;</a></span>array() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classustd_1_1array.html">ustd::array</a>&lt; T &gt;::<a class="el" href="classustd_1_1array.html">array</a> </td>
+          <td>(</td>
+          <td class="paramtype">const T&#160;</td>
+          <td class="paramname"><em>initarray</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>construct array with const T[] c-array of length count </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">initarray</td><td>c-array of type T </td></tr>
+    <tr><td class="paramname">count</td><td>number of entries in initarray</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af97bac5f79dd5ebdc15aa8f400fd6a9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97bac5f79dd5ebdc15aa8f400fd6a9b">&#9670;&nbsp;</a></span>array() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classustd_1_1array.html">ustd::array</a>&lt; T &gt;::<a class="el" href="classustd_1_1array.html">array</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classustd_1_1array.html">array</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>ar</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>array copy constructor</p>
 
 </div>
 </div>
@@ -535,7 +613,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="array_8h_source.html">array.h</a></li>
+<li><a class="el" href="ustd__array_8h_source.html">ustd_array.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

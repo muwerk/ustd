@@ -78,7 +78,7 @@ $(function() {
 <p>Lightweight c++11 dictionary map implementation.  
  <a href="classustd_1_1map.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="map_8h_source.html">map.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="ustd__map_8h_source.html">ustd_map.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -113,7 +113,7 @@ Public Attributes</h2></td></tr>
 class ustd::map&lt; K, V &gt;</h3>
 
 <p>Lightweight c++11 dictionary map implementation. </p>
-<p><a class="el" href="map_8h_source.html">map.h</a> is a minimal, yet highly portable dictionary map type implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
+<p><a class="el" href="ustd__map_8h_source.html">ustd_map.h</a> is a minimal, yet highly portable dictionary map type implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
 <p>The map class either:</p>
 <ul>
 <li>allocates memory dynamically on map defintions, or</li>
@@ -123,16 +123,16 @@ class ustd::map&lt; K, V &gt;</h3>
 <p>Make sure to provide the <a href="https://github.com/muwerk/ustd/blob/master/README.md">required platform define</a> before including ustd headers.</p>
 <h2>An example for dynamic mode:</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#define __ATTINY__ 1  </span><span class="comment">// Appropriate platform define required</span></div>
-<div class="line"><span class="preprocessor">#include &lt;map.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;ustd_map.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><a class="code" href="classustd_1_1map.html">ustd::map&lt;int,double&gt;</a> myMap;</div>
 <div class="line"> </div>
 <div class="line">myMap[0] = 13.3; <span class="comment">// Memory for map is allocated, if necessary</span></div>
 <div class="line"><span class="keywordtype">double</span> p = myMap[0];</div>
-<div class="ttc" id="aclassustd_1_1map_html"><div class="ttname"><a href="classustd_1_1map.html">ustd::map</a></div><div class="ttdoc">Lightweight c++11 dictionary map implementation.</div><div class="ttdef"><b>Definition:</b> map.h:51</div></div>
+<div class="ttc" id="aclassustd_1_1map_html"><div class="ttname"><a href="classustd_1_1map.html">ustd::map</a></div><div class="ttdoc">Lightweight c++11 dictionary map implementation.</div><div class="ttdef"><b>Definition:</b> ustd_map.h:51</div></div>
 </div><!-- fragment --><h2>An example for static mode</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#define __ATTINY__ 1  </span><span class="comment">// Appropriate platform define required</span></div>
-<div class="line"><span class="preprocessor">#include &lt;map.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;ustd_map.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// map size is fixed 5 (startSize==maxSize), no dynamic extensions:</span></div>
 <div class="line"><a class="code" href="classustd_1_1map.html">ustd::map&lt;int, float&gt;</a> mayMap = <a class="code" href="classustd_1_1map.html">ustd::map&lt;int,float&gt;</a>(5, 5, 0, <span class="keyword">false</span>);</div>
@@ -503,7 +503,7 @@ template&lt;class K , class V &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="map_8h_source.html">map.h</a></li>
+<li><a class="el" href="ustd__map_8h_source.html">ustd_map.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
