@@ -21,7 +21,7 @@ using ustd::array;
 using ustd::map;
 using ustd::queue;
 
-bool checkCopy(array<int> ar) {
+bool checkCopyAr(array<int> ar) {
     bool aerr = false;
     printf("COPY ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
     for (int i = 0; i < ar.length(); i++) {
@@ -33,7 +33,7 @@ bool checkCopy(array<int> ar) {
     return aerr;
 }
 
-bool checkRef(array<int> &ar) {
+bool checkRefAr(array<int> &ar) {
     bool aerr = false;
     printf("REF ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
     for (int i = 0; i < ar.length(); i++) {
@@ -45,10 +45,10 @@ bool checkRef(array<int> &ar) {
     return aerr;
 }
 
-bool checkInitializers() {
+bool checkInitializersAr() {
     const int in[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
     array<int> ar(in, 20);
-    printf("Initlen=%d=n", ar.length());
+    printf("Initlen=%d\n", ar.length());
     for (unsigned int i = 0; i < 20; i++) {
         if (ar[i] != i + 1) {
             printf("init-Array: err at: %d\n", i);
@@ -56,6 +56,25 @@ bool checkInitializers() {
         }
     }
     return true;
+}
+
+bool cpMap(map<int, int> mp, map<int, int> *pmp) {
+    if (pmp->length() == mp.length()) {
+        printf("Copy-map-length: %d\n", mp.length());
+        return true;
+    } else {
+        printf("Copy-map-length: %d vs %d\n", mp.length(), pmp->length());
+        return false;
+    }
+}
+bool cpQue(queue<int> qu, queue<int> *pqu) {
+    if (pqu->length() == qu.length()) {
+        printf("Copy-que-length: %d\n", qu.length());
+        return true;
+    } else {
+        printf("Copy-que-length: %d vs %d\n", qu.length(), pqu->length());
+        return false;
+    }
 }
 
 int main() {
@@ -80,11 +99,20 @@ int main() {
     printf("qu len: %d\n", qu.length());
     printf("mp len: %d\n", mp.length());
 
-    if (checkCopy(ar))
+    if (checkCopyAr(ar))
         aerr = true;
 
-    if (checkRef(ar))
+    if (checkRefAr(ar))
         aerr = true;
+
+    if (!checkInitializersAr())
+        aerr = true;
+
+    bool qerr = false;
+    if (!cpQue(qu, &qu))
+        qerr = true;
+    if (qerr)
+        printf("Queue copy error!");
 
     for (int i = 0; i < 100; i++)
         qu.pop();
@@ -96,6 +124,9 @@ int main() {
             merr = true;
         }
     }
+    if (!cpMap(mp, &mp))
+        merr = true;
+
     if (merr) {
         printf("Map selftest failed!\n");
         exit(-1);

@@ -56,6 +56,26 @@ template <class T> class queue {
             maxSize = 0;
     }
 
+    queue(const queue &qu) {
+        peakSize = qu.peakSize;
+        maxSize = qu.maxSize;
+        size = qu.size;
+        quePtr0 = qu.quePtr0;
+        quePtr1 = qu.quePtr1;
+        bad = qu.bad;
+        que = (T *)malloc(sizeof(T) * maxSize);
+        if (que == nullptr) {
+            maxSize = 0;
+            size = 0;
+        } else {
+            unsigned int in = quePtr0;
+            for (unsigned int i = 0; i < size; i++) {
+                que[in] = qu.que[in];
+                in = (in + 1) % maxSize;
+            }
+        }
+    }
+
     ~queue() {
         /*!
         Deallocate the queue structure.
