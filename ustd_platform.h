@@ -175,6 +175,18 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // FORCE_NO_FS
 #endif  // ESP8266
 
+// ------------- STM32 Black Pill -----------------------------
+#if defined(__BLACKPILL__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 128000
+#define USTD_FEATURE_SUPPORTS_NEW_OPERATOR
+#define __ARM__ 1
+#include <Arduino.h>
+#endif  // Blackpill
+
 // ------------- Adafruit Feather M4 Express ------------------
 #if defined(__FEATHER_M4__)
 #if defined(KNOWN_PLATFORM)
