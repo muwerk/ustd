@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['_7emap_15',['~map',['../classustd_1_1map.html#a7d6537729df2281d20dd595e87dd096f',1,'ustd::map']]]
+  ['ustd_20',['ustd',['../md_README.html',1,'(Global Namespace)'],['../namespaceustd.html',1,'ustd']]],
+  ['ustd_20micro_2dstandard_2dlibrary_20for_20low_2dresource_20avrs_21',['ustd micro-standard-library for low-resource AVRs',['../index.html',1,'']]],
+  ['ustd_5ffunctional_2eh_22',['ustd_functional.h',['../ustd__functional_8h.html',1,'']]]
 ];

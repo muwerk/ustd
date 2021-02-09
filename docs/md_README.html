@@ -82,7 +82,7 @@ $(function() {
 <p>Make sure to use the appropriate platform define before including from <code>ustd</code>.</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Platform   </th><th class="markdownTableHeadNone">#define (by user)   </th><th class="markdownTableHeadNone">Comment    </th></tr>
+<th class="markdownTableHeadNone">Platform   </th><th class="markdownTableHeadNone"><code>#define</code> (by user)   </th><th class="markdownTableHeadNone">Comment    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">ATtiny   </td><td class="markdownTableBodyNone"><code>__ATTINY__</code>   </td><td class="markdownTableBodyNone">For very low resource ATMELs    </td></tr>
 <tr class="markdownTableRowEven">
@@ -239,7 +239,7 @@ $(function() {
 <h1>History </h1>
 <ul>
 <li>0.6.0 (2021-02-09) New platforms, iterator and copy-constructor support.<ul>
-<li>Support for iterators and copy-constructors in <code>ustd::array</code>, <code>ustd::queue</code>, and <code><a class="el" href="classustd_1_1map.html" title="Lightweight c++11 dictionary map implementation.">ustd::map</a></code>. (Thanks @proddy for iterator sample implementation.)</li>
+<li>Support for iterators and copy-constructors in <code><a class="el" href="classustd_1_1array.html" title="Lightweight c++11 array implementation.">ustd::array</a></code>, <code><a class="el" href="classustd_1_1queue.html" title="Lightweight c++11 ring buffer queue implementation.">ustd::queue</a></code>, and <code><a class="el" href="classustd_1_1map.html" title="Lightweight c++11 dictionary map implementation.">ustd::map</a></code>. (Thanks @proddy for iterator sample implementation.)</li>
 <li>Platforms: Feather M4 added: <code>__FEATHER_M4__</code></li>
 <li>Blackpill STM32F411 added.</li>
 <li>Arduino Nano 33 BLE added. <b>Note:</b> requires platformio's <code>lib_ldf_mode = chain+</code> definition in <code>platform.ini</code>, otherwise platformio will get confused about including <code>WiFi.h</code>, because of faulty <code>#ifdef</code> parsing of <code>ustd_platformio.h</code>.</li>
@@ -255,7 +255,7 @@ $(function() {
 <li>0.3.6 (2021-01-12) Support for UNO and MEGA in <a class="el" href="functional_8h_source.html">functional.h</a> via <code>__ARDUINO__</code> define.</li>
 <li>0.3.5 (2021-01-12) New function <code>freeMemory()</code>, new platform define <code>__UNO__</code>. (Both <code>__UNO__</code> and <code>__ATMEGA__</code> implicitly define <code>__ARDUINO__</code>)</li>
 <li>0.3.4 (2021-01-11) Small documentation fixes.</li>
-<li>0.3.3 (2021-01-08) <code>ustd::array::resize()</code> did not correctly update the array size, which would lead to memory corrupts (tuxpoldo). Improvements for debug macros.</li>
+<li>0.3.3 (2021-01-08) <code><a class="el" href="classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738">ustd::array::resize()</a></code> did not correctly update the array size, which would lead to memory corrupts (tuxpoldo). Improvements for debug macros.</li>
 <li>0.3.2 (2021-01-07) More consistent debug interface using <code>DBG()</code> macros (see <a href="https://github.com/muwerk/ustd/blob/2a64a88b59e8bc880d7a1ad63e96d8a66bb1aaf8/platform.h#L151"><code>ustd_platform.h</code></a>), fixes to <code>USTD_ASSERT</code> macro that was inconsistently named ASSERT*S*.</li>
 <li>0.3.1 (2020-12-25) More SPIFFS vs LittleFS preparations</li>
 <li>0.3.0 (2020-10-26) Cleanup <a class="el" href="ustd__platform_8h_source.html">ustd_platform.h</a>: ESP32 continues to use SPIFFS by default, ESP8266 LittleFS (since SPIFFS is deprecated for ESP8266, and LittleFS is not (yet) available for ESP32). This is a breaking change for ESP8266 installations that require the filesystem, since an upgrade from SPIFFS to LittleFS is required, see <a href="https://github.com/muwerk/munet/blob/master/README.md">munet Readme</a> for additional information.</li>

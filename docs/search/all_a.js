@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setinvalidvalue_10',['setInvalidValue',['../classustd_1_1map.html#a69684371750cc3ced38e6a6a80656660',1,'ustd::map']]]
+  ['queue_17',['queue',['../classustd_1_1queue.html#a9b2d63ca93012d28464c459b7e25d0da',1,'ustd::queue::queue()'],['../classustd_1_1queue.html',1,'ustd::queue&lt; T &gt;']]]
 ];

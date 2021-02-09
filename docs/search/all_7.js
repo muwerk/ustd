@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_5b_5d_7',['operator[]',['../classustd_1_1map.html#a54569a7dbecce8eb43b7da0e29fcfd0b',1,'ustd::map::operator[](K key) const'],['../classustd_1_1map.html#a1b0670916b74ab7628fb3da556589d98',1,'ustd::map::operator[](K key)']]]
+  ['map_12',['map',['../classustd_1_1map.html#af78aa3e45ae934ee8a4d9a0496babf9c',1,'ustd::map::map()'],['../classustd_1_1map.html',1,'ustd::map&lt; K, V &gt;']]]
 ];

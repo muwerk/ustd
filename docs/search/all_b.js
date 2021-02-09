@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['ustd_11',['ustd',['../md_README.html',1,'(Global Namespace)'],['../namespaceustd.html',1,'ustd']]],
-  ['ustd_20micro_2dstandard_2dlibrary_20for_20low_2dresource_20avrs_12',['ustd micro-standard-library for low-resource AVRs',['../index.html',1,'']]],
-  ['ustd_5ffunctional_2eh_13',['ustd_functional.h',['../ustd__functional_8h.html',1,'']]]
+  ['resize_18',['resize',['../classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738',1,'ustd::array']]]
 ];

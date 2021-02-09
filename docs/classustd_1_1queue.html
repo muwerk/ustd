@@ -85,6 +85,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a9b2d63ca93012d28464c459b7e25d0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52a048651ba63be17ff609d4a5b0f5d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1queue.html#a52a048651ba63be17ff609d4a5b0f5d3">~queue</a> ()</td></tr>
 <tr class="separator:a52a048651ba63be17ff609d4a5b0f5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0639968675583db59c22e25d9356672"><td class="memItemLeft" align="right" valign="top">queueIterator&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1queue.html#ac0639968675583db59c22e25d9356672">begin</a> ()</td></tr>
+<tr class="separator:ac0639968675583db59c22e25d9356672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42cfe7cb77a584b29ac2e69528d2a6e1"><td class="memItemLeft" align="right" valign="top">queueIterator&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1queue.html#a42cfe7cb77a584b29ac2e69528d2a6e1">end</a> ()</td></tr>
+<tr class="separator:a42cfe7cb77a584b29ac2e69528d2a6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecb764d414e4bf71ec4fda18fc517647"><td class="memItemLeft" align="right" valign="top">queueIterator&lt; const T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1queue.html#aecb764d414e4bf71ec4fda18fc517647">begin</a> () const</td></tr>
+<tr class="separator:aecb764d414e4bf71ec4fda18fc517647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4a383e09db7bf88a912c7ecca66ada2"><td class="memItemLeft" align="right" valign="top">queueIterator&lt; const T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1queue.html#ae4a383e09db7bf88a912c7ecca66ada2">end</a> () const</td></tr>
+<tr class="separator:ae4a383e09db7bf88a912c7ecca66ada2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8efb70bafecb8d8e5638ce5cbf54603f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1queue.html#a8efb70bafecb8d8e5638ce5cbf54603f">push</a> (T ent)</td></tr>
 <tr class="separator:a8efb70bafecb8d8e5638ce5cbf54603f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32d4d9b9d452c7c65150e66ab2e3f4e7"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1queue.html#a32d4d9b9d452c7c65150e66ab2e3f4e7">pop</a> ()</td></tr>
@@ -103,7 +111,7 @@ Public Member Functions</h2></td></tr>
 class ustd::queue&lt; T &gt;</h3>
 
 <p>Lightweight c++11 ring buffer queue implementation. </p>
-<p><a class="el" href="ustd__queue_8h_source.html">ustd_queue.h</a> is a minimal, yet highly portable ring buffer queu implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
+<p><a class="el" href="ustd__queue_8h_source.html">ustd_queue.h</a> is a minimal, yet highly portable ring buffer queue implementation that runs well on architectures with very limited resources such as attiny 8kb avr.</p>
 <p>Make sure to provide the <a href="https://github.com/muwerk/ustd/blob/master/README.md">required platform define</a> before including ustd headers.</p>
 <h2>An example:</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#define __ATTINY__ 1  </span><span class="comment">// Appropriate platform define required</span></div>
@@ -117,7 +125,13 @@ class ustd::queue&lt; T &gt;</h3>
 <div class="line"><span class="keywordtype">int</span> wo;</div>
 <div class="line">wo=que.pop();</div>
 <div class="line">printf(<span class="stringliteral">&quot;%d\n&quot;</span>,wo);</div>
-</div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><!-- fragment --><h2>Queue inspection with iterators</h2>
+<p>queue&lt;int&gt; que = queue&lt;int&gt;(16);</p>
+<p>que.push(12); que.push(13);</p>
+<p>Iterate through queue content (does not modify content) for (auto i : que) { printf("%d\n", i); }</p>
+<p>New <a class="el" href="classustd_1_1queue.html#a32d4d9b9d452c7c65150e66ab2e3f4e7">pop()</a> the values: int w0,w1; w0=que.pop(); w1=que.pop(); Queue is now empty.</p>
+<p>printf("%d %d, len=%d\n",w0,w1,que.length()); </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a9b2d63ca93012d28464c459b7e25d0da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9b2d63ca93012d28464c459b7e25d0da">&#9670;&nbsp;</a></span>queue()</h2>
 
@@ -181,6 +195,118 @@ template&lt;class T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac0639968675583db59c22e25d9356672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0639968675583db59c22e25d9356672">&#9670;&nbsp;</a></span>begin() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">queueIterator&lt;T&gt; <a class="el" href="classustd_1_1queue.html">ustd::queue</a>&lt; T &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator support: <a class="el" href="classustd_1_1queue.html#ac0639968675583db59c22e25d9356672">begin()</a></p>
+
+</div>
+</div>
+<a id="aecb764d414e4bf71ec4fda18fc517647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecb764d414e4bf71ec4fda18fc517647">&#9670;&nbsp;</a></span>begin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">queueIterator&lt;const T&gt; <a class="el" href="classustd_1_1queue.html">ustd::queue</a>&lt; T &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator support: <a class="el" href="classustd_1_1queue.html#ac0639968675583db59c22e25d9356672">begin()</a></p>
+
+</div>
+</div>
+<a id="a42cfe7cb77a584b29ac2e69528d2a6e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42cfe7cb77a584b29ac2e69528d2a6e1">&#9670;&nbsp;</a></span>end() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">queueIterator&lt;T&gt; <a class="el" href="classustd_1_1queue.html">ustd::queue</a>&lt; T &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator support: <a class="el" href="classustd_1_1queue.html#a42cfe7cb77a584b29ac2e69528d2a6e1">end()</a></p>
+
+</div>
+</div>
+<a id="ae4a383e09db7bf88a912c7ecca66ada2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4a383e09db7bf88a912c7ecca66ada2">&#9670;&nbsp;</a></span>end() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">queueIterator&lt;const T&gt; <a class="el" href="classustd_1_1queue.html">ustd::queue</a>&lt; T &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator support: <a class="el" href="classustd_1_1queue.html#a42cfe7cb77a584b29ac2e69528d2a6e1">end()</a></p>
+
+</div>
+</div>
 <a id="af47359510b834c795897d0bb184c2ad1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af47359510b834c795897d0bb184c2ad1">&#9670;&nbsp;</a></span>isEmpty()</h2>
 

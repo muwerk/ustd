@@ -89,6 +89,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af97bac5f79dd5ebdc15aa8f400fd6a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abcab8dfd53e397edac42f05974d0a2ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#abcab8dfd53e397edac42f05974d0a2ba">~array</a> ()</td></tr>
 <tr class="separator:abcab8dfd53e397edac42f05974d0a2ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59c512113ce086e81bd9a13697b2295"><td class="memItemLeft" align="right" valign="top">arrayIterator&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#af59c512113ce086e81bd9a13697b2295">begin</a> ()</td></tr>
+<tr class="separator:af59c512113ce086e81bd9a13697b2295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeea39a39319393ad09307e2c8d6c23d"><td class="memItemLeft" align="right" valign="top">arrayIterator&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#aaeea39a39319393ad09307e2c8d6c23d">end</a> ()</td></tr>
+<tr class="separator:aaeea39a39319393ad09307e2c8d6c23d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99b108433151dfa2acfe3677b5952c45"><td class="memItemLeft" align="right" valign="top">arrayIterator&lt; const T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a99b108433151dfa2acfe3677b5952c45">begin</a> () const</td></tr>
+<tr class="separator:a99b108433151dfa2acfe3677b5952c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62217323fe103fcdd6c975a90141761f"><td class="memItemLeft" align="right" valign="top">arrayIterator&lt; const T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a62217323fe103fcdd6c975a90141761f">end</a> () const</td></tr>
+<tr class="separator:a62217323fe103fcdd6c975a90141761f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1086ea57bc2f8af77e44d2a1a3b86738"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738">resize</a> (unsigned int newSize)</td></tr>
 <tr class="separator:a1086ea57bc2f8af77e44d2a1a3b86738"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf8494e6f5dfd3c226da3d064847c24a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classustd_1_1array.html#aaf8494e6f5dfd3c226da3d064847c24a">setInvalidValue</a> (T &amp;entryInvalidValue)</td></tr>
@@ -134,14 +142,22 @@ class ustd::array&lt; T &gt;</h3>
 <div class="line"><span class="keywordtype">int</span> p = intArray[0];</div>
 <div class="line"> </div>
 <div class="line">printf(<span class="stringliteral">&quot;[0]:%d [1]:%d length=%d\n&quot;</span>, intArray[0], intArray[1], intArray.<a class="code" href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">length</a>())</div>
-<div class="ttc" id="aclassustd_1_1array_html"><div class="ttname"><a href="classustd_1_1array.html">ustd::array</a></div><div class="ttdoc">Lightweight c++11 array implementation.</div><div class="ttdef"><b>Definition:</b> ustd_array.h:83</div></div>
-<div class="ttc" id="aclassustd_1_1array_html_ad8ffaa95ed88955e91df6e80ef4274b6"><div class="ttname"><a href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">ustd::array::add</a></div><div class="ttdeci">int add(T &amp;entry)</div><div class="ttdef"><b>Definition:</b> ustd_array.h:228</div></div>
-<div class="ttc" id="aclassustd_1_1array_html_af87de14c31ad629df2b4a6ee1275c340"><div class="ttname"><a href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">ustd::array::length</a></div><div class="ttdeci">unsigned int length() const</div><div class="ttdef"><b>Definition:</b> ustd_array.h:326</div></div>
+<div class="ttc" id="aclassustd_1_1array_html"><div class="ttname"><a href="classustd_1_1array.html">ustd::array</a></div><div class="ttdoc">Lightweight c++11 array implementation.</div><div class="ttdef"><b>Definition:</b> ustd_array.h:123</div></div>
+<div class="ttc" id="aclassustd_1_1array_html_ad8ffaa95ed88955e91df6e80ef4274b6"><div class="ttname"><a href="classustd_1_1array.html#ad8ffaa95ed88955e91df6e80ef4274b6">ustd::array::add</a></div><div class="ttdeci">int add(T &amp;entry)</div><div class="ttdef"><b>Definition:</b> ustd_array.h:288</div></div>
+<div class="ttc" id="aclassustd_1_1array_html_af87de14c31ad629df2b4a6ee1275c340"><div class="ttname"><a href="classustd_1_1array.html#af87de14c31ad629df2b4a6ee1275c340">ustd::array::length</a></div><div class="ttdeci">unsigned int length() const</div><div class="ttdef"><b>Definition:</b> ustd_array.h:386</div></div>
 </div><!-- fragment --><h2>An example for static mode</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;ustd_array.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// array length is fixed 5 (startSize==maxSize), no dynamic extensions:</span></div>
-<div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray = <a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a>(5, 5, 0, <span class="keyword">false</span>);</div>
+<div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> intArray = <a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a>(5, 5, 0, <span class="keyword">false</span>);d</div>
+</div><!-- fragment --><h2>Iterators and initializing with const T[] c-arrays:</h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;ustd_array.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">int</span> ci[]={1,2,3,4,5};</div>
+<div class="line"><a class="code" href="classustd_1_1array.html">ustd::array&lt;int&gt;</a> ia(ci,5);</div>
+<div class="line"><span class="keywordflow">for</span> (<span class="keyword">auto</span> i : ia) {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;%d\n&quot;</span>,i);</div>
+<div class="line">}</div>
 </div><!-- fragment --> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a73c2b783f194317522106e1ead813b52"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a73c2b783f194317522106e1ead813b52">&#9670;&nbsp;</a></span>array() <span class="overload">[1/3]</span></h2>
@@ -364,6 +380,118 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Check the number of allocated array-entries, which can be larger than the length of the array. </p><dl class="section return"><dt>Returns</dt><dd>number of allocated entries.</dd></dl>
+
+</div>
+</div>
+<a id="af59c512113ce086e81bd9a13697b2295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59c512113ce086e81bd9a13697b2295">&#9670;&nbsp;</a></span>begin() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">arrayIterator&lt;T&gt; <a class="el" href="classustd_1_1array.html">ustd::array</a>&lt; T &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator support: <a class="el" href="classustd_1_1array.html#af59c512113ce086e81bd9a13697b2295">begin()</a></p>
+
+</div>
+</div>
+<a id="a99b108433151dfa2acfe3677b5952c45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99b108433151dfa2acfe3677b5952c45">&#9670;&nbsp;</a></span>begin() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">arrayIterator&lt;const T&gt; <a class="el" href="classustd_1_1array.html">ustd::array</a>&lt; T &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator support: <a class="el" href="classustd_1_1array.html#af59c512113ce086e81bd9a13697b2295">begin()</a></p>
+
+</div>
+</div>
+<a id="aaeea39a39319393ad09307e2c8d6c23d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeea39a39319393ad09307e2c8d6c23d">&#9670;&nbsp;</a></span>end() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">arrayIterator&lt;T&gt; <a class="el" href="classustd_1_1array.html">ustd::array</a>&lt; T &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator support: <a class="el" href="classustd_1_1array.html#aaeea39a39319393ad09307e2c8d6c23d">end()</a></p>
+
+</div>
+</div>
+<a id="a62217323fe103fcdd6c975a90141761f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62217323fe103fcdd6c975a90141761f">&#9670;&nbsp;</a></span>end() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">arrayIterator&lt;const T&gt; <a class="el" href="classustd_1_1array.html">ustd::array</a>&lt; T &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Iterator support: <a class="el" href="classustd_1_1array.html#aaeea39a39319393ad09307e2c8d6c23d">end()</a></p>
 
 </div>
 </div>
