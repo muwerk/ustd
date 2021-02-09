@@ -1,4 +1,4 @@
-// Note: platform define is in platform.ini
+#define __ESP32__
 #include "ustd_platform.h"
 
 #include "ustd_array.h"
