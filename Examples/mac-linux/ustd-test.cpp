@@ -22,7 +22,7 @@ using ustd::map;
 using ustd::queue;
 
 bool arrayIteratorCheck(array<int> &ar) {
-    printf("Iterator: ");
+    printf("Array Iterator: ");
     for (auto n : ar) {
         printf("%d ", n);
     }
@@ -30,8 +30,17 @@ bool arrayIteratorCheck(array<int> &ar) {
     return true;
 }
 
+bool queueIteratorCheck(queue<int> &que) {
+    printf("Queue Iterator: ");
+    for (auto n : que) {
+        printf("%d ", n);
+    }
+    printf("\n");
+    return true;
+}
+
 bool mapKeysIteratorCheck(map<int, int> mp) {
-    printf("Iterator: ");
+    printf("Map Iterator: ");
     for (auto n : mp.keysArray()) {
         printf("%d -> %d | ", n, mp[n]);
     }
@@ -151,6 +160,19 @@ int main() {
 
     for (int i = 0; i < 100; i++)
         qu.pop();
+    for (int i = 0; i < 100; i++) {
+        unsigned int i0, i1;
+        qu.push(i + 100);
+        qu.getInternalStartStopPtrs(&i0, &i1);
+        printf("[%d,%d](%d) ", i0, i1, i);
+    }
+    queueIteratorCheck(qu);
+    for (int i = 0; i < 100; i++) {
+        unsigned int i0, i1;
+        qu.pop();
+        qu.getInternalStartStopPtrs(&i0, &i1);
+        printf("[%d,%d](%d) ", i0, i1, i);
+    }
 
     bool merr = false;
     for (int i = 0; i < mp.length(); i++) {

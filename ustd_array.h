@@ -96,11 +96,11 @@ for (auto i : ia) {
 // Helper class for array iterators:
 template <typename T> class arrayIterator {
   private:
-    T *values_ptr_;
-    unsigned int position_;
+    T *values_ptr;
+    unsigned int position;
 
   public:
-    arrayIterator(T *values_ptr, unsigned int p) : values_ptr_{values_ptr}, position_{p} {
+    arrayIterator(T *values_ptr, unsigned int p) : values_ptr{values_ptr}, position{p} {
     }
 
     bool operator!=(const arrayIterator<T> &other) const {
@@ -108,16 +108,16 @@ template <typename T> class arrayIterator {
     }
 
     bool operator==(const arrayIterator<T> &other) const {
-        return position_ == other.position_;
+        return position == other.position;
     }
 
     arrayIterator &operator++() {
-        ++position_;
+        ++position;
         return *this;
     }
 
     T &operator*() const {
-        return *(values_ptr_ + position_);
+        return *(values_ptr + position);
     }
 };
 
