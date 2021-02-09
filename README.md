@@ -122,10 +122,15 @@ To make code dependent on a memory-class, use something like:
 ### Example
 
 ```c++
-// Sample usage:
-#define __ATTINY__ 1
-#include "ustd_platform.h"
-#include "ustd_queue.h"
+// first a platform define (see table above):
+#define __ESP32__
+#include "ustd_array.h"
+
+const int ci[]={1,2,3,4,5};
+ustd::array<int> ia(ci,5);
+for (auto i : ia) {
+    printf("%d\n",i);
+}
 ```
 
 Installation
