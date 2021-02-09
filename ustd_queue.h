@@ -94,7 +94,7 @@ template <class T> class queue {
   public:
     queue(unsigned int maxQueueSize) : maxSize(maxQueueSize) {
         /*! Constructs a queue object
-        @param maxQueueSize The maximum number of <T> pointer entries, the queue
+        @param maxQueueSize The maximum number of entries, the queue
         can hold.
         */
         quePtr0 = 0;
@@ -191,7 +191,7 @@ template <class T> class queue {
     }
 
     void setInvalidValue(T &entryInvalidValue) {
-        /*! Set the value for <T>entry that's given back, if read from an empty
+        /*! Set the value that's given back, if read from an empty
         queue is requested. By default, an entry all set to zero is given
         back. Using this function, the value of an invalid read can be
         configured.
