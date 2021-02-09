@@ -1,5 +1,5 @@
-// Check if platform define is already supplied by build system (e.g. CI):
-#ifndef KNOWN_PLATFORM
+// Check if platform define is already supplied by build system (Travis-CI defines ATMEGA for tests):
+#ifndef __ATMEGA__
 // Not yet defined? Make a platform define for ESP32:
 #define __ESP32__
 #endif
