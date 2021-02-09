@@ -29,7 +29,7 @@ Platform defines
 
 Make sure to use the appropriate platform define before including from `ustd`.
 
-| Platform | #define (by user) | Comment                                    |
+| Platform | `#define` (by user) | Comment                                    |
 | -------- | ----------------- | ------------------------------------------ |
 | ATtiny   | `__ATTINY__`      | For very low resource ATMELs               |
 | Arduino  | `__UNO__`         | Should work with low resource arduinos     |

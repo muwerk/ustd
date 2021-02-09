@@ -177,7 +177,7 @@ template <class K, class V> class map {
     }
 
     void setInvalidValue(V &entryInvalidValue) {
-        /*! Set the value for <V>value that's given back, if read of an invalid
+        /*! Set the value that's given back, if read of an invalid
         key is requested. By default, an entry all set to zero is given back.
         Using this function, the value of an invalid read can be configured.
         * @param entryInvalidValue The value that is given back in case an

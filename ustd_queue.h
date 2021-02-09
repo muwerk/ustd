@@ -4,6 +4,36 @@
 
 namespace ustd {
 
+// Helper class for queue iterators:
+template <typename T> class queueIterator {
+  private:
+    T *values_ptr;
+    unsigned int position;
+    unsigned int maxSize;
+
+  public:
+    queueIterator(T *values_ptr, unsigned int p, unsigned int maxSize)
+        : values_ptr{values_ptr}, position{p}, maxSize(maxSize) {
+    }
+
+    bool operator!=(const queueIterator<T> &other) const {
+        return !(*this == other);
+    }
+
+    bool operator==(const queueIterator<T> &other) const {
+        return position == other.position;
+    }
+
+    queueIterator &operator++() {
+        position = (position + 1) % maxSize;
+        return *this;
+    }
+
+    T &operator*() const {
+        return *(values_ptr + position);
+    }
+};
+
 /*! \brief Lightweight c++11 ring buffer queue implementation.
 
 ustd_queue.h is a minimal, yet highly portable ring buffer queue implementation
@@ -50,36 +80,6 @@ w1=que.pop();
 
 printf("%d %d, len=%d\n",w0,w1,que.length());
 */
-
-// Helper class for queue iterators:
-template <typename T> class queueIterator {
-  private:
-    T *values_ptr;
-    unsigned int position;
-    unsigned int maxSize;
-
-  public:
-    queueIterator(T *values_ptr, unsigned int p, unsigned int maxSize)
-        : values_ptr{values_ptr}, position{p}, maxSize(maxSize) {
-    }
-
-    bool operator!=(const queueIterator<T> &other) const {
-        return !(*this == other);
-    }
-
-    bool operator==(const queueIterator<T> &other) const {
-        return position == other.position;
-    }
-
-    queueIterator &operator++() {
-        position = (position + 1) % maxSize;
-        return *this;
-    }
-
-    T &operator*() const {
-        return *(values_ptr + position);
-    }
-};
 
 template <class T> class queue {
   private:
