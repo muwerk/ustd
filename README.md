@@ -159,7 +159,7 @@ History
 
 - 0.6.0 (2021-02-09) New platforms, iterator and copy-constructor support.
   - Support for iterators and copy-constructors in `ustd::array`, `ustd::queue`, and `ustd::map`.
-    (Thanks @proddy for iterator sample implementation.)
+    (Thanks [proddy](https://github.com/muwerk/ustd/issues/4#issuecomment-775283414) for iterator sample implementation.)
   - Platforms: Feather M4 added: `__FEATHER_M4__`
   - Blackpill STM32F411 added.
   - Arduino Nano 33 BLE added. **Note:** requires platformio's `lib_ldf_mode = chain+` definition
