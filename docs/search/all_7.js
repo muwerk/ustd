@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['peak_11',['peak',['../classustd_1_1map.html#ad3518e2b0ce40d5b27f7f62ffe6afea3',1,'ustd::map::peak()'],['../classustd_1_1queue.html#a184ff001f8f7c44f294b3f88147b5ad0',1,'ustd::queue::peak()']]],
-  ['pop_12',['pop',['../classustd_1_1queue.html#a32d4d9b9d452c7c65150e66ab2e3f4e7',1,'ustd::queue']]],
-  ['push_13',['push',['../classustd_1_1queue.html#a8efb70bafecb8d8e5638ce5cbf54603f',1,'ustd::queue']]]
+  ['operator_5b_5d_7',['operator[]',['../classustd_1_1map.html#a54569a7dbecce8eb43b7da0e29fcfd0b',1,'ustd::map::operator[](K key) const'],['../classustd_1_1map.html#a1b0670916b74ab7628fb3da556589d98',1,'ustd::map::operator[](K key)']]]
 ];

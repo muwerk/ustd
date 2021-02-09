@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resize_44',['resize',['../classustd_1_1array.html#a1086ea57bc2f8af77e44d2a1a3b86738',1,'ustd::array']]]
+  ['_7emap_30',['~map',['../classustd_1_1map.html#a7d6537729df2281d20dd595e87dd096f',1,'ustd::map']]]
 ];

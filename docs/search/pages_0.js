@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ustd_50',['ustd',['../md_README.html',1,'']]],
-  ['ustd_20micro_2dstandard_2dlibrary_20for_20low_2dresource_20avrs_51',['ustd micro-standard-library for low-resource AVRs',['../index.html',1,'']]]
+  ['ustd_32',['ustd',['../md_README.html',1,'']]],
+  ['ustd_20micro_2dstandard_2dlibrary_20for_20low_2dresource_20avrs_33',['ustd micro-standard-library for low-resource AVRs',['../index.html',1,'']]]
 ];
