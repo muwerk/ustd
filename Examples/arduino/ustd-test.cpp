@@ -1,4 +1,9 @@
+// Check if platform define is already supplied by build system (e.g. CI):
+#ifndef KNOWN_PLATFORM
+// Not yet defined? Make a platform define for ESP32:
 #define __ESP32__
+#endif
+
 #include "ustd_platform.h"
 
 #include "ustd_array.h"
