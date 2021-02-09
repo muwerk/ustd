@@ -275,7 +275,7 @@ template <typename T> class array {
     }
 
     void setInvalidValue(T &entryInvalidValue) {
-        /*! Set the value for <T>entry that's given back, if read of an invalid
+        /*! Set the value that's given back, if read of an invalid
         index is requested. By default, an entry all set to zero is given
         back. Using this function, the value of an invalid read can be
         configured.
