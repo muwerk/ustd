@@ -46,6 +46,17 @@ double p = myMap[0];
 // map size is fixed 5 (startSize==maxSize), no dynamic extensions:
 ustd::map<int, float> mayMap = ustd::map<int,float>(5, 5, 0, false);
 ~~~
+
+## Iteration over keys
+
+~~~{.cpp}
+    ustd::map<int,double> myMap;
+    myMap[0]=1.1;
+    myMap[1]=1.2;
+    for (auto i : myMap.keysArray()) {
+        printf("%d->%f\n",i,myMap[i]);
+    }
+~~~
  */
 
 template <class K, class V> class map {
@@ -182,6 +193,14 @@ template <class K, class V> class map {
             return true;
         else
             return false;
+    }
+
+    const ustd::array<K> &keysArray() {
+        /*! Reference to array of keys
+
+        @return const reference to array of keys, e.g. for iteration.
+        */
+        return keys;
     }
 
     unsigned int length() {

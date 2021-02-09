@@ -6,7 +6,7 @@ namespace ustd {
 
 /*! \brief Lightweight c++11 ring buffer queue implementation.
 
-ustd_queue.h is a minimal, yet highly portable ring buffer queu implementation
+ustd_queue.h is a minimal, yet highly portable ring buffer queue implementation
 that runs well on architectures with very limited resources such as attiny 8kb
 avr.
 
@@ -29,7 +29,57 @@ int wo;
 wo=que.pop();
 printf("%d\n",wo);
 ~~~
+
+## Queue inspection with iterators
+
+queue<int> que = queue<int>(16);
+
+que.push(12);
+que.push(13);
+
+// Iterate through queue content (does not modify content)
+for (auto i : que) {
+    printf("%d\n", i);
+}
+
+// New pop() the values:
+int w0,w1;
+w0=que.pop();
+w1=que.pop();
+// Queue is now empty.
+
+printf("%d %d, len=%d\n",w0,w1,que.length());
 */
+
+// Helper class for queue iterators:
+template <typename T> class queueIterator {
+  private:
+    T *values_ptr;
+    unsigned int position;
+    unsigned int maxSize;
+
+  public:
+    queueIterator(T *values_ptr, unsigned int p, unsigned int maxSize)
+        : values_ptr{values_ptr}, position{p}, maxSize(maxSize) {
+    }
+
+    bool operator!=(const queueIterator<T> &other) const {
+        return !(*this == other);
+    }
+
+    bool operator==(const queueIterator<T> &other) const {
+        return position == other.position;
+    }
+
+    queueIterator &operator++() {
+        position = (position + 1) % maxSize;
+        return *this;
+    }
+
+    T &operator*() const {
+        return *(values_ptr + position);
+    }
+};
 
 template <class T> class queue {
   private:
@@ -84,6 +134,31 @@ template <class T> class queue {
             free(que);
             que = nullptr;
         }
+    }
+
+    // iterators
+    queueIterator<T> begin() {
+        /*! Iterator support: begin() */
+        return queueIterator<T>(que, quePtr0, maxSize);
+    }
+    queueIterator<T> end() {
+        /*! Iterator support: end() */
+        return queueIterator<T>(que, (quePtr0 + size) % maxSize, maxSize);
+    }
+
+    queueIterator<const T> begin() const {
+        /*! Iterator support: begin() */
+        return queueIterator<const T>(que, quePtr0, maxSize);
+    }
+
+    queueIterator<const T> end() const {
+        /*! Iterator support: end() */
+        return queueIterator<const T>(que, (quePtr0 + size) % maxSize, maxSize);
+    }
+
+    void getInternalStartStopPtrs(unsigned int *p0, unsigned int *p1) {
+        *p0 = quePtr0;
+        *p1 = quePtr1;
     }
 
     bool push(T ent) {

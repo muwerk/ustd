@@ -21,6 +21,33 @@ using ustd::array;
 using ustd::map;
 using ustd::queue;
 
+bool arrayIteratorCheck(array<int> &ar) {
+    printf("Array Iterator: ");
+    for (auto n : ar) {
+        printf("%d ", n);
+    }
+    printf("\n");
+    return true;
+}
+
+bool queueIteratorCheck(queue<int> &que) {
+    printf("Queue Iterator: ");
+    for (auto n : que) {
+        printf("%d ", n);
+    }
+    printf("\n");
+    return true;
+}
+
+bool mapKeysIteratorCheck(map<int, int> mp) {
+    printf("Map Iterator: ");
+    for (auto n : mp.keysArray()) {
+        printf("%d -> %d | ", n, mp[n]);
+    }
+    printf("\n");
+    return true;
+}
+
 bool checkCopyAr(array<int> ar) {
     bool aerr = false;
     printf("COPY ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
@@ -30,6 +57,7 @@ bool checkCopyAr(array<int> ar) {
             printf("COPY Array: err at: %d\n", i);
         }
     }
+    arrayIteratorCheck(ar);
     return aerr;
 }
 
@@ -42,6 +70,7 @@ bool checkRefAr(array<int> &ar) {
             printf("REF Array: err at: %d\n", i);
         }
     }
+    arrayIteratorCheck(ar);
     return aerr;
 }
 
@@ -58,7 +87,20 @@ bool checkInitializersAr() {
     return true;
 }
 
+bool constArrayInit() {
+    printf("Array const init: ");
+    const int ci[] = {1, 2, 3, 4, 5};
+    ustd::array<int> ia(ci, 5);
+    for (auto i : ia) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return true;
+}
+
 bool cpMap(map<int, int> mp, map<int, int> *pmp) {
+    mapKeysIteratorCheck(mp);
+    mapKeysIteratorCheck(*pmp);
     if (pmp->length() == mp.length()) {
         printf("Copy-map-length: %d\n", mp.length());
         return true;
@@ -108,6 +150,8 @@ int main() {
     if (!checkInitializersAr())
         aerr = true;
 
+    constArrayInit();
+
     bool qerr = false;
     if (!cpQue(qu, &qu))
         qerr = true;
@@ -116,6 +160,19 @@ int main() {
 
     for (int i = 0; i < 100; i++)
         qu.pop();
+    for (int i = 0; i < 100; i++) {
+        unsigned int i0, i1;
+        qu.push(i + 100);
+        qu.getInternalStartStopPtrs(&i0, &i1);
+        printf("[%d,%d](%d) ", i0, i1, i);
+    }
+    queueIteratorCheck(qu);
+    for (int i = 0; i < 100; i++) {
+        unsigned int i0, i1;
+        qu.pop();
+        qu.getInternalStartStopPtrs(&i0, &i1);
+        printf("[%d,%d](%d) ", i0, i1, i);
+    }
 
     bool merr = false;
     for (int i = 0; i < mp.length(); i++) {

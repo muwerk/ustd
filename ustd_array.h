@@ -76,9 +76,50 @@ printf("[0]:%d [1]:%d length=%d\n", intArray[0], intArray[1], intArray.length())
 #include <ustd_array.h>
 
 // array length is fixed 5 (startSize==maxSize), no dynamic extensions:
-ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);
+ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);d
 ~~~
+
+## Iterators and initializing with const <T>[] c-arrays:
+
+~~~{.cpp}
+#include <ustd_array.h>
+
+const int ci[]={1,2,3,4,5};
+ustd::array<int> ia(ci,5);
+for (auto i : ia) {
+    printf("%d\n",i);
+}
+~~~
+
  */
+
+// Helper class for array iterators:
+template <typename T> class arrayIterator {
+  private:
+    T *values_ptr;
+    unsigned int position;
+
+  public:
+    arrayIterator(T *values_ptr, unsigned int p) : values_ptr{values_ptr}, position{p} {
+    }
+
+    bool operator!=(const arrayIterator<T> &other) const {
+        return !(*this == other);
+    }
+
+    bool operator==(const arrayIterator<T> &other) const {
+        return position == other.position;
+    }
+
+    arrayIterator &operator++() {
+        ++position;
+        return *this;
+    }
+
+    T &operator*() const {
+        return *(values_ptr + position);
+    }
+};
 
 template <typename T> class array {
 
@@ -173,6 +214,26 @@ template <typename T> class array {
             ufree(arr);
             arr = nullptr;
         }
+    }
+
+    // iterators
+    arrayIterator<T> begin() {
+        /*! Iterator support: begin() */
+        return arrayIterator<T>(arr, 0);
+    }
+    arrayIterator<T> end() {
+        /*! Iterator support: end() */
+        return arrayIterator<T>(arr, 0 + size);
+    }
+
+    arrayIterator<const T> begin() const {
+        /*! Iterator support: begin() */
+        return arrayIterator<const T>(arr, 0);
+    }
+
+    arrayIterator<const T> end() const {
+        /*! Iterator support: end() */
+        return arrayIterator<const T>(arr, 0 + size);
     }
 
     bool resize(unsigned int newSize) {
