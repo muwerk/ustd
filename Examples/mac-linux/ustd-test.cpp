@@ -30,6 +30,15 @@ bool arrayIteratorCheck(array<int> &ar) {
     return true;
 }
 
+bool mapKeysIteratorCheck(map<int, int> mp) {
+    printf("Iterator: ");
+    for (auto n : mp.keysArray()) {
+        printf("%d -> %d | ", n, mp[n]);
+    }
+    printf("\n");
+    return true;
+}
+
 bool checkCopyAr(array<int> ar) {
     bool aerr = false;
     printf("COPY ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
@@ -69,7 +78,20 @@ bool checkInitializersAr() {
     return true;
 }
 
+bool constArrayInit() {
+    printf("Array const init: ");
+    const int ci[] = {1, 2, 3, 4, 5};
+    ustd::array<int> ia(ci, 5);
+    for (auto i : ia) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return true;
+}
+
 bool cpMap(map<int, int> mp, map<int, int> *pmp) {
+    mapKeysIteratorCheck(mp);
+    mapKeysIteratorCheck(*pmp);
     if (pmp->length() == mp.length()) {
         printf("Copy-map-length: %d\n", mp.length());
         return true;
@@ -118,6 +140,8 @@ int main() {
 
     if (!checkInitializersAr())
         aerr = true;
+
+    constArrayInit();
 
     bool qerr = false;
     if (!cpQue(qu, &qu))
