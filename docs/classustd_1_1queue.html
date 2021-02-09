@@ -159,7 +159,7 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 <p>Constructs a queue object </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">maxQueueSize</td><td>The maximum number of &lt;T&gt; pointer entries, the queue can hold.</td></tr>
+    <tr><td class="paramname">maxQueueSize</td><td>The maximum number of entries, the queue can hold.</td></tr>
   </table>
   </dd>
 </dl>
@@ -479,7 +479,7 @@ template&lt;class T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Set the value for &lt;T&gt;entry that's given back, if read from an empty queue is requested. By default, an entry all set to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Set the value that's given back, if read from an empty queue is requested. By default, an entry all set to zero is given back. Using this function, the value of an invalid read can be configured. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">entryInvalidValue</td><td>The value that is given back in case an invalid operation (e.g. read out of bounds) is tried.</td></tr>
   </table>
