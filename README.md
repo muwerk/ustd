@@ -122,10 +122,15 @@ To make code dependent on a memory-class, use something like:
 ### Example
 
 ```c++
-// Sample usage:
-#define __ATTINY__ 1
-#include "ustd_platform.h"
-#include "ustd_queue.h"
+// first a platform define (see table above):
+#define __ESP32__
+#include "ustd_array.h"
+
+const int ci[]={1,2,3,4,5};
+ustd::array<int> ia(ci,5);
+for (auto i : ia) {
+    printf("%d\n",i);
+}
 ```
 
 Installation
@@ -137,11 +142,11 @@ Installation
 - [Platformio ustd](https://platformio.org/lib/show/5710/ustd/examples?file=ustd-test.cpp),
   library ID 5710.
 
-Example
--------
+Complete example
+----------------
 
-See [ustdmin](https://github.com/muwerk/Examples/tree/master/ustdmin) for a complete build
-example with `ustd` and `platformio`.
+See [Examples](https://github.com/muwerk/Examples) for a complete build
+example with `ustd` and linux, Arduino-IDE or platformio.
 
 Related projects
 ----------------
@@ -152,8 +157,9 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.5.x (not released) New platforms
-  - Support for copy-constructors in `ustd::array`, `ustd::queue`, and `ustd::map`.
+- 0.6.0 (2021-02-09) New platforms, iterator and copy-constructor support.
+  - Support for iterators and copy-constructors in `ustd::array`, `ustd::queue`, and `ustd::map`.
+    (Thanks @proddy for iterator sample implementation.)
   - Platforms: Feather M4 added: `__FEATHER_M4__`
   - Blackpill STM32F411 added.
   - Arduino Nano 33 BLE added. **Note:** requires platformio's `lib_ldf_mode = chain+` definition
