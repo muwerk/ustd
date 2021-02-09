@@ -80,6 +80,33 @@ ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);
 ~~~
  */
 
+template <typename T> class arrayIterator {
+  private:
+    T *values_ptr_;
+    unsigned int position_;
+
+  public:
+    arrayIterator(T *values_ptr, unsigned int p) : values_ptr_{values_ptr}, position_{p} {
+    }
+
+    bool operator!=(const arrayIterator<T> &other) const {
+        return !(*this == other);
+    }
+
+    bool operator==(const arrayIterator<T> &other) const {
+        return position_ == other.position_;
+    }
+
+    arrayIterator &operator++() {
+        ++position_;
+        return *this;
+    }
+
+    T &operator*() const {
+        return *(values_ptr_ + position_);
+    }
+};
+
 template <typename T> class array {
 
   private:
@@ -173,6 +200,22 @@ template <typename T> class array {
             ufree(arr);
             arr = nullptr;
         }
+    }
+
+    // iterators
+    arrayIterator<T> begin() {
+        return arrayIterator<T>(arr, 0);
+    }
+    arrayIterator<T> end() {
+        return arrayIterator<T>(arr, 0 + size);
+    }
+
+    arrayIterator<const T> begin() const {
+        return arrayIterator<const T>(arr, 0);
+    }
+
+    arrayIterator<const T> end() const {
+        return arrayIterator<const T>(arr, 0 + size);
     }
 
     bool resize(unsigned int newSize) {

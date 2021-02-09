@@ -21,6 +21,15 @@ using ustd::array;
 using ustd::map;
 using ustd::queue;
 
+bool arrayIteratorCheck(array<int> &ar) {
+    printf("Iterator: ");
+    for (auto n : ar) {
+        printf("%d ", n);
+    }
+    printf("\n");
+    return true;
+}
+
 bool checkCopyAr(array<int> ar) {
     bool aerr = false;
     printf("COPY ar len: %d, alloc=%d\n", ar.length(), ar.alloclen());
@@ -30,6 +39,7 @@ bool checkCopyAr(array<int> ar) {
             printf("COPY Array: err at: %d\n", i);
         }
     }
+    arrayIteratorCheck(ar);
     return aerr;
 }
 
@@ -42,6 +52,7 @@ bool checkRefAr(array<int> &ar) {
             printf("REF Array: err at: %d\n", i);
         }
     }
+    arrayIteratorCheck(ar);
     return aerr;
 }
 
