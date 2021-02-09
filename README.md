@@ -145,7 +145,7 @@ Installation
 Complete example
 ----------------
 
-See [Examples](https://github.com/muwerk/Examples) for a complete build
+See [Examples](https://github.com/muwerk/ustd/tree/master/Examples) for a complete build
 example with `ustd` and linux, Arduino-IDE or platformio.
 
 Related projects
