@@ -37,6 +37,34 @@ namespace ustd {
 #define ARRAY_MAX_SIZE UINT_MAX  // 65535 or 4294967295 (mostly)
 #define ARRAY_INIT_SIZE 16
 
+// Helper class for array iterators:
+template <typename T> class arrayIterator {
+  private:
+    T *values_ptr;
+    unsigned int position;
+
+  public:
+    arrayIterator(T *values_ptr, unsigned int p) : values_ptr{values_ptr}, position{p} {
+    }
+
+    bool operator!=(const arrayIterator<T> &other) const {
+        return !(*this == other);
+    }
+
+    bool operator==(const arrayIterator<T> &other) const {
+        return position == other.position;
+    }
+
+    arrayIterator &operator++() {
+        ++position;
+        return *this;
+    }
+
+    T &operator*() const {
+        return *(values_ptr + position);
+    }
+};
+
 /*! \brief Lightweight c++11 array implementation.
 
 ustd_array.h is a minimal, yet highly portable array data type implementation
@@ -79,7 +107,7 @@ printf("[0]:%d [1]:%d length=%d\n", intArray[0], intArray[1], intArray.length())
 ustd::array<int> intArray = ustd::array<int>(5, 5, 0, false);d
 ~~~
 
-## Iterators and initializing with const <T>[] c-arrays:
+## Iterators and initializing with const T[] c-arrays:
 
 ~~~{.cpp}
 #include <ustd_array.h>
@@ -92,35 +120,6 @@ for (auto i : ia) {
 ~~~
 
  */
-
-// Helper class for array iterators:
-template <typename T> class arrayIterator {
-  private:
-    T *values_ptr;
-    unsigned int position;
-
-  public:
-    arrayIterator(T *values_ptr, unsigned int p) : values_ptr{values_ptr}, position{p} {
-    }
-
-    bool operator!=(const arrayIterator<T> &other) const {
-        return !(*this == other);
-    }
-
-    bool operator==(const arrayIterator<T> &other) const {
-        return position == other.position;
-    }
-
-    arrayIterator &operator++() {
-        ++position;
-        return *this;
-    }
-
-    T &operator*() const {
-        return *(values_ptr + position);
-    }
-};
-
 template <typename T> class array {
 
   private:
