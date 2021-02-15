@@ -35,6 +35,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | Arduino  | `__UNO__`         | Should work with low resource arduinos     |
 | Arduino  | `__ATMEGA__`      | Should work with most arduinos             |
 | FeatherM0| `__FEATHER_M0__`  | Adafruit feather M0 (Wifi)                 |
+| RP PICO  | `__RP2040__`      | Raspberry Pi PICO RP2040                   |
 | FeatherM4| `__FEATHER_M4__`  | Adafruit feather M4 (Wifi)                 |
 | STM32    | `__BLUEPILL__`    | STM32F103C8T6 ARM Cortex-M3                |
 | STM32    | `__BLACKPILL__`   | STM32F411 ARM Cortex-M4                    |
@@ -68,6 +69,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__UNO__`       | `__ARDUINO__`                                       | 8-bit Atmel Arduinos
 | `__MEGA__`      | `__ARDUINO__`                                       |    "
 | `__FEATHER_MO__`| `__ARM__`                                           | ARM cortex
+| `__RP2040__`    | `__ARM__`, `__RP_PICO__`                            |   "
 | `__FEATHER_M4__`| `__ARM__`                                           |   "
 | `__BLUEPILL__`  | `__ARM__`                                           |   "
 | `__BLACKPILL__` | `__ARM__`                                           |   "
@@ -157,6 +159,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.6.x (not yet released) Raspberry PICO rp2040 support.
 - 0.6.0 (2021-02-09) New platforms, iterator and copy-constructor support.
   - Support for iterators and copy-constructors in `ustd::array`, `ustd::queue`, and `ustd::map`.
     (Thanks [proddy](https://github.com/muwerk/ustd/issues/4#issuecomment-775283414) for iterator sample implementation.)

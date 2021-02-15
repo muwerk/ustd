@@ -124,6 +124,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <Arduino.h>
 #endif  // Feather M0
 
+// ------------- Raspberry Pi PICO RP2040 ---------------------
 #if defined(__RP2040__)
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
@@ -133,8 +134,8 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include "pico/stdlib.h"
 #include "stdlib.h"
 #define __ARM__ 1
+#define __RP_PICO__ 1
 #endif  // RP2040
-
 
 // ------------- STM32F103C8T6 Bluepill -----------------------
 #if defined(__BLUEPILL__)
