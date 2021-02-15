@@ -20,10 +20,10 @@ jobs:
     - name: Get Raspberry pico sdk
       shell: bash
       run: |
-        git clone https://github.com/raspberrypi/pico-sdk
+        git clone https://github.com/raspberrypi/pico-sdk ${{github.workspace}}/pico-sdk
         cd pico-sdk
         git submodule update --init
-        export PICO_SDK_PATH=`pwd`
+        export PICO_SDK_PATH=${{github.workspace}}/pico-sdk
         working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
         cmake -E make_directory ${{github.workspace}}/Examples/ustd_rp2040/build
 
