@@ -24,11 +24,16 @@ jobs:
         cd pico-sdk
         git submodule update --init
         export PICO_SDK_PATH=${{github.workspace}}/pico-sdk
-        working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
+
+    - name: Configure cmake
+      shell: bash
+      working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
+      run: |
+        export PICO_SDK_PATH=${{github.workspace}}/pico-sdk
         cmake -E make_directory ${{github.workspace}}/Examples/ustd_rp2040/build
 
     - name: Build
-      working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
       shell: bash
+      working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
       # Execute the build.
       run: make
