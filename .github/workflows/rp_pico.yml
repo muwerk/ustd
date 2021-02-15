@@ -1,0 +1,34 @@
+name: Raspberry_Pico
+
+on: [push]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally
+    # well on Windows or Mac.  You can convert this to a matrix build if you need
+    # cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get Raspberry pico sdk
+      shell: bash
+      run: |
+        git clone https://github.com/raspberrypi/pico-sdk
+        cd pico-sdk
+        git submodule update --init
+        export PICO_SDK_PATH=`pwd`
+        working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
+        cmake -E make_directory ${{github.workspace}}/Examples/ustd_rp2040/build
+
+    - name: Build
+      working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
+      shell: bash
+      # Execute the build.
+      run: make
