@@ -282,7 +282,7 @@ unsigned long micros() {
     return time_us_64();
 }
 unsigned long millis() {
-    return time_ms_64() / 1000;
+    return time_us_64() / 1000;
 }
 #endif  // __RP_PICO__
 
