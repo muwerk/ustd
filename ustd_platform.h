@@ -131,6 +131,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif
 #define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY 264000
+#define USTD_FEATURE_SUPPORTS_NEW_OPERATOR
 #include "pico/stdlib.h"
 #include "stdlib.h"
 #define __ARM__ 1
@@ -271,6 +272,19 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif
 #endif  // DONT_USE_FEATURE_COMPATIBILITY
 //-------- end compatibility-2
+
+// ------------- Raspberry Pico -------------------------------
+#if defined(__RP_PICO__)
+#include <cstring>
+#include <string>
+typedef std::string String;
+unsigned long micros() {
+    return time_us_64();
+}
+unsigned long millis() {
+    return time_ms_64() / 1000;
+}
+#endif  // __RP_PICO__
 
 // ------------- Unixoids -------------------------------------
 #if defined(__linux__) || defined(__APPLE__)
