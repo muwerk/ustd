@@ -24,12 +24,18 @@ jobs:
         cd pico-sdk
         git submodule update --init
 
-    - name: Configure cmake
+    - name: Configure cmake phase 1
+      shell: bash
+      env: 
+        PICO_SDK_PATH: ${{github.workspace}}/pico-sdk
+      run: cmake -E make_directory ${{github.workspace}}/Examples/rp2040/build
+                
+    - name: Configure cmake phase 2
       shell: bash
       working-directory: ${{github.workspace}}/Examples/rp2040/build
       env: 
         PICO_SDK_PATH: ${{github.workspace}}/pico-sdk
-      run: cmake -E make_directory ${{github.workspace}}/Examples/rp2040/build
+      run: cmake ${{github.workspace}}/Examples/rp2040 -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
     - name: Build
       shell: bash
