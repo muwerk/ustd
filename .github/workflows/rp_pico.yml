@@ -24,6 +24,9 @@ jobs:
         cd pico-sdk
         git submodule update --init
 
+    - name: Install toolchain
+      run: sudo apt-get install arm-none-eabi-gcc newlib-arm-none-eabi
+
     - name: Configure cmake phase 1
       shell: bash
       env: 
