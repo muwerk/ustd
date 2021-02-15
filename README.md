@@ -5,6 +5,7 @@ ustd
 [![Dev Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://muwerk.github.io/ustd/docs/index.html)
 [![Cmake](https://github.com/muwerk/ustd/workflows/CMake/badge.svg)](https://github.com/muwerk/ustd/actions)
 [![PlatformIO CI](https://github.com/muwerk/ustd/workflows/PlatformIO%20CI/badge.svg)](https://github.com/muwerk/ustd/actions)
+[![Raspberry_Pico](https://github.com/muwerk/ustd/workflows/Raspberry_Pico/badge.svg)](https://github.com/muwerk/ustd/actions)
 
 ustd provides minimal and highly portable implementations  of the following classes:
 
