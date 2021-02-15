@@ -23,14 +23,12 @@ jobs:
         git clone https://github.com/raspberrypi/pico-sdk ${{github.workspace}}/pico-sdk
         cd pico-sdk
         git submodule update --init
-        export PICO_SDK_PATH=${{github.workspace}}/pico-sdk
 
     - name: Configure cmake
       shell: bash
       working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
-      run: |
-        export PICO_SDK_PATH=${{github.workspace}}/pico-sdk
-        cmake -E make_directory ${{github.workspace}}/Examples/ustd_rp2040/build
+      env: PICO_SDK_PATH=${{github.workspace}}/pico-sdk
+      run: cmake -E make_directory ${{github.workspace}}/Examples/ustd_rp2040/build
 
     - name: Build
       shell: bash
