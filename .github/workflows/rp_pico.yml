@@ -27,7 +27,8 @@ jobs:
     - name: Configure cmake
       shell: bash
       working-directory: ${{github.workspace}}/Examples/ustd_rp2040/build
-      env: PICO_SDK_PATH=${{github.workspace}}/pico-sdk
+      env: 
+        PICO_SDK_PATH: ${{github.workspace}}/pico-sdk
       run: cmake -E make_directory ${{github.workspace}}/Examples/ustd_rp2040/build
 
     - name: Build
