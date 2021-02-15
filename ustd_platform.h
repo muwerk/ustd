@@ -124,6 +124,18 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <Arduino.h>
 #endif  // Feather M0
 
+#if defined(__RP2040__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 264000
+#include "pico/stdlib.h"
+#include "stdlib.h"
+#define __ARM__ 1
+#endif  // RP2040
+
+
 // ------------- STM32F103C8T6 Bluepill -----------------------
 #if defined(__BLUEPILL__)
 #if defined(KNOWN_PLATFORM)
