@@ -25,7 +25,7 @@ jobs:
         git submodule update --init
 
     - name: Install toolchain
-      run: sudo apt-get install arm-none-eabi-gcc libnewlib-arm-none-eabi
+      run: sudo apt-get install gcc-arm-none-eabi libnewlib-arm-none-eabi
 
     - name: Configure cmake phase 1
       shell: bash
