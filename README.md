@@ -160,7 +160,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.6.x (not yet released) Raspberry PICO rp2040 support.
+- 0.6.1 (2021-02-26) Initial Raspberry PICO rp2040 support.
 - 0.6.0 (2021-02-09) New platforms, iterator and copy-constructor support.
   - Support for iterators and copy-constructors in `ustd::array`, `ustd::queue`, and `ustd::map`.
     (Thanks [proddy](https://github.com/muwerk/ustd/issues/4#issuecomment-775283414) for iterator sample implementation.)
