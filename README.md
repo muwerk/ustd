@@ -5,6 +5,7 @@ ustd
 [![Dev Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://muwerk.github.io/ustd/docs/index.html)
 [![Cmake](https://github.com/muwerk/ustd/workflows/CMake/badge.svg)](https://github.com/muwerk/ustd/actions)
 [![PlatformIO CI](https://github.com/muwerk/ustd/workflows/PlatformIO%20CI/badge.svg)](https://github.com/muwerk/ustd/actions)
+[![Raspberry_Pico](https://github.com/muwerk/ustd/workflows/Raspberry_Pico/badge.svg)](https://github.com/muwerk/ustd/actions)
 
 ustd provides minimal and highly portable implementations  of the following classes:
 
@@ -35,6 +36,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | Arduino  | `__UNO__`         | Should work with low resource arduinos     |
 | Arduino  | `__ATMEGA__`      | Should work with most arduinos             |
 | FeatherM0| `__FEATHER_M0__`  | Adafruit feather M0 (Wifi)                 |
+| RP PICO  | `__RP2040__`      | Raspberry Pi PICO RP2040                   |
 | FeatherM4| `__FEATHER_M4__`  | Adafruit feather M4 (Wifi)                 |
 | STM32    | `__BLUEPILL__`    | STM32F103C8T6 ARM Cortex-M3                |
 | STM32    | `__BLACKPILL__`   | STM32F411 ARM Cortex-M4                    |
@@ -68,6 +70,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__UNO__`       | `__ARDUINO__`                                       | 8-bit Atmel Arduinos
 | `__MEGA__`      | `__ARDUINO__`                                       |    "
 | `__FEATHER_MO__`| `__ARM__`                                           | ARM cortex
+| `__RP2040__`    | `__ARM__`, `__RP_PICO__`                            |   "
 | `__FEATHER_M4__`| `__ARM__`                                           |   "
 | `__BLUEPILL__`  | `__ARM__`                                           |   "
 | `__BLACKPILL__` | `__ARM__`                                           |   "
@@ -145,7 +148,7 @@ Installation
 Complete example
 ----------------
 
-See [Examples](https://github.com/muwerk/Examples) for a complete build
+See [Examples](https://github.com/muwerk/ustd/tree/master/Examples) for a complete build
 example with `ustd` and linux, Arduino-IDE or platformio.
 
 Related projects
@@ -157,6 +160,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.6.1 (2021-02-26) Initial Raspberry PICO rp2040 support.
 - 0.6.0 (2021-02-09) New platforms, iterator and copy-constructor support.
   - Support for iterators and copy-constructors in `ustd::array`, `ustd::queue`, and `ustd::map`.
     (Thanks [proddy](https://github.com/muwerk/ustd/issues/4#issuecomment-775283414) for iterator sample implementation.)
