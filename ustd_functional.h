@@ -62,7 +62,7 @@ using nullptr_t = decltype(nullptr);
 
 // NEW_H is some new Arduino implementation of new operator
 #if !defined(NEW_H) && !defined(USTD_FEATURE_SUPPORTS_NEW_OPERATOR)
-void *operator new(size_t size, void *ptr) {
+inline void *operator new(size_t size, void *ptr) {
     return ptr;
 }
 #endif
