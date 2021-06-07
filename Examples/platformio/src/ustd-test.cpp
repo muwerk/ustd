@@ -3,9 +3,12 @@
 #include "ustd_array.h"
 #include "ustd_queue.h"
 #include "ustd_map.h"
+
+#ifndef __ESP__
 #include "ustd_functional.h"
 
 typedef ustd::function<void()> T_TASK;
+#endif
 
 void test() {
     return;

@@ -219,6 +219,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif
 #define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY 256000
+#define USTD_FEATURE_SUPPORTS_NEW_OPERATOR
 #define __ARM__ 1
 #include <Arduino.h>
 #endif  // NANOBLE
