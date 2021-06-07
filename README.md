@@ -160,7 +160,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.6.2 (2021-06-07) Support multiple inclusion of global operators / functions in one submodule (Tx @mo22, [#13](https://github.com/muwerk/ustd/pull/13))
+- 0.6.2 (2021-06-07) Support multiple inclusion of global operators / functions in one submodule (Thanks @mo22, [#13](https://github.com/muwerk/ustd/pull/13))
 - 0.6.1 (2021-02-26) Initial Raspberry PICO rp2040 support.
 - 0.6.0 (2021-02-09) New platforms, iterator and copy-constructor support.
   - Support for iterators and copy-constructors in `ustd::array`, `ustd::queue`, and `ustd::map`.
