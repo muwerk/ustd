@@ -278,10 +278,10 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <cstring>
 #include <string>
 typedef std::string String;
-unsigned long micros() {
+inline unsigned long micros() {
     return time_us_64();
 }
-unsigned long millis() {
+inline unsigned long millis() {
     return time_us_64() / 1000;
 }
 #endif  // __RP_PICO__
@@ -322,14 +322,14 @@ unsigned long millis() {
 */
 typedef std::string String;
 
-unsigned long micros() {
+inline unsigned long micros() {
     struct timeval tv;
     gettimeofday(&tv, nullptr);
     unsigned long tu;
     tu = (tv.tv_sec % 1000L) * 1000000L + tv.tv_usec;
     return tu;
 }
-unsigned long millis() {
+inline unsigned long millis() {
     struct timeval tv;
     gettimeofday(&tv, nullptr);
     unsigned long tm;
@@ -423,7 +423,7 @@ extern "C" char *sbrk(int incr);
 extern char *__brkval;
 #endif  // __arm__
 
-int freeMemory() {
+inline int freeMemory() {
     char top;
 #ifdef __arm__
     return &top - reinterpret_cast<char *>(sbrk(0));
@@ -435,13 +435,13 @@ int freeMemory() {
 }
 #elif defined(__ESP__)
 #define USTD_FEATURE_FREE_MEMORY
-int freeMemory() {
+inline int freeMemory() {
     return (int)ESP.getFreeHeap();
 }
 #elif defined(__UNIXOID__)
 #define USTD_FEATURE_FREE_MEMORY
 // To keep the API compatible, this function gives back max INT_MAX as free memory.
-int freeMemory() {
+inline int freeMemory() {
     long pages = sysconf(_SC_PHYS_PAGES);
     long page_size = sysconf(_SC_PAGE_SIZE);
     long long memfree = pages * page_size;

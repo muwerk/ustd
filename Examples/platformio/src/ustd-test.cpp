@@ -3,6 +3,13 @@
 #include "ustd_array.h"
 #include "ustd_queue.h"
 #include "ustd_map.h"
+#include "ustd_functional.h"
+
+typedef ustd::function<void()> T_TASK;
+
+void test() {
+    return;
+}
 
 void setup() {
     ustd::array<int> ar = ustd::array<int>(1, 100, 1);
