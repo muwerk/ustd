@@ -1,0 +1,47 @@
+name: Raspberry_Pico
+
+on: [push]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    # The CMake configure and build commands are platform agnostic and should work equally
+    # well on Windows or Mac.  You can convert this to a matrix build if you need
+    # cross-platform coverage.
+    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Get Raspberry pico sdk
+      shell: bash
+      run: |
+        git clone https://github.com/raspberrypi/pico-sdk ${{github.workspace}}/pico-sdk
+        cd pico-sdk
+        git submodule update --init
+
+    - name: Install toolchain
+      run: sudo apt-get install gcc-arm-none-eabi libnewlib-arm-none-eabi
+
+    - name: Configure cmake phase 1
+      shell: bash
+      env: 
+        PICO_SDK_PATH: ${{github.workspace}}/pico-sdk
+      run: cmake -E make_directory ${{github.workspace}}/Examples/rp2040/build
+                
+    - name: Configure cmake phase 2
+      shell: bash
+      working-directory: ${{github.workspace}}/Examples/rp2040/build
+      env: 
+        PICO_SDK_PATH: ${{github.workspace}}/pico-sdk
+      run: cmake ${{github.workspace}}/Examples/rp2040 -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+    - name: Build
+      shell: bash
+      working-directory: ${{github.workspace}}/Examples/rp2040/build
+      # Execute the build.
+      run: make

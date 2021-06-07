@@ -84,7 +84,7 @@ $(function() {
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">// NEW_H is some new Arduino implementation of new operator</span></div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#if !defined(NEW_H) &amp;&amp; !defined(USTD_FEATURE_SUPPORTS_NEW_OPERATOR)</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> *<span class="keyword">operator</span> <span class="keyword">new</span>(<span class="keywordtype">size_t</span> size, <span class="keywordtype">void</span> *ptr) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> *<span class="keyword">operator</span> <span class="keyword">new</span>(<span class="keywordtype">size_t</span> size, <span class="keywordtype">void</span> *ptr) {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> ptr;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>

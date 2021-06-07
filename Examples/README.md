@@ -1,5 +1,5 @@
 ## Examples
 
-* [Arduino IDE](https://github.com/muwerk/ustd/tree/feature/iterator/Examples/arduino)
-* [PlatformIO](https://github.com/muwerk/ustd/tree/feature/iterator/Examples/platformio)
-* [Mac/Linux](https://github.com/muwerk/ustd/tree/feature/iterator/Examples/mac-linux)
+* [Arduino IDE](https://github.com/muwerk/ustd/tree/master/Examples/arduino)
+* [PlatformIO](https://github.com/muwerk/ustd/tree/master/Examples/platformio)
+* [Mac/Linux](https://github.com/muwerk/ustd/tree/master/Examples/mac-linux)

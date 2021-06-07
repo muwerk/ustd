@@ -1,4 +1,9 @@
-// Note: platform define is in platform.ini
+// Check if platform define is already supplied by build system (Travis-CI defines ATMEGA for tests):
+#ifndef __ATMEGA__
+// Not yet defined? Make a platform define for ESP32:
+#define __ESP32__
+#endif
+
 #include "ustd_platform.h"
 
 #include "ustd_array.h"

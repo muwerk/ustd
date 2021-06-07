@@ -124,6 +124,20 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <Arduino.h>
 #endif  // Feather M0
 
+// ------------- Raspberry Pi PICO RP2040 ---------------------
+#if defined(__RP2040__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 264000
+#define USTD_FEATURE_SUPPORTS_NEW_OPERATOR
+#include "pico/stdlib.h"
+#include "stdlib.h"
+#define __ARM__ 1
+#define __RP_PICO__ 1
+#endif  // RP2040
+
 // ------------- STM32F103C8T6 Bluepill -----------------------
 #if defined(__BLUEPILL__)
 #if defined(KNOWN_PLATFORM)
@@ -205,6 +219,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif
 #define KNOWN_PLATFORM 1
 #define USTD_FEATURE_MEMORY 256000
+#define USTD_FEATURE_SUPPORTS_NEW_OPERATOR
 #define __ARM__ 1
 #include <Arduino.h>
 #endif  // NANOBLE
@@ -259,6 +274,19 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // DONT_USE_FEATURE_COMPATIBILITY
 //-------- end compatibility-2
 
+// ------------- Raspberry Pico -------------------------------
+#if defined(__RP_PICO__)
+#include <cstring>
+#include <string>
+typedef std::string String;
+inline unsigned long micros() {
+    return time_us_64();
+}
+inline unsigned long millis() {
+    return time_us_64() / 1000;
+}
+#endif  // __RP_PICO__
+
 // ------------- Unixoids -------------------------------------
 #if defined(__linux__) || defined(__APPLE__)
 #if defined(KNOWN_PLATFORM)
@@ -295,14 +323,14 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 */
 typedef std::string String;
 
-unsigned long micros() {
+inline unsigned long micros() {
     struct timeval tv;
     gettimeofday(&tv, nullptr);
     unsigned long tu;
     tu = (tv.tv_sec % 1000L) * 1000000L + tv.tv_usec;
     return tu;
 }
-unsigned long millis() {
+inline unsigned long millis() {
     struct timeval tv;
     gettimeofday(&tv, nullptr);
     unsigned long tm;
@@ -396,7 +424,7 @@ extern "C" char *sbrk(int incr);
 extern char *__brkval;
 #endif  // __arm__
 
-int freeMemory() {
+inline int freeMemory() {
     char top;
 #ifdef __arm__
     return &top - reinterpret_cast<char *>(sbrk(0));
@@ -408,13 +436,13 @@ int freeMemory() {
 }
 #elif defined(__ESP__)
 #define USTD_FEATURE_FREE_MEMORY
-int freeMemory() {
+inline int freeMemory() {
     return (int)ESP.getFreeHeap();
 }
 #elif defined(__UNIXOID__)
 #define USTD_FEATURE_FREE_MEMORY
 // To keep the API compatible, this function gives back max INT_MAX as free memory.
-int freeMemory() {
+inline int freeMemory() {
     long pages = sysconf(_SC_PHYS_PAGES);
     long page_size = sysconf(_SC_PAGE_SIZE);
     long long memfree = pages * page_size;
