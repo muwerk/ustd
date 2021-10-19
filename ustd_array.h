@@ -331,22 +331,14 @@ template <typename T> class array {
     }
 
     T operator[](unsigned int i) const {
-        /*! Read content of array element at i, a=myArray[3] */
-        if (i >= allocSize) {
-#if defined(__UNIXOID__)
-            if (incSize == 0) {
-                assert(i < allocSize);
-            }
+        /*! Read content of array element at i, a=myArray[3] 
+         * Note: Since version 0.7.0 a read operation never mutates (e.g. extends) the array,
+         * earlier version allowed array-extension via read.
+         */
+        if (i >= size) {
+#if defined (__UNIXOID__)
+            assert(i < size);
 #endif
-            if (!resize(allocSize + incSize)) {
-#if defined(__UNIXOID__)
-                assert(i < allocSize);
-#endif
-            }
-        }
-        if (i >= size && i <= allocSize)
-            size = i + 1;
-        if (i >= allocSize) {
             return bad;
         }
         return arr[i];
