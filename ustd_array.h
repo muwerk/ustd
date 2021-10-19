@@ -332,7 +332,7 @@ template <typename T> class array {
 
     T operator[](unsigned int i) const {
         /*! Read content of array element at i, a=myArray[3] 
-         * Note: Since version 0.7.0 a read operation never mutate (e.g. extends) the array,
+         * Note: Since version 0.7.0 a read operation never mutates (e.g. extends) the array,
          * earlier version allowed array-extension via read.
          */
         if (i >= size) {
