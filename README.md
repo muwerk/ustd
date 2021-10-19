@@ -1,7 +1,6 @@
 ustd
 ====
 
-[![Mac/Linux Build Status](https://travis-ci.org/muwerk/ustd.svg?branch=master)](https://travis-ci.org/muwerk/ustd)
 [![Dev Docs](https://img.shields.io/badge/docs-dev-blue.svg)](https://muwerk.github.io/ustd/docs/index.html)
 [![Cmake](https://github.com/muwerk/ustd/workflows/CMake/badge.svg)](https://github.com/muwerk/ustd/actions)
 [![PlatformIO CI](https://github.com/muwerk/ustd/workflows/PlatformIO%20CI/badge.svg)](https://github.com/muwerk/ustd/actions)
@@ -160,6 +159,8 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.7.0 (2021-10-19) Slight breaking change in array-read handling: Earlier versions allowed read-operations
+  to grow (thus mutating) the array, if the array was initialized as growing. Changed via [#17](https://github.com/muwerk/ustd/pull/17), thanks @mzanetti.
 - 0.6.2 (2021-06-07) Support multiple inclusion of global operators / functions in one submodule (Thanks @mo22, [#13](https://github.com/muwerk/ustd/pull/13))
 - 0.6.1 (2021-02-26) Initial Raspberry PICO rp2040 support.
 - 0.6.0 (2021-02-09) New platforms, iterator and copy-constructor support.
