@@ -337,7 +337,7 @@ template <typename T> class array {
          */
         if (i >= size) {
 #if defined (__UNIXOID__)
-            assert(i < size)
+            assert(i < size);
 #endif
             return bad;
         }
