@@ -331,8 +331,14 @@ template <typename T> class array {
     }
 
     T operator[](unsigned int i) const {
-        /*! Read content of array element at i, a=myArray[3] */
+        /*! Read content of array element at i, a=myArray[3] 
+         * Note: Since version 0.7.0 a read operation never mutate (e.g. extends) the array,
+         * earlier version allowed array-extension via read.
+         */
         if (i >= size) {
+#if defined (__UNIXOID__)
+            assert(i < size)
+#endif
             return bad;
         }
         return arr[i];
