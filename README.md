@@ -40,6 +40,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | STM32     | `__BLUEPILL__`      | STM32F103C8T6 ARM Cortex-M3            |
 | STM32     | `__BLACKPILL__`     | STM32F411 ARM Cortex-M4                |
 | NRF52     | `__NRF52__`         | Feather NRF52832 Cortex-M4             |
+| Teensy40  | `__TEENSY40__`      | Teensy 4.0 Cortex-M7                   |
 | Nano33BLE | `__NANOBLE__`       | Arduino Nano 33 BLE (Sense) nRF52840   |
 | ESP8266   | `__ESP__`           | For ESP8266 and ESP32                  |
 | ESP32     | `__ESP32__`         | ESP32                                  |
@@ -74,6 +75,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__BLUEPILL__`   | `__ARM__`                    | "                    |
 | `__BLACKPILL__`  | `__ARM__`                    | "                    |
 | `__NRF52__`      | `__ARM__`                    | "                    |
+| `__TEENSY40__`   | `__ARM__`                    | "                    |
 | `__NANOBLE__`    | `__ARM__`                    | "                    |
 | `__ESP__`        | t.b.d.                       | t.b.d.               |
 | `__ESP32__`      | "                            | "                    |
@@ -159,6 +161,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.7.1 (2022-05-02) Test Teensy 4.0
 - 0.7.0 (2021-10-19) Slight breaking change in array-read handling: Earlier versions allowed read-operations
   to grow (thus mutating) the array, if the array was initialized as growing. Changed via [#17](https://github.com/muwerk/ustd/pull/17), thanks @mzanetti.
 - 0.6.2 (2021-06-07) Support multiple inclusion of global operators / functions in one submodule (Thanks @mo22, [#13](https://github.com/muwerk/ustd/pull/13))
