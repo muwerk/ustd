@@ -224,6 +224,18 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <Arduino.h>
 #endif  // NANOBLE
 
+// ------------- Teensy 4.0 (Cortex M7, imxrt1062) -----------------
+#if defined(__TEENSY40__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define USTD_FEATURE_MEMORY 512000
+#define USTD_FEATURE_SUPPORTS_NEW_OPERATOR
+#define __ARM__ 1
+#include <Arduino.h>
+#endif  // TEEENSY40
+
 // ------------- ESP32 and ESP32DEV ---------------------------
 #if defined(__ESP32__) || defined(__ESP32DEV__)
 #if defined(KNOWN_PLATFORM)
