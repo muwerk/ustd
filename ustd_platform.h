@@ -12,6 +12,7 @@
 // "Bluepill" Cortex-M3
 // STM32F411CEU6       128k    512k              100MHz  __ARM__
 // "Blackpill" Cortex-M4F
+// Teensy 4.0          512k   1984k       1k     600Mhz  __ARM__
 // Esp8266              80k 512k-4M           80-160MHz  __ESP__
 // ESP32               320k   2M-4M          160-240MHz  __ESP__
 
@@ -509,5 +510,5 @@ inline int freeMemory() {
 #endif
 
 #ifndef KNOWN_PLATFORM
-#error Unkown platform. Please use one of the platform defines __ATTINY__, __ATMEGA__, __ESP__, __linux__, __APPLE__
+#error Unkown platform. Please use a platform define, e.g. __ATMEGA__, __ESP__, __linux__, __APPLE__. Check https://github.com/muwerk/ustd#platform-defines for complete list.
 #endif
