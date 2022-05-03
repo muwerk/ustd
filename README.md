@@ -161,7 +161,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.7.1 (2022-05-02) Test Teensy 4.0
+- 0.7.1 (2022-05-03) Teensy 4.0 support ([#20](https://github.com/muwerk/ustd/issues/20), thanks @SteveEisner).
 - 0.7.0 (2021-10-19) Slight breaking change in array-read handling: Earlier versions allowed read-operations
   to grow (thus mutating) the array, if the array was initialized as growing. Changed via [#17](https://github.com/muwerk/ustd/pull/17), thanks @mzanetti.
 - 0.6.2 (2021-06-07) Support multiple inclusion of global operators / functions in one submodule (Thanks @mo22, [#13](https://github.com/muwerk/ustd/pull/13))
