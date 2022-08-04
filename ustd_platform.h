@@ -258,9 +258,14 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #if !defined(USTD_OPTION_FS_FORCE_NO_FS)
 #define USTD_FEATURE_FILESYSTEM
 #define FS_NO_GLOBALS  // see: https://github.com/esp8266/Arduino/issues/3819
+#if !defined(USTD_OPTION_FS_FORCE_LITTLEFS)
 #include <SPIFFS.h>
-#include <FS.h>
 #define USTD_FEATURE_FS_SPIFFS
+#else
+#include <LittleFS.h>
+#define USTD_FEATURE_FS_LITTLEFS
+#endif // USTD_OPTION_FS_FORCE_LITTLEFS)
+#include <FS.h>
 #endif  // FORCE_NO_FS
 #endif  // ESP32 || ESP32DEV
 
