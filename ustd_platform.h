@@ -58,7 +58,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_CLK_SET
 
 // Network:
-#define USTD_FEATURE_NET
+#define USTD_FEATURE_NETWORK
 */
 
 // Compatibility-1
