@@ -264,7 +264,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #else
 #include <LittleFS.h>
 #define USTD_FEATURE_FS_LITTLEFS
-#endif // USTD_OPTION_FS_FORCE_LITTLEFS)
+#endif  // USTD_OPTION_FS_FORCE_LITTLEFS)
 #include <FS.h>
 #endif  // FORCE_NO_FS
 #endif  // ESP32 || ESP32DEV
