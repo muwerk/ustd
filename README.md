@@ -162,6 +162,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.7.3 (2022-08-26) Minimal doc fixes.
 - 0.7.2 (2022-08-04) New option `USTD_OPTION_FORCE_LITTLEFS` for ESP32. Switches to LittleFS for new cores. For compatibility reasons currently default file system for ESP32 is still SPIFFS.
 - 0.7.1 (2022-05-03) Teensy 4.0 support ([#20](https://github.com/muwerk/ustd/issues/20), thanks @SteveEisner).
 - 0.7.0 (2021-10-19) Slight breaking change in array-read handling: Earlier versions allowed read-operations
