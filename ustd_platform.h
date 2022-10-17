@@ -249,6 +249,8 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif
 #ifdef __ESP32_RISC__
 #define __RISC_V__
+#define USTD_FEATURE_SUPPORTS_NEW_OPERATOR
+#define USTD_OPTION_FS_FORCE_LITTLEFS
 #else
 #define __TENSILICA__
 #endif
@@ -272,7 +274,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // USTD_OPTION_FS_FORCE_LITTLEFS)
 #include <FS.h>
 #endif  // FORCE_NO_FS
-#endif  // ESP32 || ESP32DEV
+#endif  // ESP32 || ESP32DEV || ESP32_RISC
 
 // ------ RISC-V Maix Bit -------------------------------------
 #if defined(__MAIXBIT__)
