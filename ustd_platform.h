@@ -249,6 +249,8 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif
 #ifdef __ESP32_RISC__
 #define __RISC_V__
+#else
+#define __TENSILICA__
 #endif
 #define USTD_FEATURE_MEMORY 320000
 #include <WiFi.h>
