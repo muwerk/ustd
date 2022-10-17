@@ -164,8 +164,9 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.7.4 (2022-10-17) Support for ESP32-C3 (RISC-V), tested with Adafruit QTPY ESP32-C3. 'Legacy' ESPs automatically define family __TENSILICA__, 
-  whereas the new RISC-V based chip defines family __RISC_V__. Note: ESP32_RISC always uses LittleFS!
+- 0.7.4 (2022-10-17) Support for ESP32-C3 (RISC-V), tested with Adafruit QTPY ESP32-C3, platform define `__ESP32_RISC__`. 
+  'Legacy' ESPs automatically define family `__TENSILICA__`, 
+  whereas the new RISC-V based chip defines family `__RISC_V__`. Note: `__ESP32_RISC__` always uses LittleFS!
 - 0.7.3 (2022-08-26) Minimal doc fixes.
 - 0.7.2 (2022-08-04) New option `USTD_OPTION_FORCE_LITTLEFS` for ESP32. Switches to LittleFS for new cores. For compatibility reasons currently default file system for ESP32 is still SPIFFS.
 - 0.7.1 (2022-05-03) Teensy 4.0 support ([#20](https://github.com/muwerk/ustd/issues/20), thanks @SteveEisner).
