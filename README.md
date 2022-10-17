@@ -93,8 +93,8 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | ------------------------------------ | -------------------------------------------------------------------------------------------------- |
 | `USTD_FEATURE_MEMORY`                | This is set to a class of available memory, see below for possible values.                         |
 | `USTD_FEATURE_FILESYSTEM`            | The system has a filesystem, muwerk APIs defined in `filesystem.h` and `jsonfile.h` are available. |
-| `USTD_FEATURE_FS_SPIFFS`             | Filesystem is SPIFFS format (legacy ESP8266 and all ESP32)                                         |
-| `USTD_FEATURE_FS_LITTLEFS`           | Filesystem is LittleFS (standard for ESP8266)                                                      |
+| `USTD_FEATURE_FS_SPIFFS`             | Filesystem is SPIFFS format (legacy ESP8266 and all ESP32 with tensilica cores)                    |
+| `USTD_FEATURE_FS_LITTLEFS`           | Filesystem is LittleFS (standard for ESP8266 and ESP32C3 RISC-V)                                   |
 | `USTD_FEATURE_FS_SD`                 | Future: SD Filesystem                                                                              |
 | `USTD_FEATURE_EEPROM`                | Platform has EEPROM storage                                                                        |
 | `USTD_FEATURE_SYSTEMCLOCK`           | System has a clock                                                                                 |
