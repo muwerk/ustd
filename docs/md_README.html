@@ -189,9 +189,9 @@ $(function() {
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>USTD_FEATURE_FILESYSTEM</code>   </td><td class="markdownTableBodyNone">The system has a filesystem, muwerk APIs defined in <code>filesystem.h</code> and <code>jsonfile.h</code> are available.    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>USTD_FEATURE_FS_SPIFFS</code>   </td><td class="markdownTableBodyNone">Filesystem is SPIFFS format (legacy ESP8266 and all ESP32)    </td></tr>
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_FS_SPIFFS</code>   </td><td class="markdownTableBodyNone">Filesystem is SPIFFS format (legacy ESP8266 and all ESP32 with tensilica cores)    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><code>USTD_FEATURE_FS_LITTLEFS</code>   </td><td class="markdownTableBodyNone">Filesystem is LittleFS (standard for ESP8266)    </td></tr>
+<td class="markdownTableBodyNone"><code>USTD_FEATURE_FS_LITTLEFS</code>   </td><td class="markdownTableBodyNone">Filesystem is LittleFS (standard for ESP8266 and ESP32C3 RISC-V)    </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>USTD_FEATURE_FS_SD</code>   </td><td class="markdownTableBodyNone">Future: SD Filesystem    </td></tr>
 <tr class="markdownTableRowEven">
@@ -259,7 +259,7 @@ $(function() {
 </ul>
 <h1>History </h1>
 <ul>
-<li>0.7.4 (2022-10-17) Support for ESP32-C3 (RISC-V), tested with Adafruit QTPY ESP32-C3. 'Legacy' ESPs automatically define family <b>TENSILICA</b>, whereas the new RISC-V based chip defines family <b>RISC_V</b>. Note: ESP32_RISC always uses LittleFS!</li>
+<li>0.7.4 (2022-10-17) Support for ESP32-C3 (RISC-V), tested with Adafruit QTPY ESP32-C3, platform define <code>__ESP32_RISC__</code>. 'Legacy' ESPs automatically define family <code>__TENSILICA__</code>, whereas the new RISC-V based chip defines family <code>__RISC_V__</code>. Note: <code>__ESP32_RISC__</code> always uses LittleFS!</li>
 <li>0.7.3 (2022-08-26) Minimal doc fixes.</li>
 <li>0.7.2 (2022-08-04) New option <code>USTD_OPTION_FORCE_LITTLEFS</code> for ESP32. Switches to LittleFS for new cores. For compatibility reasons currently default file system for ESP32 is still SPIFFS.</li>
 <li>0.7.1 (2022-05-03) Teensy 4.0 support (<a href="https://github.com/muwerk/ustd/issues/20">#20</a>, thanks @SteveEisner).</li>
