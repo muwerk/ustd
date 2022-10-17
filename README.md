@@ -44,6 +44,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | Nano33BLE | `__NANOBLE__`       | Arduino Nano 33 BLE (Sense) nRF52840   |
 | ESP8266   | `__ESP__`           | For ESP8266 and ESP32                  |
 | ESP32     | `__ESP32__`         | ESP32                                  |
+| ESP32-C3  | `__ESP32_RISC_`     | ESP32-C3 (RISC-V)                      |
 | ESP32DEV  | `__ESP32DEV__`      | ESP32 git head                         |
 | Maix Bit  | `__MAIXBIT__`       | Sipeed Maix Bit RISC-V                 |
 | Mac       | `__APPLE__`         | Should be defined already              |
@@ -81,6 +82,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__ESP__`        | t.b.d.                       | t.b.d.               |
 | `__ESP32__`      | "                            | "                    |
 | `__ESPDEV__`     | "                            | "                    |
+| `__ESP32_RISC__` | `__RISC_V__`                 | RISC-V ESP32-C3      |
 | `__MAIXBIT__`    | `__RISC_V__`                 | RISC-V based MCUs    |
 | `__APPLE__`      | `__UNIXOID__`                | macOS computer       |
 | `__linux__`      | `__UNIXOID__`                | Linux computer       |
@@ -162,6 +164,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.7.4 (2022-10-17) Support for ESP32-C3 (RISC-V), tested with Adafruit QTPY ESP32-C3.
 - 0.7.3 (2022-08-26) Minimal doc fixes.
 - 0.7.2 (2022-08-04) New option `USTD_OPTION_FORCE_LITTLEFS` for ESP32. Switches to LittleFS for new cores. For compatibility reasons currently default file system for ESP32 is still SPIFFS.
 - 0.7.1 (2022-05-03) Teensy 4.0 support ([#20](https://github.com/muwerk/ustd/issues/20), thanks @SteveEisner).

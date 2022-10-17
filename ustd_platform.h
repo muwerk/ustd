@@ -238,7 +238,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // TEEENSY40
 
 // ------------- ESP32 and ESP32DEV ---------------------------
-#if defined(__ESP32__) || defined(__ESP32DEV__)
+#if defined(__ESP32__) || defined(__ESP32DEV__) || defined(__ESP32_RISC__)
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
 #endif
@@ -246,6 +246,9 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 // This is probably somewhat inconsistent:
 #ifndef __ESP__
 #define __ESP__
+#endif
+#ifdef __ESP32_RISC__
+#define __RISC_V__
 #endif
 #define USTD_FEATURE_MEMORY 320000
 #include <WiFi.h>
