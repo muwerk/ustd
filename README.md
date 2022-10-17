@@ -93,8 +93,8 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | ------------------------------------ | -------------------------------------------------------------------------------------------------- |
 | `USTD_FEATURE_MEMORY`                | This is set to a class of available memory, see below for possible values.                         |
 | `USTD_FEATURE_FILESYSTEM`            | The system has a filesystem, muwerk APIs defined in `filesystem.h` and `jsonfile.h` are available. |
-| `USTD_FEATURE_FS_SPIFFS`             | Filesystem is SPIFFS format (legacy ESP8266 and all ESP32)                                         |
-| `USTD_FEATURE_FS_LITTLEFS`           | Filesystem is LittleFS (standard for ESP8266)                                                      |
+| `USTD_FEATURE_FS_SPIFFS`             | Filesystem is SPIFFS format (legacy ESP8266 and all ESP32 with tensilica cores)                    |
+| `USTD_FEATURE_FS_LITTLEFS`           | Filesystem is LittleFS (standard for ESP8266 and ESP32C3 RISC-V)                                   |
 | `USTD_FEATURE_FS_SD`                 | Future: SD Filesystem                                                                              |
 | `USTD_FEATURE_EEPROM`                | Platform has EEPROM storage                                                                        |
 | `USTD_FEATURE_SYSTEMCLOCK`           | System has a clock                                                                                 |
@@ -164,8 +164,9 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
-- 0.7.4 (2022-10-17) Support for ESP32-C3 (RISC-V), tested with Adafruit QTPY ESP32-C3. 'Legacy' ESPs automatically define family __TENSILICA__, 
-  whereas the new RISC-V based chip defines family __RISC_V__. Note: ESP32_RISC always uses LittleFS!
+- 0.7.4 (2022-10-17) Support for ESP32-C3 (RISC-V), tested with Adafruit QTPY ESP32-C3, platform define `__ESP32_RISC__`. 
+  'Legacy' ESPs automatically define family `__TENSILICA__`, 
+  whereas the new RISC-V based chip defines family `__RISC_V__`. Note: `__ESP32_RISC__` always uses LittleFS!
 - 0.7.3 (2022-08-26) Minimal doc fixes.
 - 0.7.2 (2022-08-04) New option `USTD_OPTION_FORCE_LITTLEFS` for ESP32. Switches to LittleFS for new cores. For compatibility reasons currently default file system for ESP32 is still SPIFFS.
 - 0.7.1 (2022-05-03) Teensy 4.0 support ([#20](https://github.com/muwerk/ustd/issues/20), thanks @SteveEisner).
