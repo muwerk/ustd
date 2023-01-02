@@ -168,7 +168,7 @@ History
   'Legacy' ESPs automatically define family `__TENSILICA__`, 
   whereas the new RISC-V based chip defines family `__RISC_V__`. Note: `__ESP32_RISC__` always uses LittleFS!
 - 0.7.3 (2022-08-26) Minimal doc fixes.
-- 0.7.2 (2022-08-04) New option `USTD_OPTION_FORCE_LITTLEFS` for ESP32. Switches to LittleFS for new cores. For compatibility reasons currently default file system for ESP32 is still SPIFFS.
+- 0.7.2 (2022-08-04) New option `USTD_OPTION_FS_FORCE_LITTLEFS` for ESP32. Switches to LittleFS for new cores. For compatibility reasons currently default file system for ESP32 is still SPIFFS.
 - 0.7.1 (2022-05-03) Teensy 4.0 support ([#20](https://github.com/muwerk/ustd/issues/20), thanks @SteveEisner).
 - 0.7.0 (2021-10-19) Slight breaking change in array-read handling: Earlier versions allowed read-operations
   to grow (thus mutating) the array, if the array was initialized as growing. Changed via [#17](https://github.com/muwerk/ustd/pull/17), thanks @mzanetti.
