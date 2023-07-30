@@ -125,7 +125,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <Arduino.h>
 #endif  // Feather M0
 
-// ------------- Raspberry Pi PICO RP2040 ---------------------
+/// ------------- Raspberry Pi PICO RP2040 ---------------------
 #if defined(__RP2040__)
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
@@ -284,6 +284,17 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define KNOWN_PLATFORM 1
 #define __RISC_V__
 #define USTD_FEATURE_MEMORY 6000000
+#include <Arduino.h>
+#endif
+
+// ------ RISC-V GD32V SIPEED LONGAN NANO --------------------
+#if defined(__LONGAN_NANO__)
+#if defined(KNOWN_PLATFORM)
+#error "Platform already defined"
+#endif
+#define KNOWN_PLATFORM 1
+#define __RISC_V__
+#define USTD_FEATURE_MEMORY 16000
 #include <Arduino.h>
 #endif
 

@@ -47,6 +47,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | ESP32-C3  | `__ESP32_RISC_`     | ESP32-C3 (RISC-V)                      |
 | ESP32DEV  | `__ESP32DEV__`      | ESP32 git head                         |
 | Maix Bit  | `__MAIXBIT__`       | Sipeed Maix Bit RISC-V                 |
+| Longan    | `__LONGAN_NANO__`   | Sipeed Longan Nano RISC-V              |
 | Mac       | `__APPLE__`         | Should be defined already              |
 | Linux     | `__linux__`         | Should be defined already              |
 
@@ -84,6 +85,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__ESPDEV__`     | `__TENSILICA__`              | "                    |
 | `__ESP32_RISC__` | `__RISC_V__`                 | RISC-V ESP32-C3      |
 | `__MAIXBIT__`    | `__RISC_V__`                 | RISC-V based MCUs    |
+| `__LONGAN_NANO__`| `__RISC_V__`                 | RISC-V based MCUs    |
 | `__APPLE__`      | `__UNIXOID__`                | macOS computer       |
 | `__linux__`      | `__UNIXOID__`                | Linux computer       |
 
@@ -164,6 +166,7 @@ scheduler with MQTT-like communication queues.
 History
 -------
 
+- 0.7.5 (2023-07-30) Sipeed Longan RISC-V
 - 0.7.4 (2022-10-17) Support for ESP32-C3 (RISC-V), tested with Adafruit QTPY ESP32-C3, platform define `__ESP32_RISC__`. 
   'Legacy' ESPs automatically define family `__TENSILICA__`, 
   whereas the new RISC-V based chip defines family `__RISC_V__`. Note: `__ESP32_RISC__` always uses LittleFS!
