@@ -163,7 +163,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #endif  // NRF52
 
 // ------------- ESP8266 --------------------------------------
-#if defined(__ESP__) && !defined(__ESP32__) && !defined(__ESP32DEV__)
+#if defined(__ESP__) && !defined(__ESP32__) && !defined(__ESP32DEV__) && !defined(__ESP32_RISC__)
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
 #endif
