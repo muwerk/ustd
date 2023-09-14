@@ -202,8 +202,12 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #include <Arduino.h>
 #endif  // Blackpill
 
-// ------------- Adafruit Feather M4 Express ------------------
-#if defined(__FEATHER_M4__)
+// ------------- SAMD51 Variants ------------------
+//    - Adafruit Feather M4 Express
+//    - Adafruit Grand Central M4 Express
+//    - Adafruit Metro M4 Express
+//    - ...
+#if defined(__SAMD51__) || defined(__FEATHER_M4__)
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
 #endif
@@ -211,7 +215,7 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 #define USTD_FEATURE_MEMORY 192000
 #define __ARM__ 1
 #include <Arduino.h>
-#endif  // FEATHER_M4
+#endif  // SAMD51 || FEATHER_M4
 
 // ------------- Arduino BLE Sense (NRF52840) -----------------
 #if defined(__NANOBLE__)
