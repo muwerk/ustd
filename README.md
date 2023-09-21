@@ -36,6 +36,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | Arduino   | `__ATMEGA__`        | Should work with most arduinos         |
 | FeatherM0 | `__FEATHER_M0__`    | Adafruit feather M0 (Wifi)             |
 | RP PICO   | `__RP2040__`        | Raspberry Pi PICO RP2040               |
+| SAMD51    | `__SAMD51__`        | SAMD51 variants (Adafruit M4 boards)   |
 | FeatherM4 | `__FEATHER_M4__`    | Adafruit feather M4 (Wifi)             |
 | STM32     | `__BLUEPILL__`      | STM32F103C8T6 ARM Cortex-M3            |
 | STM32     | `__BLACKPILL__`     | STM32F411 ARM Cortex-M4                |
@@ -74,6 +75,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__MEGA__`       | `__ARDUINO__`                | "                    |
 | `__FEATHER_MO__` | `__ARM__`                    | ARM cortex           |
 | `__RP2040__`     | `__ARM__`, `__RP_PICO__`     | "                    |
+| `__SAMD5__`      | `__ARM__`                    | "                    |
 | `__FEATHER_M4__` | `__ARM__`                    | "                    |
 | `__BLUEPILL__`   | `__ARM__`                    | "                    |
 | `__BLACKPILL__`  | `__ARM__`                    | "                    |
