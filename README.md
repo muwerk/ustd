@@ -36,7 +36,7 @@ Make sure to use the appropriate platform define before including from `ustd`.
 | Arduino   | `__ATMEGA__`        | Should work with most arduinos         |
 | FeatherM0 | `__FEATHER_M0__`    | Adafruit feather M0 (Wifi)             |
 | RP PICO   | `__RP2040__`        | Raspberry Pi PICO RP2040               |
-| FeatherM4 | `__FEATHER_M4__`    | Adafruit feather M4 (Wifi)             |
+| SAMD51    | `__SAMD51__`        | SAMD51 variants (Adafruit M4 boards)   |
 | STM32     | `__BLUEPILL__`      | STM32F103C8T6 ARM Cortex-M3            |
 | STM32     | `__BLACKPILL__`     | STM32F411 ARM Cortex-M4                |
 | NRF52     | `__NRF52__`         | Feather NRF52832 Cortex-M4             |
@@ -68,26 +68,27 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 
 #### Family defines
 
-| Platform define  | Automatically defined family | Comment              |
-| ---------------- | ---------------------------- | -------------------- |
-| `__UNO__`        | `__ARDUINO__`                | 8-bit Atmel Arduinos |
-| `__MEGA__`       | `__ARDUINO__`                | "                    |
-| `__FEATHER_MO__` | `__ARM__`                    | ARM cortex           |
-| `__RP2040__`     | `__ARM__`, `__RP_PICO__`     | "                    |
-| `__FEATHER_M4__` | `__ARM__`                    | "                    |
-| `__BLUEPILL__`   | `__ARM__`                    | "                    |
-| `__BLACKPILL__`  | `__ARM__`                    | "                    |
-| `__NRF52__`      | `__ARM__`                    | "                    |
-| `__TEENSY40__`   | `__ARM__`                    | "                    |
-| `__NANOBLE__`    | `__ARM__`                    | "                    |
-| `__ESP__`        | `__TENSILICA__`              | Espressif Tensilica  |
-| `__ESP32__`      | `__TENSILICA__`              | "                    |
-| `__ESPDEV__`     | `__TENSILICA__`              | "                    |
-| `__ESP32_RISC__` | `__RISC_V__`                 | RISC-V ESP32-C3      |
-| `__MAIXBIT__`    | `__RISC_V__`                 | RISC-V based MCUs    |
-| `__LONGAN_NANO__`| `__RISC_V__`                 | RISC-V based MCUs    |
-| `__APPLE__`      | `__UNIXOID__`                | macOS computer       |
-| `__linux__`      | `__UNIXOID__`                | Linux computer       |
+| Platform define  | Automatically defined family | Comment                                 |
+| ---------------- | ---------------------------- | --------------------------------------- |
+| `__UNO__`        | `__ARDUINO__`                | 8-bit Atmel Arduinos                    |
+| `__MEGA__`       | `__ARDUINO__`                | "                                       |
+| `__FEATHER_MO__` | `__ARM__`                    | ARM cortex                              |
+| `__RP2040__`     | `__ARM__`, `__RP_PICO__`     | "                                       |
+| `__SAMD51__`     | `__ARM__`                    | "                                       |
+| `__FEATHER_M4__` | `__ARM__`                    | " (Deprecated in favor of `__SAMD51__`) |
+| `__BLUEPILL__`   | `__ARM__`                    | "                                       |
+| `__BLACKPILL__`  | `__ARM__`                    | "                                       |
+| `__NRF52__`      | `__ARM__`                    | "                                       |
+| `__TEENSY40__`   | `__ARM__`                    | "                                       |
+| `__NANOBLE__`    | `__ARM__`                    | "                                       |
+| `__ESP__`        | `__TENSILICA__`              | Espressif Tensilica                     |
+| `__ESP32__`      | `__TENSILICA__`              | "                                       |
+| `__ESPDEV__`     | `__TENSILICA__`              | "                                       |
+| `__ESP32_RISC__` | `__RISC_V__`                 | RISC-V ESP32-C3                         |
+| `__MAIXBIT__`    | `__RISC_V__`                 | RISC-V based MCUs                       |
+| `__LONGAN_NANO__`| `__RISC_V__`                 | RISC-V based MCUs                       |
+| `__APPLE__`      | `__UNIXOID__`                | macOS computer                          |
+| `__linux__`      | `__UNIXOID__`                | Linux computer                          |
 
 #### Features
 
