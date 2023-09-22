@@ -75,7 +75,7 @@ platform defines are used to generate feature-lists that are used by muwerk's mo
 | `__MEGA__`       | `__ARDUINO__`                | "                    |
 | `__FEATHER_MO__` | `__ARM__`                    | ARM cortex           |
 | `__RP2040__`     | `__ARM__`, `__RP_PICO__`     | "                    |
-| `__SAMD5__`      | `__ARM__`                    | "                    |
+| `__SAMD51__`     | `__ARM__`                    | "                    |
 | `__FEATHER_M4__` | `__ARM__`                    | "                    |
 | `__BLUEPILL__`   | `__ARM__`                    | "                    |
 | `__BLACKPILL__`  | `__ARM__`                    | "                    |
