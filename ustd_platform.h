@@ -208,6 +208,9 @@ A Platform sets USTD_FEATURE_MEMORY to one of the above _MEM_ defines.
 //    - Adafruit Metro M4 Express
 //    - ...
 #if defined(__SAMD51__) || defined(__FEATHER_M4__)
+#if defined(__FEATHER_M4__)
+#warning "__FEATHER_M4__ has been deprecated in favor of __SAMD51__"
+#endif
 #if defined(KNOWN_PLATFORM)
 #error "Platform already defined"
 #endif
